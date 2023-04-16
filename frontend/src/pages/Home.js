@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import UserDetails from '../components/UserDetails'
+import UserForm from '../components/UserForm'
 
 const Home = () => {
 
@@ -25,6 +26,7 @@ const Home = () => {
                     <UserDetails key={user._id} user={user}/>
                 ))}
             </div>
+            <UserForm/>
         </div>
     )
 }

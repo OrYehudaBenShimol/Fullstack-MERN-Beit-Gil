@@ -32,6 +32,10 @@ const userSchema = new Schema({
     hebrewName:{
         type:String,
         require:true
+    },
+    password:{
+        type:String,
+        require:true
     }
 }, {timestamps:true});
 
