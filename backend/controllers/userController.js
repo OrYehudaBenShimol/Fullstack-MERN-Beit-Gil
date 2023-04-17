@@ -50,6 +50,34 @@ const getSinglelPatient = async ( req,res) =>{
 const createNewUser = async (req,res) => {
     const {name,id,email,cellphone,dateOfBirth,role,hebrewName,password} = req.body;
 
+    let emptyFields = [];
+    if(!name){
+        emptyFields.push('name')
+    }
+    if(!id){
+        emptyFields.push('id')
+    }
+    if(!email){
+        emptyFields.push('email')
+    }
+    if(!cellphone){
+        emptyFields.push('cellphone')
+    }
+    if(!dateOfBirth){
+        emptyFields.push('dateOfBirth')
+    }
+    if(!hebrewName){
+        emptyFields.push('hebrewName')
+    }
+    if(!password){
+        emptyFields.push('password')
+    }
+
+    if(emptyFields.length>0){
+        return res.status(400).json({error:'נא למלא את כל השדות באדום', emptyFields})
+    }
+
+
     // Add new user to the database.
     try {
         const user = await User.create({name,id,email,cellphone,dateOfBirth,role,hebrewName,password});

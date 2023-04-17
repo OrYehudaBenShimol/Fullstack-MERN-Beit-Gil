@@ -1,3 +1,4 @@
+
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
@@ -7,31 +8,18 @@
   --error: #e7195a;
 }
 body {
-  
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
 }
 header {
-  background: var(--primary);
+  background: #FE886A;
 }
-
-.home{
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 10px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 header .container {
   max-width: 1024px;
-  max-height: 30px;
   margin: 0 auto;
-  padding: 10px 10px;
+  padding: 10px 20px;
   display: flex;
-  background-color: var(--primary) ;
   align-items: center;
   justify-content: space-between;
 }
@@ -44,18 +32,27 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
-
+.Success{
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+.container{
+  padding: 0;
+  max-height: 40px;
+}
 
 /* homepage */
-.home {
-  display: grid;
-  grid-template-columns: 3fr 3fr 3fr;
-  grid-template-areas: 'left center right';
-  gap: 25px;
-}
 .users{
-  grid-area: center;
-
+  text-align: right;
+}
+.AddUsers {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 20px;
 }
 .user-details {
   background: #fff;
@@ -63,8 +60,6 @@ header a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  text-align:right;
-  align-self: center;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 .user-details h4 {
@@ -87,19 +82,16 @@ header a {
   border-radius: 50%;
   color: #333;
 }
-
-
-
-
-
-
-
-
-
-
-.patients{
-  grid-area: center;
-
+.material-symbols-outlined{
+  position: absolute; /* make the label positioned */
+  top: 0; /* align the top edge of the label to the top edge of the container */
+  left: 0; /* align the left edge of the label to the left edge of the container */
+  text-align: left;
+  max-width: fit-content;
+  margin-left: 10px;
+}
+#user-type{
+  text-align: right;
 }
 .patient-details {
   background: #fff;
@@ -107,8 +99,6 @@ header a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  text-align:right;
-  align-self: center;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 .patient-details h4 {
@@ -130,4 +120,108 @@ header a {
   padding: 6px;
   border-radius: 50%;
   color: #333;
+}
+
+#patient-class{
+  width: 100px;
+  text-align:right;
+  border-radius: 10%;
+}
+
+.create{
+  text-align: right;
+  max-height: 500px;
+}
+/* new workout form */
+label, input {
+  display: block;
+  text-align: right;
+
+}
+input {
+  text-align: right;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button {
+  text-align: right;
+
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+
+.success-label {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+
+
+.confirmation-popup {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);  
+  
+  background-color: rgba(0, 0, 0, 0.8); /* add a semi-transparent black background */
+}
+
+.confirmation-popup .message {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px;
+  color: #ddd;
+}
+
+.confirmation-popup button {
+  font-size: 16px;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-btn {
+  background-color: #ff1900;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
 }

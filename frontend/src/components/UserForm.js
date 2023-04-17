@@ -1,12 +1,13 @@
 import {useState} from 'react'
+import { useUsersContext } from '../hooks/useUsersContext';
 
 const UserForm = () => {
-
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    const today = `${year}-${month}-${day}`;
+    const {dispatch} = useUsersContext();
+    // const date = new Date();
+    // let day = date.getDate();
+    // let month = date.getMonth() + 1;
+    // let year = date.getFullYear();
+    // const today = `${year}-${month}-${day}`;
 
 
     // For Managers and Employees
@@ -20,6 +21,8 @@ const UserForm = () => {
     const [password,setPassword] = useState('')
     const [userType, setUserType] = useState('');
     const [error,setError] = useState(null);
+    const [success,setSuccess] = useState(null)
+    const [emptyFields,setEmptyFields] = useState([])
     // for patients
     const [classRoom, setUserClassroom] = useState('oren')
     const [patientName,setPatientName] = useState('');
@@ -46,8 +49,10 @@ const UserForm = () => {
             const json = await response.json();
             if(!response.ok){
                 setError(json.error);
+                setEmptyFields(json.emptyFields)
             }
             if(response.ok){
+                setSuccess('')
                 setName('')
                 setCellphone('')
                 setDateOfBirth('')
@@ -56,8 +61,10 @@ const UserForm = () => {
                 setPassword('')
                 SetHebrewName('')
                 setUserType('')
-                setError(null);
+                setEmptyFields([])
+                setError(true);
                 console.log('new manager/therapist has been added.',json);
+                dispatch({type:'CREATE_USERS',payload:json})
             }
         }
         if(typeOfUser.userType === 'option-2' ){
@@ -74,6 +81,7 @@ const UserForm = () => {
                 setError(json.error);
             }
             if(response.ok){
+                setSuccess('')
                 setName('')
                 setCellphone('')
                 setDateOfBirth('')
@@ -82,7 +90,7 @@ const UserForm = () => {
                 setPassword('')
                 SetHebrewName('')
                 setUserType('')
-                setError(null);
+                setError(true);
                 console.log('new employee has been added.',json);
             }
         }
@@ -101,13 +109,14 @@ const UserForm = () => {
                 setError(json.error);
             }
             if(response.ok){
+                setSuccess('')
                 setPatientName('')
                 setPatientID('')
                 setPatientBirtday('')
                 setPatientID('')
                 setUserClassroom('oren')
                 setPatientHebrewName('')
-                setError(null);
+                setError(true);
                 console.log('new patient has been added.',json);
             }
         }
@@ -115,6 +124,7 @@ const UserForm = () => {
 
 
     function handleUserTypeChange(event) {
+        setSuccess(null)
 
         setUserType(event.target.value);
         const typeOfUser = {userType}
@@ -131,6 +141,7 @@ const UserForm = () => {
             if(typeOfUser.userType === 'option-3'){
                 setRole('Patient')
             }
+
           }, "1000");
         
     }
@@ -139,9 +150,10 @@ const UserForm = () => {
     }
 
     return(
+        
         <form className='create' onSubmit={handleSubmit}>
             <label htmlFor="user-type">בחר את סוג המשתמש אותו תרצה להוסיף</label>
-            <select id="user-type" value={userType} onChange={handleUserTypeChange}>
+            <select id="user-type" className="chooseType" value={userType} onChange={handleUserTypeChange}>
                 <option value="empty"></option>
                 <option value="option-1">מטפל/מנהל</option>
                 <option value="option-2">עובד</option>
@@ -149,75 +161,72 @@ const UserForm = () => {
             </select>
 
             {userType === 'option-1' && (
-                <div>
+                <div className="option-form">
                 <h2>הוספת מטפל/מנהל</h2>
                 <label htmlFor="name">:שם באנגלית</label>
-                <input type="text" id="name" name="name" onChange={(e)=> setName(e.target.value)} /><br />
+                <input className={emptyFields.includes('name') ? 'error' :''} type="text" id="name" name="name" onChange={(e)=> setName(e.target.value)} />
 
                 <label htmlFor="email">:אימייל</label>
-                <input type="email" id="email" name="email" onChange={(e)=> setEmail(e.target.value)} /><br />
+                <input  className={emptyFields.includes('email') ? 'error' :''} type="email" id="email" name="email" onChange={(e)=> setEmail(e.target.value)} />
 
                 <label htmlFor="password">:סיסמא</label>
-                <input type="password" id="password" name="password" minLength="8" onChange={(e)=> setPassword(e.target.value)}/><br />
+                <input className={emptyFields.includes('password') ? 'error' :''} type="password" id="password" name="password" minLength="8" onChange={(e)=> setPassword(e.target.value)}/>
 
                 <label htmlFor="id">:תעודת זהות</label>
-                <input type="text" id="id" name="id"  onChange={(e)=> setID(e.target.value)} /><br />
-
-            
+                <input className={emptyFields.includes('id') ? 'error' :''} type="text" id="id" name="id"  onChange={(e)=> setID(e.target.value)} />
 
                 <label htmlFor="phone">:טלפון</label>
-                <input type="tel" id="phone" name="phone"  onChange={(e)=> setCellphone(e.target.value)} /><br />
+                <input className={emptyFields.includes('cellphone') ? 'error' :''} type="tel" id="phone" name="phone"  onChange={(e)=> setCellphone(e.target.value)} />
 
                 <label htmlFor="birthdate">:תאריך לידה</label>
-                <input type="text" id="birthdate" name="birthdate"
-                     onChange={(e)=> setDateOfBirth(e.target.value)}/><br />
+                <input className={emptyFields.includes('dateOfBirth') ? 'error' :''} type="text" id="birthdate" name="birthdate"
+                     onChange={(e)=> setDateOfBirth(e.target.value)}/>
 
                 <label htmlFor="hebrewName">:שם בעברית</label>
-                <input type="text" id="hebrewName" name="hebrewName" onChange={(e)=> SetHebrewName(e.target.value)} /><br />
-                <button type="submit">הוסף משתמש</button>
+                <input className={emptyFields.includes('hebrewName') ? 'error' :''} type="text" id="hebrewName" name="hebrewName" onChange={(e)=> SetHebrewName(e.target.value)} />                <br />
 
+                <button type="submit">הוסף משתמש</button>
                 </div>
             )}
 
             {userType === 'option-2' && (
-                <div>
+                <div className="option-form">
                     <h2>הוספת עובד כללי</h2>
 
                     <label htmlFor="name">:שם באנגלית</label>
-                    <input type="text" id="name" name="name" onChange={(e)=> setName(e.target.value)} /><br />
+                    <input className={emptyFields.includes('name') ? 'error' :''} type="text" id="name" name="name" onChange={(e)=> setName(e.target.value)} /> 
 
                     <label htmlFor="email">:אימייל</label>
-                    <input type="email" id="email" name="email" onChange={(e)=> setEmail(e.target.value)} /><br />
+                    <input className={emptyFields.includes('email') ? 'error' :''} type="email" id="email" name="email" onChange={(e)=> setEmail(e.target.value)} />
 
                     <label htmlFor="password">:סיסמא</label>
-                    <input type="password" id="password" name="password" onChange={(e)=> setPassword(e.target.value)}/><br />
+                    <input className={emptyFields.includes('password') ? 'error' :''} type="password" id="password" name="password" onChange={(e)=> setPassword(e.target.value)}/>
 
                     <label htmlFor="id">:תעודת זהות</label>
-                    <input type="number" id="id" name="id" onChange={(e)=> setID(e.target.value)}/><br />
-
-                    
+                    <input  className={emptyFields.includes('id') ? 'error' :''} type="number" id="id" name="id" onChange={(e)=> setID(e.target.value)}/>
 
                     <label htmlFor="phone">:טלפון</label>
-                    <input type="tel" id="phone" name="phone" onChange={(e)=> setCellphone(e.target.value)} /><br />
+                    <input className={emptyFields.includes('cellphone') ? 'error' :''} type="tel" id="phone" name="phone" onChange={(e)=> setCellphone(e.target.value)} />
 
                     <label htmlFor="birthdate">:תאריך לידה</label>
-                    <input type="text" id="birthdate" name="birthdate" 
-                          onChange={(e)=> setDateOfBirth(e.target.value)}/><br />
+                    <input className={emptyFields.includes('dateOfBirth') ? 'error' :''} type="text" id="birthdate" name="birthdate" 
+                          onChange={(e)=> setDateOfBirth(e.target.value)}/>
 
                     <label htmlFor="hebrewName">:שם בעברית</label>
-                    <input type="text" id="hebrewName" name="hebrewName" onChange={(e)=> SetHebrewName(e.target.value)} /><br />
+                    <input  className={emptyFields.includes('hebrewName') ? 'error' :''} type="text" id="hebrewName" name="hebrewName" onChange={(e)=> SetHebrewName(e.target.value)} />                <br />
+
                     <button type="submit">הוסף משתמש</button>
                 </div>
             )}
 
             {userType === 'option-3' && (
-                <div>
+                <div className="option-form">
                                         <h2>הוספת מקבל שירות</h2>
                     <label htmlFor="name">:שם באנגלית</label>
-                    <input type="text" id="name" name="name" onChange={(e)=> setPatientName(e.target.value)} /><br />
+                    <input className={emptyFields.includes('name') ? 'error' :''} type="text" id="name" name="name" onChange={(e)=> setPatientName(e.target.value)} />
 
                     <label htmlFor="id">:תעודת זהות</label>
-                    <input type="text" id="id" name="id" onChange={(e)=> setPatientID(e.target.value)}/><br />
+                    <input className={emptyFields.includes('id') ? 'error' :''} type="text" id="id" name="id" onChange={(e)=> setPatientID(e.target.value)}/>
 
                     <label htmlFor="Class">:שיוך לקבוצה</label>
                     <select id="patient-class" value={classRoom} onChange={handleUserClassroomChange}>
@@ -230,20 +239,22 @@ const UserForm = () => {
                     </select>
 
                     <label htmlFor="phone">:טלפון איש קשר</label>
-                    <input type="tel" id="phone" name="phone"  onChange={(e)=> setPatientPhone(e.target.value)}/><br />
+                    <input className={emptyFields.includes('cellphone') ? 'error' :''} type="tel" id="phone" name="phone"  onChange={(e)=> setPatientPhone(e.target.value)}/>
 
                     <label htmlFor="birthdate">:תאריך לידה</label>
-                    <input type="text" id="birthdate" name="birthdate"
-                         onChange={(e)=> setPatientBirtday(e.target.value)}/><br />
+                    <input className={emptyFields.includes('dateOfBirth') ? 'error' :''} type="text" id="birthdate" name="birthdate"
+                         onChange={(e)=> setPatientBirtday(e.target.value)}/>
 
                     <label htmlFor="hebrewName">:שם בעברית</label>
-                    <input type="text" id="hebrewName" name="hebrewName" onChange={(e)=> setPatientHebrewName(e.target.value)} /><br />
-                    <button type="submit">הוסף משתמש</button>
+                    <input className={emptyFields.includes('hebrewName') ? 'error' :''} type="text" id="hebrewName" name="hebrewName" onChange={(e)=> setPatientHebrewName(e.target.value)} />                <br />
 
+                    <button type="submit">הוסף משתמש</button>
                 </div>
                 
             )}
-
+            {
+                success && <span className="success-label"> המשתמש התווסף בהצלחה </span>
+            }
 
         {error && <div className="error">{error}</div>}
         </form>
