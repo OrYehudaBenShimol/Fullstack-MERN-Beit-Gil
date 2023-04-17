@@ -2,6 +2,7 @@ require('dotenv').config();             // for reading from the .env file.
 const express = require('express');
 const usersRoute = require('./routes/users');
 const patientsRoute = require('./routes/patients');
+const loginRoutes = require('./routes/login')
 
 const mongoose = require('mongoose');
 //  express app
@@ -17,6 +18,7 @@ app.use((req,res,next)=>{
 });
 
 // routes
+app.use('/login',loginRoutes);
 app.use('/api/users',usersRoute);
 app.use('/api/patient', patientsRoute);
 

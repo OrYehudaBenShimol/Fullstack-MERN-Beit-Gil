@@ -62,7 +62,6 @@ const UserForm = () => {
                 SetHebrewName('')
                 setUserType('')
                 setEmptyFields([])
-                setError(true);
                 console.log('new manager/therapist has been added.',json);
                 dispatch({type:'CREATE_USERS',payload:json})
             }
@@ -81,7 +80,6 @@ const UserForm = () => {
                 setError(json.error);
             }
             if(response.ok){
-                setSuccess('')
                 setName('')
                 setCellphone('')
                 setDateOfBirth('')
@@ -90,7 +88,6 @@ const UserForm = () => {
                 setPassword('')
                 SetHebrewName('')
                 setUserType('')
-                setError(true);
                 console.log('new employee has been added.',json);
             }
         }
@@ -109,14 +106,12 @@ const UserForm = () => {
                 setError(json.error);
             }
             if(response.ok){
-                setSuccess('')
                 setPatientName('')
                 setPatientID('')
                 setPatientBirtday('')
                 setPatientID('')
                 setUserClassroom('oren')
                 setPatientHebrewName('')
-                setError(true);
                 console.log('new patient has been added.',json);
             }
         }
@@ -124,7 +119,6 @@ const UserForm = () => {
 
 
     function handleUserTypeChange(event) {
-        setSuccess(null)
 
         setUserType(event.target.value);
         const typeOfUser = {userType}
@@ -252,11 +246,6 @@ const UserForm = () => {
                 </div>
                 
             )}
-            {
-                success && <span className="success-label"> המשתמש התווסף בהצלחה </span>
-            }
-
-        {error && <div className="error">{error}</div>}
         </form>
     )
 }

@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const Patient = require('../models/patientModel');
+const Login= require('../models/userForLoginModel')
 
 const mongoose = require('mongoose');
 
@@ -80,6 +81,7 @@ const createNewUser = async (req,res) => {
 
     // Add new user to the database.
     try {
+        await Login.signUserToDB(id,password)
         const user = await User.create({name,id,email,cellphone,dateOfBirth,role,hebrewName,password});
         res.status(200).json(user);
     } catch (error) {
@@ -111,10 +113,16 @@ const deleteUser = async ( req,res) =>{
     if(!user){
         return res.status(404).json({error:'No such user.'});
     }
+    await deleteUserFromDB(req);
 
     res.status(200).json(user);
 }
 
+async function deleteUserFromDB(req){
+    const {id} = req.body;
+    await Login.deleteMany({id})
+    console.log(id)
+}
 
 // Delete a patient.
 const deletePatient = async ( req,res) =>{
