@@ -1,6 +1,8 @@
 require('dotenv').config();             // for reading from the .env file.
 const express = require('express');
 const usersRoute = require('./routes/users');
+const patientsRoute = require('./routes/patients');
+
 const mongoose = require('mongoose');
 //  express app
 const app = express();
@@ -16,6 +18,8 @@ app.use((req,res,next)=>{
 
 // routes
 app.use('/api/users',usersRoute);
+app.use('/api/patient', patientsRoute);
+
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)

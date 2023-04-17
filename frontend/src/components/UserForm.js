@@ -21,7 +21,7 @@ const UserForm = () => {
     const [userType, setUserType] = useState('');
     const [error,setError] = useState(null);
     // for patients
-    const [userClassroom, setUserClassroom] = useState('oren')
+    const [classRoom, setUserClassroom] = useState('oren')
     const [patientName,setPatientName] = useState('');
     const [patientID, setPatientID] = useState('');
     const [patientPhone,setPatientPhone] = useState('');
@@ -57,7 +57,58 @@ const UserForm = () => {
                 SetHebrewName('')
                 setUserType('')
                 setError(null);
-                console.log('new user has been added.',json);
+                console.log('new manager/therapist has been added.',json);
+            }
+        }
+        if(typeOfUser.userType === 'option-2' ){
+            const employee = {name, id, email, cellphone, dateOfBirth, role:"Employee" , hebrewName, password}
+            const response = await fetch('/api/users', {
+                method: 'POST',
+                body: JSON.stringify(employee),
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            const json = await response.json();
+            if(!response.ok){
+                setError(json.error);
+            }
+            if(response.ok){
+                setName('')
+                setCellphone('')
+                setDateOfBirth('')
+                setEmail('')
+                setID('')
+                setPassword('')
+                SetHebrewName('')
+                setUserType('')
+                setError(null);
+                console.log('new employee has been added.',json);
+            }
+        }
+
+        if(typeOfUser.userType === 'option-3' ){
+            const patient = {name:patientName, id:patientID, cellphone:patientPhone, dateOfBirth:patientBirthday, role:"Patient" ,classRoom:classRoom, hebrewName:patientHebrewName}
+            const response = await fetch('/api/patient', {
+                method: 'POST',
+                body: JSON.stringify(patient),
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            const json = await response.json();
+            if(!response.ok){
+                setError(json.error);
+            }
+            if(response.ok){
+                setPatientName('')
+                setPatientID('')
+                setPatientBirtday('')
+                setPatientID('')
+                setUserClassroom('oren')
+                setPatientHebrewName('')
+                setError(null);
+                console.log('new patient has been added.',json);
             }
         }
     }
@@ -67,7 +118,6 @@ const UserForm = () => {
 
         setUserType(event.target.value);
         const typeOfUser = {userType}
-        console.log(typeOfUser.userType)
         setTimeout(() => {
             if(typeOfUser.userType === 'empty'){
                 setRole('')
@@ -167,10 +217,10 @@ const UserForm = () => {
                     <input type="text" id="name" name="name" onChange={(e)=> setPatientName(e.target.value)} /><br />
 
                     <label htmlFor="id">:תעודת זהות</label>
-                    <input type="number" id="id" name="id" min="9" max="9" onChange={(e)=> setPatientID(e.target.value)}/><br />
+                    <input type="text" id="id" name="id" onChange={(e)=> setPatientID(e.target.value)}/><br />
 
                     <label htmlFor="Class">:שיוך לקבוצה</label>
-                    <select id="patient-class" value={userClassroom} onChange={handleUserClassroomChange}>
+                    <select id="patient-class" value={classRoom} onChange={handleUserClassroomChange}>
                         <option value="oren">אורן</option>
                         <option value="gefen">גפן</option>
                         <option value="dekel">דקל</option>
@@ -180,11 +230,11 @@ const UserForm = () => {
                     </select>
 
                     <label htmlFor="phone">:טלפון איש קשר</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onChange={(e)=> setPatientPhone(e.target.value)}/><br />
+                    <input type="tel" id="phone" name="phone"  onChange={(e)=> setPatientPhone(e.target.value)}/><br />
 
                     <label htmlFor="birthdate">:תאריך לידה</label>
-                    <input type="date" id="birthdate" name="birthdate" value={today}
-                        min="1903-01-01" max={today} required pattern="\d{2}-\d{2}-\d{4}" onChange={(e)=> setPatientBirtday(e.target.value)}/><br />
+                    <input type="text" id="birthdate" name="birthdate"
+                         onChange={(e)=> setPatientBirtday(e.target.value)}/><br />
 
                     <label htmlFor="hebrewName">:שם בעברית</label>
                     <input type="text" id="hebrewName" name="hebrewName" onChange={(e)=> setPatientHebrewName(e.target.value)} /><br />

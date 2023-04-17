@@ -1,32 +1,40 @@
 import { useEffect, useState } from "react"
 import UserDetails from '../components/UserDetails'
+import PatientDetails from '../components/PatientDetails'
+
 import UserForm from '../components/UserForm'
 
 const Home = () => {
 
-    const [users,setUsers] = useState(null)
+    // const [users,setUsers] = useState(null)
+    // const [patients,setPatients] = useState(null)
 
-    useEffect(()=>{
-        const fetchUsers= async() =>{
-            const response = await fetch('/api/users')
-            const json = await response.json()
-            if(response.ok){
-                setUsers(json)
-            }
-        }
+    // useEffect(()=>{
+    //     const fetchUsers= async() =>{
+    //         const response = await fetch('/api/users')
+    //         const json = await response.json()
+    //         if(response.ok){
+    //             setUsers(json)
+    //         }
+    //     }
 
 
-        fetchUsers()
-    },[])
+    //     fetchUsers()
+
+    //     const fetchPatients= async() =>{
+    //         const response = await fetch('/api/patient')
+    //         const json = await response.json()
+    //         if(response.ok){
+    //             setPatients(json)
+    //         }
+    //     }
+
+    //     fetchPatients()
+    // },[])
 
     return(
         <div className="home">
-            <div className="users">
-                {users && users.map((user)=>(
-                    <UserDetails key={user._id} user={user}/>
-                ))}
-            </div>
-            <UserForm/>
+            <a href="/AddUser">Add User</a>
         </div>
     )
 }
