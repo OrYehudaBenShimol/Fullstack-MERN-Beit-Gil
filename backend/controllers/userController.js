@@ -105,7 +105,7 @@ const createNewPatient = async (req,res) => {
 
 // Delete a user.
 const deleteUser = async ( req,res) =>{
-    const {id} = req.params;
+    const {id,email} = req.params;
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such user.'});
     }
@@ -113,15 +113,18 @@ const deleteUser = async ( req,res) =>{
     if(!user){
         return res.status(404).json({error:'No such user.'});
     }
-    await deleteUserFromDB(req);
+    await deleteUserFromDB(email);
 
     res.status(200).json(user);
 }
 
-async function deleteUserFromDB(req){
-    const {id} = req.body;
-    await Login.deleteMany({id})
-    console.log(id)
+async function deleteUserFromDB(email){
+    const user = await Login.deleteOne({email:email})
+    if(user){
+        console.log(user)
+    }else{
+        console.log(email)
+    }
 }
 
 // Delete a patient.
