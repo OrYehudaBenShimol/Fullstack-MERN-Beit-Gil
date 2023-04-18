@@ -1,6 +1,5 @@
 const User = require('../models/userModel');
 const Patient = require('../models/patientModel');
-const Login= require('../models/userForLoginModel')
 
 const mongoose = require('mongoose');
 
@@ -81,9 +80,19 @@ const createNewUser = async (req,res) => {
 
     // Add new user to the database.
     try {
-        await Login.signUserToDB(id,password)
-        const user = await User.create({name,id,email,cellphone,dateOfBirth,role,hebrewName,password});
-        res.status(200).json(user);
+        const user = await User.signUserToDB(name,id,email,cellphone,dateOfBirth,role,hebrewName,password);
+        const userWithoutPassword ={
+            _id: user._id ,
+            name:  user.name,
+            id:user.id,
+            email:user.email,
+            cellphone:user.cellphone,
+            dateOfBirth:user.dateOfBirth,
+            role:user.role,
+            hebrewName:user.hebrewName
+        }
+       
+        res.status(200).json(userWithoutPassword);
     } catch (error) {
         res.status(400).json({error: error.message});
     }
@@ -105,7 +114,7 @@ const createNewPatient = async (req,res) => {
 
 // Delete a user.
 const deleteUser = async ( req,res) =>{
-    const {id,email} = req.params;
+    const {id} = req.params;
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such user.'});
     }
@@ -113,19 +122,9 @@ const deleteUser = async ( req,res) =>{
     if(!user){
         return res.status(404).json({error:'No such user.'});
     }
-    await deleteUserFromDB(email);
-
     res.status(200).json(user);
 }
 
-async function deleteUserFromDB(email){
-    const user = await Login.deleteOne({email:email})
-    if(user){
-        console.log(user)
-    }else{
-        console.log(email)
-    }
-}
 
 // Delete a patient.
 const deletePatient = async ( req,res) =>{

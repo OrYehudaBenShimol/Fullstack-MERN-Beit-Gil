@@ -1,7 +1,9 @@
 const express = require('express')
-const {loginUser} = require('../controllers/loginController');
 const router = express.Router();
-
+const {
+    // for managers and employees
+    loginUser
+} = require('../controllers/loginController');
 
 //login route
 router.post('/',loginUser)

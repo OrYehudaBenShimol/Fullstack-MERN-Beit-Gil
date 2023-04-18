@@ -11,7 +11,7 @@ const {
 } = require('../controllers/userController');
 
 // GET all users.
-router.get('/', getAllUsers,);
+router.get('/', getAllUsers);
 
 // GET single user.
 router.get('/:id', getSinglelUser);

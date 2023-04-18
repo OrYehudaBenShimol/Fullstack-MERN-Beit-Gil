@@ -39,32 +39,39 @@ const UserForm = () => {
         
         if(typeOfUser.userType === 'option-1' ){
             const manager = {name, id, email, cellphone, dateOfBirth, role:"Manager" , hebrewName, password}
-            const response = await fetch('/api/users', {
-                method: 'POST',
-                body: JSON.stringify(manager),
-                headers:{
-                    'Content-Type':'application/json'
+            try {
+                const response = await fetch('/api/users', {
+                    method: 'POST',
+                    body: JSON.stringify(manager),
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+                const json = await response.json();
+                if(!response.ok){
+                    setError(json.error);
+                    setEmptyFields(json.emptyFields)
                 }
-            })
-            const json = await response.json();
-            if(!response.ok){
-                setError(json.error);
-                setEmptyFields(json.emptyFields)
+                if(response.ok){
+                    setSuccess('')
+                    setName('')
+                    setCellphone('')
+                    setDateOfBirth('')
+                    setEmail('')
+                    setID('')
+                    setPassword('')
+                    SetHebrewName('')
+                    setUserType('')
+                    setEmptyFields([])
+                    console.log('new manager/therapist has been added.',json);
+                    dispatch({type:'CREATE_USERS',payload:json})
+                }
+            } catch (error) {
+                console.log(error)
             }
-            if(response.ok){
-                setSuccess('')
-                setName('')
-                setCellphone('')
-                setDateOfBirth('')
-                setEmail('')
-                setID('')
-                setPassword('')
-                SetHebrewName('')
-                setUserType('')
-                setEmptyFields([])
-                console.log('new manager/therapist has been added.',json);
-                dispatch({type:'CREATE_USERS',payload:json})
-            }
+            
+            
+            
         }
         if(typeOfUser.userType === 'option-2' ){
             const employee = {name, id, email, cellphone, dateOfBirth, role:"Employee" , hebrewName, password}
@@ -244,8 +251,9 @@ const UserForm = () => {
 
                     <button type="submit">הוסף משתמש</button>
                 </div>
-                
             )}
+                        {error && <div className="error">{error}</div>}
+
         </form>
     )
 }
