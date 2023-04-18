@@ -44,23 +44,18 @@ const userSchema = new Schema({
 
 
 userSchema.statics.signUserToDB = async function(name,id,email,cellphone,dateOfBirth,role,hebrewName,password){
-    try{
-        const exists = await this.findOne({id})
+        if (!email || !password) {
+            throw Error('All fields must be filled')
+        }
+        const exists= await this.findOne({email})
         if(exists){
             throw Error('קיים כבר משתמש עם תעודת הזהות')
         }
-        if(!validator.isStrongPassword(password)){
-            throw Error('סיסמא חלשה, נא לבחור סיסמא חזקה')
-        }
+
         const salt = await bcrypt.genSalt(15);
         const hash = await bcrypt.hash(password,salt);
         const user = await this.create({name,id,email,cellphone,dateOfBirth,role,hebrewName,password:hash});
         return user
-    }catch(error){
-        throw Error(exists, user)
-    }
-    
-
 }
 
 

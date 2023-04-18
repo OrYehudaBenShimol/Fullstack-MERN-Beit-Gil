@@ -3,7 +3,6 @@ const express = require('express');
 const usersRoute = require('./routes/users');
 const patientsRoute = require('./routes/patients');
 const loginRoutes = require('./routes/login')
-
 const mongoose = require('mongoose');
 //  express app
 const app = express();
@@ -18,7 +17,7 @@ app.use((req,res,next)=>{
 });
 
 // routes
-app.use('/login',loginRoutes);
+app.use('/api/login',loginRoutes);
 app.use('/api/users',usersRoute);
 app.use('/api/patient', patientsRoute);
 
@@ -28,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
 //  listen for requests 
     app.listen(process.env.PORT,()=>{
-        console.log('Connected to the database and listening on port 4000');
+        console.log('Connected to the database and listening on port', process.env.PORT);
     });
 }).catch((error)=>{
     console.log(error);
