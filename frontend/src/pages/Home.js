@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
-import UserDetails from '../components/UserDetails'
-import PatientDetails from '../components/PatientDetails'
+import {Link} from 'react-router-dom'
+
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import UserForm from '../components/UserForm'
+import AddUsers from '../pages/AddUsers';
 
 const Home = () => {
 
@@ -33,8 +34,11 @@ const Home = () => {
     // },[])
 
     return(
+        <div>
         <div className="home">
-            <a href="/AddUser">Add User</a>
+            <Link to="/AddUser">Add Users</Link>
+        
+        </div>
         </div>
     )
 }

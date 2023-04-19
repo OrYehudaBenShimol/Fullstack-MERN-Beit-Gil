@@ -1,37 +1,40 @@
 import { useEffect} from "react"
 import UserDetails from '../components/UserDetails'
-import PatientDetails from '../components/PatientDetails'
 import UserForm from '../components/UserForm'
 import {useUsersContext} from '../hooks/useUsersContext'
+import {useAuthContext} from '../hooks/useAuthContext'
 const AddUsers = () => {
 
     const {users,dispatch} = useUsersContext()
+    const {user} = useAuthContext()
 
     useEffect(()=>{
-        // const fetchPatients= async() =>{
-           
-        // }
-
-        
 
         const fetchUsers= async() =>{
-            const response = await fetch('/api/users')
+            const response = await fetch('/api/users',{
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+
             const json = await response.json()
             if(response.ok){
                 dispatch({type: 'SET_USERS', payload: json},)
             }
         }
-        fetchUsers()
+        if(user){
+            fetchUsers()
+        }
         // fetchPatients()
         
-    },[dispatch])
+    },[dispatch,user])
 
 
     return(
         <div className="AddUsers">
             <div className="users">
                 {users && users.map((user)=>(
-                    <UserDetails key={user._id} user={user}/>
+                    <UserDetails key={user._id} userDet={user}/>
                 ))}
             </div>
             {/* <div className="users">

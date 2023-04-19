@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const {
     // for managers and employees
     createNewUser,
@@ -9,6 +8,13 @@ const {
     updateUser,
 
 } = require('../controllers/userController');
+
+const requireAuth = require('../middleware/requireAuth')
+
+const router = express.Router();
+
+router.use(requireAuth)
+
 
 // GET all users.
 router.get('/', getAllUsers);
