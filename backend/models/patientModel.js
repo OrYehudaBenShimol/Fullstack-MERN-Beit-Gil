@@ -32,6 +32,7 @@ const patientSchema = new Schema({
         type:String,
         require:true
     },
+
 }, {timestamps:true});
 
 

@@ -37,7 +37,9 @@ const UserDetails = ({userDet}) => {
             <p>{userDet.email}<strong> :אימייל</strong></p>
             <p><strong>טלפון: </strong>{userDet.cellphone}</p>
             <p>{userDet.role}<strong> :תפקיד</strong></p>
-            <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+            <div className="tooltip-container">
+            <span text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
+            </div>
             {showPopup && (
             <div className="confirmation-popup">
                 <div className="message">

@@ -11,6 +11,7 @@ body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
+  
 }
 header {
   background: #FE886A;
@@ -54,6 +55,25 @@ header a {
   grid-template-columns: 2fr 2fr 2fr;
   gap: 20px;
 }
+
+div.AddUsers{
+  overflow: hidden;
+
+}
+div.users:hover{
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+div.users{
+  overflow-y: hidden;
+}
+
+.users{
+  overflow-y: hidden;
+  max-height: 600px;
+}
 .user-details {
   background: #fff;
   border-radius: 4px;
@@ -61,6 +81,10 @@ header a {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.create h2{
+  margin: 0;
 }
 .user-details h4 {
   margin: 0 0 10px 0;
@@ -132,7 +156,7 @@ header a {
   text-align: right;
   max-height: 500px;
 }
-/* new workout form */
+/* new users form */
 label, input {
   display: block;
   text-align: right;
@@ -140,10 +164,10 @@ label, input {
 }
 input {
   text-align: right;
-  padding: 10px;
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
+  padding: 3px;
   box-sizing: border-box;
 }
 form button {
@@ -166,6 +190,9 @@ div.error {
   margin: 20px 0;
 }
 
+.create{
+  max-height: 500px;
+}
 
 .success-label {
   display: inline-block;
@@ -250,6 +277,8 @@ nav button {
   margin-left: 10px;
 }
 
+
+
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;
@@ -258,3 +287,10 @@ form.signup, form.login {
   background: #fff;
   border-radius: 4px;
 }
+
+.option-form label{
+  font-family: "Poppins";
+  font-weight: bold;
+  
+}
+
