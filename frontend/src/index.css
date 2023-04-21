@@ -164,15 +164,16 @@ label, input {
 }
 input {
   text-align: right;
+
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 3px;
+  padding: 10px;
   box-sizing: border-box;
 }
 form button {
   text-align: right;
-
+  margin-top: 10px;
   background: var(--primary);
   border: 0;
   color: #fff;

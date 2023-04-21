@@ -9,7 +9,6 @@ const AddUsers = () => {
     const {user} = useAuthContext()
 
     useEffect(()=>{
-
         const fetchUsers= async() =>{
             const response = await fetch('/api/users',{
                 headers:{
