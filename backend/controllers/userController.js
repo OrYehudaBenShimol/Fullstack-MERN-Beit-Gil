@@ -50,6 +50,8 @@ const getSinglelPatient = async ( req,res) =>{
 const createNewUser = async (req,res) => {
     const {name,id,email,cellphone,dateOfBirth,role,hebrewName,password} = req.body;
 
+
+    // initialize a new array of empty fields in the form on the front end.
     let emptyFields = [];
     if(!name){
         emptyFields.push('name')
@@ -110,8 +112,6 @@ const createNewPatient = async (req,res) => {
     }
 }
 
-
-
 // Delete a user.
 const deleteUser = async ( req,res) =>{
     const {id} = req.params;
@@ -124,7 +124,6 @@ const deleteUser = async ( req,res) =>{
     }
     res.status(200).json(user);
 }
-
 
 // Delete a patient.
 const deletePatient = async ( req,res) =>{

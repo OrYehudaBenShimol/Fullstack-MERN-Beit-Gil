@@ -15,22 +15,22 @@ const Login = () => {
 
   return (
     <form className="login" onSubmit={handleSubmit}>
-      <h3>Log In</h3>
+      <h3 className="h3-login-page">התחברות למערכת</h3>
       
-      <label>Email address:</label>
+      <label>:אימייל</label>
       <input 
         type="email" 
         onChange={(e) => setEmail(e.target.value)} 
         value={email} 
       />
-      <label>Password:</label>
+      <label>:סיסמא</label>
       <input 
         type="password" 
         onChange={(e) => setPassword(e.target.value)} 
         value={password} 
       />
 
-      <button disabled={isLoading}>Log in</button>
+      <button className="login-btn-login-page" disabled={isLoading}>Log in</button>
       {error && <div className="error">{error}</div>}
 
     </form>

@@ -38,15 +38,16 @@ const UserDetails = ({userDet}) => {
             <p><strong>טלפון: </strong>{userDet.cellphone}</p>
             <p>{userDet.role}<strong> :תפקיד</strong></p>
             <div className="tooltip-container">
-            <span text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
+                <span id="delete" text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
             </div>
             {showPopup && (
             <div className="confirmation-popup">
                 <div className="message">
-                    האם אתה בטוח שאתה מעוניין למחוק את המשתמש ? כל המידע ייאבד
+                האם אתה בטוח שאתה מעוניין למחוק את 
+                    <br/> המשתמש ? כל המידע ייאבד 
                 </div>
-                <button className="confirm-btn" onClick={handleDeleteUser}>Confirm</button>
-                <button onClick={() => setShowPopup(false)}>Cancel</button>
+                <button className="confirm-btn" onClick={handleDeleteUser}>אישור</button>
+                <button onClick={() => setShowPopup(false)}>ביטול</button>
             </div>
       )}
         </div>

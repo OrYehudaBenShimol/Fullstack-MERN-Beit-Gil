@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import AddUsers from './pages/AddUsers';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
+import ManageUsers from './pages/ManageUsers';
+
 
 function App() {
   const {user} = useAuthContext();
@@ -21,6 +23,9 @@ function App() {
             />
             <Route
             path='/AddUser' element={user ? <AddUsers /> : <Navigate to='/login' />}
+            />
+            <Route
+            path='/ManageUsers' element={user ? <ManageUsers /> : <Navigate to='/login' />}
             />
             <Route
             exact path='/' element={user ? <Home /> : <Navigate to='/login' />}

@@ -24,10 +24,23 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
+.user-email{
+margin-right: auto;
+margin-left: 10px;
+}
+
+
+.navigation-bar{
+  display: flex;
+  align-items: center;
+}
+
 header a {
   color: #333;
   text-decoration: none;
 }
+
 .pages{
   max-width: 1024px;
   padding: 20px;
@@ -44,6 +57,58 @@ header a {
 .container{
   padding: 0;
   max-height: 40px;
+}
+
+.AddUser-Btn {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.manage-users-nav {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.login-navbar{
+  /* background: #fff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 20%;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+  margin-right: 10px; */
+  background-color: rgba(0, 0, 0, 0.8); /* Set the background color of the login button */
+  color: #fff; /* Set the text color of the login button */
+  padding: 8px 16px; /* Add padding to the top and bottom, and left and right of the login button */
+  border: none; /* Remove border from the login button */
+  cursor: pointer; /* Add cursor pointer on hover */
+  font-weight: bold; /* Set font weight to bold for the login button */
+  transition: background-color 0.5s ease-in-out; /* Add transition effect for smooth color change */
+  border-radius: 10%;
+}
+
+.login-navbar:hover{
+  color:#000000;
+  background-color: #ffffff; /* Change the background color of the login button on hover */
 }
 
 /* homepage */
@@ -214,14 +279,14 @@ div.error {
   margin-right: -50%;
   transform: translate(-50%, -50%);  
   
-  background-color: rgba(0, 0, 0, 0.8); /* add a semi-transparent black background */
+  background-color: rgba(255, 255, 255, 0.9); /* add a semi-transparent black background */
 }
 
 .confirmation-popup .message {
   font-size: 18px;
   font-weight: bold;
   margin: 20px;
-  color: #ddd;
+  color: #000000;
 }
 
 .confirmation-popup button {
@@ -276,22 +341,55 @@ nav button {
   cursor: pointer;
   font-size: 1em;
   margin-left: 10px;
+
 }
 
+.login-btn-login-page{
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+  font-size: larger;
+  transition:  0.5s ease-in-out;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15); /* Add your desired shadow properties */
 
+}
+
+.login-btn-login-page:hover{
+  background-color: #4CAF50;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  max-width: 400px ;
+  font-size: larger;
+}
+
+.login{
+  text-align: right;
+  display: flexbox;
+
+}
 
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;
-  margin: 40px auto;
+  max-height: 280px;
+  margin: 150px auto;
   padding: 20px;
-  background: #fff;
+  background: #ffffffe5;
   border-radius: 4px;
+  text-align: center;
+  font-size: larger;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add your desired shadow properties */
 }
 
+form.login label{
+  font-family: "Poppins";
+  font-weight: bold;
+  margin-right: 5px;
+}
 .option-form label{
   font-family: "Poppins";
   font-weight: bold;
-  
 }
 

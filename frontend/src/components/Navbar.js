@@ -16,14 +16,18 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <Link to='/'><h1>RCM</h1></Link>
-                <nav>
+                {user && (
+                    <span className='user-email'>{user.email}</span>
+                )}
+                <nav className='navigation-bar'>
                     {user && (<div>
-                        <span>{user.email}</span>
-                        <button onClick={handleClick}>Log Out</button>
+                        <Link className='manage-users-nav' to="/ManageUsers">ניהול משתמשים</Link>
+                        {/* <span>{user.email}</span> */}
+                        <button onClick={handleClick}>התנתקות</button>
                     </div>
                     )}
                     {!user && (<div>
-                        <Link to="/login">Login</Link>
+                        <Link className='login-navbar' to="/login">התחברות</Link>
                     </div>
                     )}
 

@@ -37,7 +37,7 @@ const UserForm = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         if(!user){
-            setError('You must be logged in')
+            setError('נדרש חיבור למערכת')
             return
         }
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-    // for managers and employees
+    // controller functions
     createNewUser,
     getAllUsers,
     getSinglelUser,

@@ -1,7 +1,11 @@
 import { useAuthContext } from './useAuthContext'
+import { useUsersContext } from './useUsersContext'
+
 
 export const useLogout = () => {
   const { dispatch } = useAuthContext()
+  const { dispatch: dispatchUsers } = useUsersContext()
+
 
   const logout = () => {
     // remove user from storage
@@ -9,6 +13,7 @@ export const useLogout = () => {
 
     // dispatch logout action
     dispatch({ type: 'LOGOUT' })
+    dispatchUsers({tpye:'SET_USERS', payload:null})
   }
 
   return { logout }

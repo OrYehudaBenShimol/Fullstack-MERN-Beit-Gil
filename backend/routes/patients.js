@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {
-    // for patients
+    // controller functions
     getAllPatients,
     getSinglelPatient,
     createNewPatient,

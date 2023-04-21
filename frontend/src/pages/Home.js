@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import UserForm from '../components/UserForm'
 import AddUsers from '../pages/AddUsers';
 
+
+
 const Home = () => {
 
     // const [users,setUsers] = useState(null)
@@ -36,7 +38,6 @@ const Home = () => {
     return(
         <div>
         <div className="home">
-            <Link to="/AddUser">Add Users</Link>
         
         </div>
         </div>

@@ -1,15 +1,21 @@
-require('dotenv').config();             // for reading from the .env file.
+// for reading from the .env file.
+require('dotenv').config();             
+
 const express = require('express');
 const usersRoute = require('./routes/users');
 const patientsRoute = require('./routes/patients');
-const loginRoutes = require('./routes/login')
+const loginRoutes = require('./routes/login');
+const attendence = require('./routes/patientsAttendence');
 const mongoose = require('mongoose');
+
 //  express app
 const app = express();
 
 
 // middlewares
 app.use(express.json());
+
+
 
 app.use((req,res,next)=>{
     console.log(req.path, req.method);
@@ -20,6 +26,7 @@ app.use((req,res,next)=>{
 app.use('/api/login',loginRoutes);
 app.use('/api/users',usersRoute);
 app.use('/api/patient', patientsRoute);
+app.use('/api/attendence', attendence)
 
 
 // connect to db
