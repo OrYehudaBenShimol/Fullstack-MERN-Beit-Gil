@@ -38,7 +38,7 @@ const UserDetails = ({userDet}) => {
             <p><strong>טלפון: </strong>{userDet.cellphone}</p>
             <p>{userDet.role}<strong> :תפקיד</strong></p>
             <div className="tooltip-container">
-                <span id="delete" text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
+            <span id="delete" text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
             </div>
             {showPopup && (
             <div className="confirmation-popup">

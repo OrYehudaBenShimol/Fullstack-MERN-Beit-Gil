@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { UserContextProvider } from './context/UserContext';
+import { PatientsContextProvider } from './context/PatientsContext';
 import { AuthContextProvider } from './context/AuthContext';
 
 
@@ -11,7 +12,9 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <UserContextProvider>
-        <App />
+        <PatientsContextProvider>
+          <App />
+        </PatientsContextProvider>
       </UserContextProvider>
     </AuthContextProvider>
   </React.StrictMode>

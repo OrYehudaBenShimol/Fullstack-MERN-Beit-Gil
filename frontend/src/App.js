@@ -7,6 +7,7 @@ import AddUsers from './pages/AddUsers';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ManageUsers from './pages/ManageUsers';
+import AttendenceCheck from './pages/AttendenceCheck';
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
             />
             <Route
             path='/ManageUsers' element={user ? <ManageUsers /> : <Navigate to='/login' />}
+            />
+            <Route
+            path='/MorningAttendence' element={user ? <AttendenceCheck /> : <Navigate to='/login' />}
             />
             <Route
             exact path='/' element={user ? <Home /> : <Navigate to='/login' />}

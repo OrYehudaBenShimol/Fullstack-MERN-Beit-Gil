@@ -11,8 +11,8 @@ body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
-  
 }
+
 header {
   background: #FE886A;
 }
@@ -121,6 +121,22 @@ header a {
   gap: 20px;
 }
 
+.Patients-Attendence{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.patients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Add any desired gap between patient containers */
+}
+
+.patient-container {
+  flex-basis: calc(33.33% - 16px); /* Adjust flex-basis and gap to achieve desired width and gap between patients */
+  margin-bottom: 16px; /* Add any desired margin between patient containers */
+}
+
 div.AddUsers{
   overflow: hidden;
 
@@ -137,7 +153,7 @@ div.users{
 
 .users{
   overflow-y: hidden;
-  max-height: 600px;
+  max-height: 700px;
 }
 .user-details {
   background: #fff;
@@ -392,4 +408,166 @@ form.login label{
   font-family: "Poppins";
   font-weight: bold;
 }
+
+.option-form{
+  overflow-y: scroll;
+}
+.option-form:hover{
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+.option-form{
+  overflow-y: hidden;
+}
+
+
+
+/* toggle slider */
+/* The switch - the box around the slider */
+/* .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color:var(--primary);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} */
+
+
+
+.patient-attendence-details {
+  width: unset;
+  height: 200px;
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  border-radius: 10%;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.patient-attendence-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.patient-attendence-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+.patient-attendence-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+.patient-attendence-details input{
+  cursor: pointer;
+  background-color: #8f8f8f44;
+}
+
+.patient-attendence-details input:checked{
+  cursor: pointer;
+  background-color: #06bf1b;
+  border: 0.5px solid #00000034;
+}
+.patient-attendence-details div {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  cursor: pointer;
+  background: #ffffff;
+  color: #ffffff;
+  width: 0px;
+  
+}
+
+
+
+
+
+div.patients:hover{
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+div.patients{
+  overflow-y: hidden;
+}
+
+.patients{
+  overflow-y: hidden;
+  max-height: 780px;
+}
+
+.attendence-image{
+  border-radius: 50%;
+  border:2px solid #00000013 ;
+  margin-top: 10px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
 

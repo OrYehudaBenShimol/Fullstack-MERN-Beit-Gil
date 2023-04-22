@@ -5,13 +5,18 @@ const mongoose = require('mongoose');
 
 // Get all patients.
 const getAllPatients = async ( req,res) =>{
+    const today = new Date(); // Get the current date
+    today.setHours(0, 0, 0, 0); 
     const patients = await Patient.find({}).sort({name: -1});
     for (const patient of patients) {
         const id = patient.id;
         const classRoom = patient.classRoom;
         const hebrewName = patient.hebrewName;
     try {
-        const attendencePatient = await PatientAttendence.create({id,classRoom,hebrewName});
+        const existingRecord = await PatientAttendence.findOne({ createdAt: { $gte: today }, id:patient.id });
+        if(!existingRecord){
+            const attendencePatient = await PatientAttendence.create({id,classRoom,hebrewName});
+        }
     } catch (error) {
         res.status(400).json({error: error.message});
     }
