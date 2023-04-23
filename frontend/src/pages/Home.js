@@ -38,7 +38,6 @@ const Home = () => {
     return(
         <div>
         <div className="home">
-            <Link className='attendence-btn' to="/MorningAttendence">take attendence</Link>
 
         </div>
         </div>

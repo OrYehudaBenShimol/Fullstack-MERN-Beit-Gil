@@ -11,6 +11,18 @@ const getAllUsers = async ( req,res) =>{
 }
 
 
+const getUserByEmail = async (req,res)=>{
+    const {email} = req.params
+    console.log(email)
+    const user = await User.findOne({email:email})
+    if(user){
+        res.status(200).json(user)
+    }
+    else{
+        return res.json(email)
+    }
+}
+
 // Get all patients.
 const getAllPatients = async ( req,res) =>{
     const patients = await Patient.find({}).sort({name: -1});
@@ -176,6 +188,7 @@ module.exports = {
     getSinglelUser,
     deleteUser,
     updateUser,
+    getUserByEmail,
 
     // for patients
     getAllPatients,

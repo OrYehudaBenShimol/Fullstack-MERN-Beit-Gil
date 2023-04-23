@@ -6,6 +6,7 @@ const {
     getSinglelUser,
     deleteUser,
     updateUser,
+    getUserByEmail
 
 } = require('../controllers/userController');
 
@@ -30,5 +31,7 @@ router.delete('/:id', deleteUser);
 
 // UPDATE a user.
 router.patch('/:id', updateUser);
+
+router.get('/:email', getUserByEmail)
 
 module.exports = router;

@@ -4,8 +4,8 @@ const User = require('../models/userModel')
 // create a new token for 12h and return it.
 const createToken =(_id) =>{
    return jwt.sign({_id:_id},process.env.SECRET,{expiresIn:'12h'})
+   
 }
-
 
 // login user
 const loginUser = async (req,res) => {

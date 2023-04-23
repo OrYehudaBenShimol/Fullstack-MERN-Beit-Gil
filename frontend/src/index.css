@@ -27,7 +27,9 @@ header .container {
 
 .user-email{
 margin-right: auto;
-margin-left: 10px;
+margin-left: 20px;
+font-weight: bold;
+font-size: larger;
 }
 
 
@@ -43,6 +45,7 @@ header a {
 
 .pages{
   max-width: 1024px;
+  max-height: 650px;
   padding: 20px;
   margin: 0 auto;
 }
@@ -55,8 +58,7 @@ header a {
   font-weight: bold;
 }
 .container{
-  padding: 0;
-  max-height: 40px;
+  max-height: 50px;
 }
 
 .AddUser-Btn {
@@ -73,6 +75,20 @@ header a {
 }
 
 .manage-users-nav {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+
+}
+
+
+.attendence-btn {
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
@@ -104,6 +120,7 @@ header a {
   font-weight: bold; /* Set font weight to bold for the login button */
   transition: background-color 0.5s ease-in-out; /* Add transition effect for smooth color change */
   border-radius: 10%;
+  margin-left:10px;
 }
 
 .login-navbar:hover{
@@ -124,18 +141,28 @@ header a {
 .Patients-Attendence{
   display: flex;
   flex-wrap: wrap;
+  max-height: 700px;
 }
 
 .patients {
   display: flex;
   flex-wrap: wrap;
+  max-height: inherit;
   gap: 16px; /* Add any desired gap between patient containers */
 }
 
 .patient-container {
-  flex-basis: calc(33.33% - 16px); /* Adjust flex-basis and gap to achieve desired width and gap between patients */
-  margin-bottom: 16px; /* Add any desired margin between patient containers */
+  flex-basis: calc(33.33% - 20px); /* Adjust flex-basis and gap to achieve desired width and gap between patients */
+  margin-bottom: 8px; /* Add any desired margin between patient containers */
 }
+
+.morning-attendence-label{
+  margin: auto;
+  font-size: larger;
+  font-family: "Poppins";
+  font-weight: bold;
+}
+
 
 div.AddUsers{
   overflow: hidden;
@@ -389,8 +416,8 @@ nav button {
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;
-  max-height: 280px;
-  margin: 150px auto;
+  max-height: 300px;
+  margin: 90px auto;
   padding: 20px;
   background: #ffffffe5;
   border-radius: 4px;

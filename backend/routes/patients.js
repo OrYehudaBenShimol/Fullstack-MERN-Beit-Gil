@@ -9,6 +9,12 @@ const {
     updatePatient
 } = require('../controllers/userController');
 
+
+
+const requireAuth = require('../middleware/requireAuth')
+router.use(requireAuth)
+
+
 // GET all users.
 router.get('/', getAllPatients,);
 
