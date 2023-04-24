@@ -1,0 +1,77 @@
+/*set the pop up login page*/
+
+form.login {
+    max-width: 400px;
+    max-height: 300px;
+    margin: 90px auto;
+    padding: 20px;
+    background: #ffffffe5;
+    border-radius: 4px;
+    text-align: center;
+    font-size: larger;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add your desired shadow properties */
+  }
+
+  /*style the title of the popup*/
+  .h3-login-page {
+    margin: 0px;
+    font-size: 27px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+
+  }
+
+  .login label, .login input {
+    display: block;
+    text-align: right;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 0px;
+  }
+
+  /*add style to the input*/
+.login input {
+    border: none;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    }
+
+/*style the login button*/
+.login-btn-login-page{
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    font-size: larger;
+    transition:  0.5s ease-in-out;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15); /* Add your desired shadow properties */
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    border-radius: 15px;
+  
+  }
+  
+  .login-btn-login-page:hover{
+    background-color: #f95128;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 400px ;
+    font-size: larger;
+    font-weight: bold;
+  }
+  
+ 
+  .login label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+ 
+
+    
+  

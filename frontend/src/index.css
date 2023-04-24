@@ -11,8 +11,8 @@ body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
-  
 }
+
 header {
   background: #FE886A;
 }
@@ -27,14 +27,11 @@ header .container {
 
 .user-email{
 margin-right: auto;
-margin-left: 10px;
+margin-left: 20px;
+font-weight: bold;
+font-size: larger;
 }
 
-
-.navigation-bar{
-  display: flex;
-  align-items: center;
-}
 
 header a {
   color: #333;
@@ -43,6 +40,7 @@ header a {
 
 .pages{
   max-width: 1024px;
+  max-height: 650px;
   padding: 20px;
   margin: 0 auto;
 }
@@ -55,8 +53,7 @@ header a {
   font-weight: bold;
 }
 .container{
-  padding: 0;
-  max-height: 40px;
+  max-height: 50px;
 }
 
 .AddUser-Btn {
@@ -75,32 +72,20 @@ header a {
 
 
 
-
-.login-navbar{
-  /* background: #fff;
+.attendence-btn {
+  background: #fff;
   color: var(--primary);
-  border: 1px solid var(--primary);
+  border: 2px solid var(--primary);
   padding: 6px 10px;
-  border-radius: 20%;
+  border-radius: 4px;
   font-family: "Poppins";
   cursor: pointer;
   font-size: 1em;
   margin-left: 10px;
-  margin-right: 10px; */
-  background-color: rgba(0, 0, 0, 0.8); /* Set the background color of the login button */
-  color: #fff; /* Set the text color of the login button */
-  padding: 8px 16px; /* Add padding to the top and bottom, and left and right of the login button */
-  border: none; /* Remove border from the login button */
-  cursor: pointer; /* Add cursor pointer on hover */
-  font-weight: bold; /* Set font weight to bold for the login button */
-  transition: background-color 0.5s ease-in-out; /* Add transition effect for smooth color change */
-  border-radius: 10%;
+  margin-right: 10px;
 }
 
-.login-navbar:hover{
-  color:#000000;
-  background-color: #ffffff; /* Change the background color of the login button on hover */
-}
+
 
 /* homepage */
 .users{
@@ -111,6 +96,32 @@ header a {
   grid-template-columns: 2fr 2fr 2fr;
   gap: 20px;
 }
+
+.Patients-Attendence{
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 700px;
+}
+
+.patients {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: inherit;
+  gap: 16px; /* Add any desired gap between patient containers */
+}
+
+.patient-container {
+  flex-basis: calc(33.33% - 20px); /* Adjust flex-basis and gap to achieve desired width and gap between patients */
+  margin-bottom: 8px; /* Add any desired margin between patient containers */
+}
+
+.morning-attendence-label{
+  margin: auto;
+  font-size: larger;
+  font-family: "Poppins";
+  font-weight: bold;
+}
+
 
 div.AddUsers{
   overflow: hidden;
@@ -128,7 +139,7 @@ div.users{
 
 .users{
   overflow-y: hidden;
-  max-height: 600px;
+  max-height: 700px;
 }
 .user-details {
   background: #fff;
@@ -216,17 +227,14 @@ div.users{
 label, input {
   display: block;
   text-align: right;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  margin: 0px;
 
 }
 input {
   text-align: right;
-  border: none;
+
   width: 100%;
   border: 1px solid #ddd;
-  border-radius: 15px;
+  border-radius: 4px;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -249,7 +257,6 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
-
 
 .create{
   max-height: 500px;
@@ -317,104 +324,184 @@ input.error {
 
 
 
-/* navbar */
-nav {
-  display: flex;
-  align-items: center;
-}
-nav a {
-  margin-left: 10px;
-}
-
-nav button {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-family: "Poppins";
-  cursor: pointer;
-  font-size: 1em;
-  margin-left: 10px;
-
-}
-
-.login-btn-login-page{
-  text-align: center;
-  margin-left:auto;
-  margin-right:auto;
-  width: 100%;
-  font-size: larger;
-  transition:  0.5s ease-in-out;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15); /* Add your desired shadow properties */
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 20px;
-  border-radius: 15px;
-
-}
-
-.login-btn-login-page:hover{
-  background-color: #f95128;
-  text-align: center;
-  margin-left:auto;
-  margin-right:auto;
-  max-width: 400px ;
-  font-size: larger;
-  font-weight: bold;
-}
-
-.login{
-  text-align: right;
-  display: flexbox;
-
-}
 
 /* auth forms */
-form.signup, form.login {
+form.signup {
   max-width: 400px;
-  max-height: 280px;
-  margin: 150px auto;
+  max-height: 300px;
+  margin: 90px auto;
   padding: 20px;
   background: #ffffffe5;
-  border-radius: 15px;
+  border-radius: 4px;
   text-align: center;
   font-size: larger;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add your desired shadow properties */
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-form.login label{
-  margin-right: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-}
+
 .option-form label{
   font-family: "Poppins";
   font-weight: bold;
 }
 
-.h3-login-page {
-  margin: 0px;
-  font-size: 27px;
-  padding: 0px;
+.option-form{
+  overflow-y: scroll;
+}
+.option-form:hover{
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+.option-form{
+  overflow-y: hidden;
 }
 
-/* FROM HERE ROTEM ADDED CSS*/
-.manage-users-nav, .disconnect {
-  background: var(--primary);
-  color:white;
-  border: 2px solid var(--primary);
-  border-radius: 4px;
-  font-family: "Poppins";
+
+
+/* toggle slider */
+/* The switch - the box around the slider */
+/* .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
   cursor: pointer;
-  font-size: 16px;
-  display: inline;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 2px;
-
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.manage-users-nav:hover, .disconnect:hover{
-  background: #f95128;
-  padding-top: 19px ;
-  padding-bottom: 19px;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color:var(--primary);
+  -webkit-transition: .4s;
+  transition: .4s;
 }
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} */
+
+
+
+.patient-attendence-details {
+  width: unset;
+  height: 200px;
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  border-radius: 10%;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.patient-attendence-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.patient-attendence-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+.patient-attendence-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+.patient-attendence-details input{
+  cursor: pointer;
+  background-color: #8f8f8f44;
+}
+
+.patient-attendence-details input:checked{
+  cursor: pointer;
+  background-color: #06bf1b;
+  border: 0.5px solid #00000034;
+}
+.patient-attendence-details div {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  cursor: pointer;
+  background: #ffffff;
+  color: #ffffff;
+  width: 0px;
+  
+}
+
+
+
+
+
+div.patients:hover{
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+div.patients{
+  overflow-y: hidden;
+}
+
+.patients{
+  overflow-y: hidden;
+  max-height: 780px;
+}
+
+.attendence-image{
+  border-radius: 50%;
+  border:2px solid #00000013 ;
+  margin-top: 10px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
