@@ -1,9 +1,7 @@
 import {Link} from 'react-router-dom'
 import {useAuthContext} from '../hooks/useAuthContext'
-
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-
-
+ 
 const ManageUsers = () => {
 
     const {user} = useAuthContext()
