@@ -29,8 +29,8 @@ const getAllPatients = async ( req,res) =>{
 
 // Update a patient.
 const updatePatientAttendence = async ( req,res) =>{
-    const {id} = req.body
-    const patient = await PatientAttendence.findOneAndUpdate({id: id}, {...req.body});
+    const {id,classRoom,hebrewName,arrived} = req.body
+    const patient = await PatientAttendence.findOneAndUpdate({id: id}, {classRoom,hebrewName,arrived},{ new: true });
     if(!patient){
         return res.status(404).json({error:'No such patient.'});
     }

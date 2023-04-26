@@ -7,6 +7,8 @@ const patientsRoute = require('./routes/patients');
 const loginRoutes = require('./routes/login');
 const attendence = require('./routes/patientsAttendence');
 const userData = require('./routes/getDataOnUsers')
+const morningMeetingRoute = require('./routes/morningMeeting')
+
 const mongoose = require('mongoose');
 
 //  express app
@@ -27,8 +29,9 @@ app.use((req,res,next)=>{
 app.use('/api/login',loginRoutes);
 app.use('/api/users',usersRoute);
 app.use('/api/patient', patientsRoute);
-app.use('/api/attendence', attendence)
-app.use('/api/getDataOnUser',userData)
+app.use('/api/attendence', attendence);
+app.use('/api/getDataOnUser',userData);
+app.use('/api/morningMeeting',morningMeetingRoute);
 
 
 // connect to db

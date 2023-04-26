@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ManageUsers from './pages/ManageUsers';
 import AttendenceCheck from './pages/AttendenceCheck';
+import MorningMeeting from './pages/MorningMeeting';
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
             />
             <Route
             path='/MorningAttendence' element={user ? <AttendenceCheck /> : <Navigate to='/login' />}
+            />
+            <Route
+            path='/MorningMeeting' element={user ? <MorningMeeting /> : <Navigate to='/login' />}
             />
             <Route
             exact path='/' element={user ? <Home /> : <Navigate to='/login' />}

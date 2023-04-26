@@ -43,6 +43,7 @@ const Navbar = () => {
                 )}
                 <nav className='navigation-bar'>
                     {user && (<div>
+                        <Link className='morning-meeting-btn' to="/MorningMeeting">מפגש בוקר</Link>
                         <Link className='attendence-btn' to="/MorningAttendence">נוכחות בוקר</Link>
                         <Link className='manage-users-nav' to="/ManageUsers">ניהול משתמשים</Link>
                         {/* <span>{user.email}</span> */}

@@ -61,6 +61,38 @@ header a {
   max-height: 50px;
 }
 
+/* Example CSS for the pop-up window */
+.feelings-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition:opacity 10s ease-in-out;
+
+  /* Customize other styles as needed */
+}
+
+.feelings-popup.fade-in {
+  opacity: 1;
+}
+
+.feelings-popup.fade-out {
+  opacity: 0;
+}
+
+.feelings-popup label{
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  margin-top: 20px;
+}
+
+/* Example CSS for the small feeling images */
+.small-feeling-image {
+  position: relative;
+  /* Customize position and other styles as needed */
+}
+
+
 .AddUser-Btn {
   background: #fff;
   color: var(--primary);
@@ -255,9 +287,18 @@ div.users{
 }
 
 #patient-class{
-  width: 100px;
+  width: 150px;
   text-align:right;
   border-radius: 10%;
+  align-self: auto;
+  direction: rtl;
+}
+
+.combobox-morning{
+  width:150px
+}
+.choose-class-label{
+  text-align:right;
 }
 
 .create{
@@ -412,7 +453,123 @@ nav button {
   display: flexbox;
 
 }
+.morning-meeting-page{
+  display: grid;
+  grid-template-columns: 3.5fr 1.5fr;
+  gap: 20px;
+  max-height: 700px;
+  
 
+}
+.patient-container-morning{
+  display: flex;
+  gap: 20px;
+  max-height: inherit;
+  overflow-y: auto;
+  flex-wrap: wrap;
+  width: 100%; /* Add this line */
+}
+
+.morning-meeting-container{
+  display: flex;
+  gap: 20px;
+  max-height: inherit;
+  overflow-y: auto;
+  flex-wrap: wrap;
+}
+
+.morning-meeting-container:hover{
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+.morning-picture{
+  max-width: 150px;
+  max-height: 140px;
+  border-radius: 10%;
+  position: absolute;
+  
+}
+
+.patient-morning-picture{
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 16%;
+  right:3%;
+
+}
+
+.morning-meeting-name{
+  text-align: center;
+  font-size: larger;
+  z-index: 1;
+  margin-top: auto;
+}
+
+.feelings-popup{
+  display: grid;
+  grid-template-columns: 3.5fr 1.5fr; /* Set column sizes */
+
+  max-width: 190px;
+  max-height: 600px;
+  margin-left: 65%;
+  margin-top: 8%;
+  z-index: 0;
+  background-color:#f9f9f97d;
+  border-radius: 5%;
+  border: 1px solid #a6a6a6
+
+}
+.happy{
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 50%;
+}
+.sad{
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-radius: 50%;
+}
+.confused{
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-radius: 50%;
+}
+.home{
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-radius: 50%;
+}
+.patient-morning-meeting{
+  min-width: 170px;
+  min-height: 170px;
+  max-width: 190px;
+  min-height: 190px;
+  background: #fff;
+  border-radius: 4px;
+  margin: 10px auto;
+  margin-right: 18px;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10%;
+  grid-column: 1 /  2; /* Set grid column to span across both columns */
+
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;
