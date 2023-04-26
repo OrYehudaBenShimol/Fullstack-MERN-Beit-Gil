@@ -47,7 +47,7 @@ const Navbar = () => {
                         <Link className='attendence-btn' to="/MorningAttendence">נוכחות בוקר</Link>
                         <Link className='manage-users-nav' to="/ManageUsers">ניהול משתמשים</Link>
                         {/* <span>{user.email}</span> */}
-                        <button onClick={handleClick}>התנתקות</button>
+                        <button className='logout-btn' onClick={handleClick}>התנתקות</button>
                     </div>
                     )}
                     {!user && (<div>
