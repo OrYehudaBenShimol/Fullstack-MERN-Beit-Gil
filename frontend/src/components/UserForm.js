@@ -32,7 +32,8 @@ const UserForm = () => {
     const [patientPhone,setPatientPhone] = useState('');
     const [patientBirthday,setPatientBirtday] =useState('');
     const [patientHebrewName, setPatientHebrewName] = useState('');
-
+    const [successAdding,setSuccessAdding] = useState(false)
+    const [successMessage,setSuccessMessage] = useState('התווסף בהצלחה')
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -123,6 +124,9 @@ const UserForm = () => {
             const json = await response.json();
             if(!response.ok){
                 setError(json.error);
+                setTimeout(()=>{
+                    setError(false)
+                },"5000")
             }
             if(response.ok){
                 setPatientName('')
@@ -130,7 +134,12 @@ const UserForm = () => {
                 setPatientBirtday('')
                 setPatientID('')
                 setUserClassroom('oren')
+                setPatientPhone('')
                 setPatientHebrewName('')
+                setSuccessAdding(true)
+                setTimeout(()=>{
+                    setSuccessAdding(false)
+                },"5000")
                 console.log('new patient has been added.',json);
             }
         }
@@ -264,6 +273,7 @@ const UserForm = () => {
                     <button type="submit">הוסף משתמש</button>
                 </div>
             )}
+                        {successAdding && <div className='successAdding'>{successMessage}</div>}
                         {error && <div className="error">{error}</div>}
 
         </form>

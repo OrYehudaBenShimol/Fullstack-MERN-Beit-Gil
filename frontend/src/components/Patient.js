@@ -25,8 +25,11 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
 
   const updatePatient= async (feelingVar) =>{
 
-    const isHere = true
+    let isHere = true
  
+    if(feelingVar==="home"){
+      isHere=false
+    }
     
     const updated = {id: patient.id, classRoom: patient.classRoom, hebrewName: patient.hebrewName, arrived: isHere,feeling:feelingVar }
     const response = await fetch('/api/morningMeeting',{

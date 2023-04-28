@@ -6,6 +6,7 @@
 :root {
   --primary: #FE886A;
   --error: #e7195a;
+  --success: #05d213b3;
 }
 body {
   background: #f1f1f1;
@@ -67,6 +68,7 @@ header a {
   top: 0;
   left: 0;
   transition:opacity 10s ease-in-out;
+  grid-column: auto;
 
   /* Customize other styles as needed */
 }
@@ -201,6 +203,16 @@ header a {
   max-height: 700px;
 }
 
+
+.successAdding{
+  padding: 10px;
+  background: var(--success);
+  border: 1px solid #ddd;
+  color: #ffffff;
+  border-radius: 4px;
+  margin: 20px 0;
+  transition: 1s ease-in-out;
+}
 .patients {
   display: flex;
   flex-wrap: wrap;
@@ -480,16 +492,18 @@ nav button {
 }
 .morning-meeting-page{
   display: grid;
-  grid-template-columns: 3.5fr 1.5fr;
-  gap: 20px;
+  grid-template-rows: 3.5fr 2fr;
+  gap: 1px;
   max-height: 700px;
   
 
 }
 .patient-container-morning{
   display: flex;
-  gap: 20px;
+  gap: 0px;
   max-height: inherit;
+  min-height: 440px;
+
   overflow-y: auto;
   flex-wrap: wrap;
   width: 100%; /* Add this line */
@@ -497,10 +511,15 @@ nav button {
 
 .morning-meeting-container{
   display: flex;
-  gap: 20px;
+  min-height: 440px;
   max-height: inherit;
   overflow-y: auto;
   flex-wrap: wrap;
+  margin-top: 0px;
+  
+}
+.morning-meeting-container h2{
+margin-bottom: 0;
 }
 
 .morning-meeting-container:hover{
@@ -527,6 +546,90 @@ nav button {
 
 }
 
+.choose-weather-pictures{
+  max-height: 120px;
+  z-index: 999;
+}
+.choose-days-pictures{
+  max-height: 120px;
+  z-index: 999;
+}
+
+.weather-pictures{
+  max-height: 100px;
+  margin-left: 15%;
+}
+
+.main-page-morning{
+  grid-template-columns: 3.5fr 1.5fr; /* Set column sizes */
+}
+
+.choose-others-morning-meeting{
+  margin-bottom: 2px;
+  margin-top: 0px;
+}
+
+.weather-logo{
+  min-height: 120px;
+  min-height:120px;
+  max-width: 120px;
+  max-height: 120px;
+  margin-top: 10px;
+  margin-left:5px;
+  border: 1px solid #000000;
+}
+
+.days-logo{
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 130px;
+  max-height: 120px;
+  margin-top: 10px;
+  margin-left:8px;
+  border: 1px solid #000000;
+}
+
+.choose-others-morning-meeting{
+  margin-left: 15%;
+}
+
+.months-logo{
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+  margin-top: 10px;
+  margin-left:5px;
+  border: 1px solid #000000;
+}
+.day-logo{
+  min-width: 130px;
+  min-height: 120px;
+  max-width: 130px;
+  max-height: 120px;
+  margin-top: 10px;
+  margin-left:5px;
+  border: 1px solid #000000;
+}
+.month-logo{
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+  margin-top: 10px;
+  margin-left:5px;
+  border: 1px solid #000000;
+}
+.chosen-weather-logo{
+  max-width: 120px;
+  max-height: 120px;
+  min-width: 120px;
+  min-height: 120px;
+  margin-top: 10px;
+  margin-left:5px;
+  border: 1px solid #000000;
+}
+
 .morning-meeting-name{
   text-align: center;
   font-size: larger;
@@ -537,15 +640,14 @@ nav button {
 .feelings-popup{
   display: grid;
   grid-template-columns: 3.5fr 1.5fr; /* Set column sizes */
-
-  max-width: 190px;
+  max-width: 185px;
   max-height: 600px;
-  margin-left: 65%;
-  margin-top: 8%;
-  z-index: 0;
-  background-color:#f9f9f97d;
+  margin-left: 80%;
+  margin-top: 10%;
+  z-index: 999;
+  background-color:#f9f9f9;
   border-radius: 5%;
-  border: 1px solid #a6a6a6
+  border: 3px solid #000000
 
 }
 .happy{
@@ -577,14 +679,15 @@ nav button {
   border-radius: 50%;
 }
 .patient-morning-meeting{
-  min-width: 170px;
+  min-width: 150px;
   min-height: 170px;
-  max-width: 190px;
+  max-width: 150px;
   min-height: 190px;
   background: #fff;
   border-radius: 4px;
-  margin: 10px auto;
-  margin-right: 18px;
+  margin-right: 12px;
+  margin-bottom: 11px;
+
   padding: 10px;
   position: relative;
   display: flex;
