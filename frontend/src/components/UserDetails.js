@@ -43,11 +43,11 @@ const UserDetails = ({userDet}) => {
             {showPopup && (
             <div className="confirmation-popup">
                 <div className="message">
-                האם אתה בטוח שאתה מעוניין למחוק את 
+                האם אתה בטוח שהנך מעוניין למחוק את 
                     <br/> המשתמש ? כל המידע ייאבד 
                 </div>
                 <button className="confirm-btn" onClick={handleDeleteUser}>אישור</button>
-                <button onClick={() => setShowPopup(false)}>ביטול</button>
+                <button  onClick={() => setShowPopup(false)}>ביטול</button>
             </div>
       )}
         </div>

@@ -1,24 +1,38 @@
-import { useEffect} from "react"
+import { useEffect, useState} from "react"
 import UserDetails from '../components/UserDetails'
+import PatientDetails from "../components/PatientDetails"
 import UserForm from '../components/UserForm'
 import {useUsersContext} from '../hooks/useUsersContext'
+import {usePatientsContext} from '../hooks/usePatientsContext'
 import {useAuthContext} from '../hooks/useAuthContext'
 const AddUsers = () => {
 
     const {users,dispatch} = useUsersContext()
+    const {patients,dispatch: dispatch2} = usePatientsContext()
     const {user} = useAuthContext()
+    const [toRun,setToRun] = useState(true)
 
     useEffect(()=>{
-        const fetchUsers= async() =>{
-            const response = await fetch('/api/users',{
+        const FetchUsers= async() =>{
+            let response = await fetch('/api/users',{
                 headers:{
                     'Authorization': `Bearer ${user.token}`
                 }
             })
 
-            const json = await response.json()
+            let json = await response.json()
             if(response.ok){
                 dispatch({type: 'SET_USERS', payload: json},)
+            }
+            response = await fetch('/api/patient',{
+                headers:{
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+
+            json = await response.json()
+            if(response.ok){
+                dispatch2({type: 'SET_PATIENTS', payload: json},)
             }
 
         }
@@ -40,28 +54,28 @@ const AddUsers = () => {
                 window.location.href = '/login';
             }
         }
-        if(user){
-            fetchUsers()
-        }
-        // fetchPatients()
-        
-    },[dispatch,user])
+        if(user && toRun){
+            FetchUsers()
+            setToRun(false)
+        }        
+    },[user,users,patients])
 
 
     return(
         <div className="AddUsers">
             <div className="users">
+                <label> עובדים</label>
                 {users && users.map((user)=>(
                     <UserDetails key={user._id} userDet={user}/>
                 ))}
             </div>
-            {/* <div className="users">
+            {<div className="users">
+            <label> מקבלי שירות</label>
             {patients && patients.map((patient)=>(
                     <PatientDetails key={patient._id} patient={patient}/>
                 ))}
-            </div> */
+            </div> 
             }
-            <div></div>
             <UserForm/>
         </div>
     )
