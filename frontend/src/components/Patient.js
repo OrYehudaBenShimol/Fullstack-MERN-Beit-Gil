@@ -43,7 +43,7 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
 
     const json = await response.json()
     if(response.ok){
-      console.log('updated in db ',json)
+      // console.log('updated in db ',json)
     }
   }
 

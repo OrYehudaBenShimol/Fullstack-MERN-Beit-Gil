@@ -20,6 +20,25 @@ const AddUsers = () => {
             if(response.ok){
                 dispatch({type: 'SET_USERS', payload: json},)
             }
+
+        }
+
+        if(user){
+            const token = user.token;
+            // Decode the token
+            const decodedToken = JSON.parse(window.atob(token.split('.')[1]));
+            // Check if the token has not expired
+            const tokenExpiration = decodedToken.exp;
+            const currentTime = Math.floor(Date.now() / 1000); // Convert to seconds
+            const isTokenValid = tokenExpiration > currentTime;
+
+            if (isTokenValid) {
+                // console.log('Valid token!');
+            } else {
+                console.log('Token has expired.');
+                window.localStorage.removeItem('user');
+                window.location.href = '/login';
+            }
         }
         if(user){
             fetchUsers()

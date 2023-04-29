@@ -1,6 +1,10 @@
 // for reading from the .env file.
 require('dotenv').config();             
+const fs = require('fs');
+const cron = require('node-cron');
 
+const PatientAttendence  = require('./models/attendenceModel');
+const MorningMeeting = require('./models/morningMeetingModel')
 const express = require('express');
 const usersRoute = require('./routes/users');
 const patientsRoute = require('./routes/patients');
@@ -44,4 +48,37 @@ mongoose.connect(process.env.MONGO_URI)
 }).catch((error)=>{
     console.log(error);
 })
+
+
+// Function to dump table to JSON file and delete from database
+async function dumpTableToJson() {
+    try {
+      const data = await PatientAttendence.find({}).lean().exec(); // Get data from MongoDB
+      const data2 = await MorningMeeting.find({}).lean().exec(); // Get data from MongoDB
+
+      const filePath = './morning-attendence.json';
+      const filePath2 = './morning-meeting.json';
+
+      fs.appendFile(filePath, "{" + JSON.stringify(data) +"},", (err) => { // Append data to file
+        if (err) throw err;
+        console.log(`Data written to ${filePath}`);
+      });
+  
+      fs.appendFile(filePath2, "{" + JSON.stringify(data2)+"},", (err) => { // Append data to file
+        if (err) throw err;
+        console.log(`Data written to ${filePath2}`);
+      });
+  
+      await MorningMeeting.deleteMany(); // Delete data from MongoDB
+      console.log('Table data deleted from database');
+      await PatientAttendence.deleteMany(); // Delete data from MongoDB
+      console.log('Table data deleted from database');
+    } catch (err) {
+      console.error(err);
+    }   
+  }
+  // Schedule the function to run at the same time each day
+  cron.schedule('59 23 * * *', () => {
+    dumpTableToJson();
+  });
 

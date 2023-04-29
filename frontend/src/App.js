@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route , Navigate} from 'react-router-dom'
+import { BrowserRouter, Routes, Route , Navigate, } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext';
 
 //Pages and componenets.
@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import ManageUsers from './pages/ManageUsers';
 import AttendenceCheck from './pages/AttendenceCheck';
 import MorningMeeting from './pages/MorningMeeting';
+import { useEffect } from 'react';
 
 
 function App() {

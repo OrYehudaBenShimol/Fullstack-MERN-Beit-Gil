@@ -32,23 +32,16 @@ const AttendenceCheck = () => {
             })
             const json = await response.json()
             if(response.ok){
-                console.log(json)
+                // console.log(json)
                 // dispatch({type:'CREATE_PATIENTS', payload:json})
             }
     }
 
  
 
-    useEffect(()=>{
-        
-    //     const token = localStorage.getItem('user'); // Get the token from local storage
-    //         if (token.token) {
-    //           const decodedToken = jwt_decode(token.token); // Decode the JWT token
-    //           const currentTime = Date.now() / 1000; // Get the current time in seconds
-    //           if (decodedToken.exp && decodedToken.exp < currentTime) {
-    //           localStorage.removeItem('user')
-    //     }     
-    // }      
+    useEffect(()=>{ 
+
+
 
         const fetchPatients= async() =>{
             const response = await fetch('/api/attendence',{
@@ -56,7 +49,6 @@ const AttendenceCheck = () => {
                     'Authorization': `Bearer ${user.token}`
                 }
             })
-
             const json = await response.json()
             if(response.ok){
                 dispatch({type: 'SET_PATIENTS', payload: json},)
@@ -64,7 +56,24 @@ const AttendenceCheck = () => {
         }
 
         if(user){
-            
+            const token = user.token;
+            // Decode the token
+            const decodedToken = JSON.parse(window.atob(token.split('.')[1]));
+            // Check if the token has not expired
+            const tokenExpiration = decodedToken.exp;
+            const currentTime = Math.floor(Date.now() / 1000); // Convert to seconds
+            const isTokenValid = tokenExpiration > currentTime;
+
+            if (isTokenValid) {
+                // console.log('Valid token!');
+            } else {
+                console.log('Token has expired.');
+                window.localStorage.removeItem('user');
+                window.location.href = '/login';
+            }
+        }
+
+        if(user){
              fetchPatients()
         }
     

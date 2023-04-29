@@ -58,6 +58,8 @@ const MorningMeeting = () => {
     setShowWeatherWind(false)
     setShowWeatherLightning(false)
     setShowWeatherRainbow(false)
+    localStorage.setItem('weather', 'rain')
+
   }
 
   function handleWeatherSunny(){
@@ -68,6 +70,8 @@ const MorningMeeting = () => {
     setShowWeatherLightning(false)
     setShowWeatherWind(false)
     setShowWeatherRainbow(false)
+    localStorage.setItem('weather', 'sunny')
+
   }
 
   function handleWeatherHail(){
@@ -78,6 +82,8 @@ const MorningMeeting = () => {
     setShowWeatherLightning(false)
     setShowWeatherWind(false)
     setShowWeatherHail(true)
+    localStorage.setItem('weather', 'hail')
+
   }
 
   function handleWeatherRainbow(){
@@ -88,6 +94,8 @@ const MorningMeeting = () => {
     setShowWeatherLightning(false)
     setShowWeatherWind(false)
     setShowWeatherRainbow(true)
+    localStorage.setItem('weather', 'rainbow')
+
   }
 
 
@@ -99,6 +107,8 @@ const MorningMeeting = () => {
     setShowWeatherRainbow(false)
     setShowWeatherWind(false)
     setShowWeatherLightning(true)
+    localStorage.setItem('weather', 'lightning')
+
   }
 
   function handleWeatherWind(){
@@ -109,6 +119,8 @@ const MorningMeeting = () => {
     setShowWeatherRainbow(false)
     setShowWeatherLightning(false)
     setShowWeatherWind(true)
+    localStorage.setItem('weather', 'wind')
+
   }
   /* END OF WEATHER HANDLERS */
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,6 +138,8 @@ const MorningMeeting = () => {
     setShowThursday(false)
     setShowFriday(false)
     setShowSaturday(false)
+    localStorage.setItem('day', 'day1')
+
   }
 
   function handleMonday(){
@@ -137,6 +151,8 @@ const MorningMeeting = () => {
     setShowThursday(false)
     setShowFriday(false)
     setShowSaturday(false)
+    localStorage.setItem('day', 'day2')
+
   }
 
   function handleTuesday(){
@@ -148,6 +164,8 @@ const MorningMeeting = () => {
     setShowThursday(false)
     setShowFriday(false)
     setShowSaturday(false)
+    localStorage.setItem('day', 'day3')
+
   }
 
   function handleWednesday(){
@@ -159,6 +177,8 @@ const MorningMeeting = () => {
     setShowThursday(false)
     setShowFriday(false)
     setShowSaturday(false)
+    localStorage.setItem('day', 'day4')
+
   }
 
   function handleThursday(){
@@ -170,6 +190,8 @@ const MorningMeeting = () => {
     setShowThursday(true)
     setShowFriday(false)
     setShowSaturday(false)
+    localStorage.setItem('day', 'day5')
+
   }
 
   function handleFriday(){
@@ -181,6 +203,8 @@ const MorningMeeting = () => {
     setShowThursday(false)
     setShowFriday(true)
     setShowSaturday(false)
+    localStorage.setItem('day', 'day6')
+
   }
 
   function handleSaturday(){
@@ -192,6 +216,8 @@ const MorningMeeting = () => {
     setShowThursday(false)
     setShowFriday(false)
     setShowSaturday(true)
+    localStorage.setItem('day', 'day7')
+
   }
   /* END OF DAYS HANDLERS */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,6 +240,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month1')
+
   }
 
   function handleMonth2(){
@@ -230,6 +258,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month2')
+
   }
   function handleMonth3(){
     setShowOthersMonths(false)
@@ -245,6 +275,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month3')
+
   }
   function handleMonth4(){
     setShowOthersMonths(false)
@@ -260,6 +292,7 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month4')
   }
   function handleMonth5(){
     setShowOthersMonths(false)
@@ -275,6 +308,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month5')
+
   }
   function handleMonth6(){
     setShowOthersMonths(false)
@@ -290,6 +325,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month6')
+
   }
   function handleMonth7(){
     setShowOthersMonths(false)
@@ -305,6 +342,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month7')
+
   }
   function handleMonth8(){
     setShowOthersMonths(false)
@@ -320,6 +359,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month8')
+
   }
   function handleMonth9(){
     setShowOthersMonths(false)
@@ -335,6 +376,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month9')
+
   }
   function handleMonth10(){
     setShowOthersMonths(false)
@@ -350,6 +393,8 @@ const MorningMeeting = () => {
     setShowMonth10(true)
     setShowMonth11(false)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month10')
+
   }
   function handleMonth11(){
     setShowOthersMonths(false)
@@ -365,6 +410,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(true)
     setShowMonth12(false)
+    localStorage.setItem('month', 'month11')
+
   }
   function handleMonth12(){
     setShowOthersMonths(false)
@@ -380,6 +427,8 @@ const MorningMeeting = () => {
     setShowMonth10(false)
     setShowMonth11(false)
     setShowMonth12(true)
+
+    localStorage.setItem('month', 'month12')
   }
   /* END OF MONTHS HANDLERS */
 
@@ -411,8 +460,114 @@ const MorningMeeting = () => {
       }
     };
 
+    if(user){
+      const token = user.token;
+      // Decode the token
+      const decodedToken = JSON.parse(window.atob(token.split('.')[1]));
+      // Check if the token has not expired
+      const tokenExpiration = decodedToken.exp;
+      const currentTime = Math.floor(Date.now() / 1000); // Convert to seconds
+      const isTokenValid = tokenExpiration > currentTime;
+
+      if (isTokenValid) {
+          // console.log('Valid token!');
+      } else {
+          console.log('Token has expired.');
+          window.localStorage.removeItem('user');
+          window.location.href = '/login';
+      }
+  }
     if (user) {
       fetchPatients();
+
+      switch (localStorage.getItem('day')) {
+        case "day1":
+          handleSunday()
+          break;
+        case "day2":
+          handleMonday()
+          break;
+        case "day3":
+          handleTuesday()
+          break;
+        case "day4":
+          handleWednesday()
+          break;
+        case "day5":
+          handleThursday()
+          break;
+        case "day6":
+          handleFriday()
+          break;
+        case "day7":
+          handleSaturday()
+          break;
+        default:
+          break;
+      }
+      switch (localStorage.getItem('month')) {
+        case "month1":
+          handleMonth1()
+          break;
+        case "month2":
+          handleMonth2()
+          break;
+        case "month3":
+          handleMonth3()
+          break;
+        case "month4":
+          handleMonth4()
+          break;
+        case "month5":
+          handleMonth5()
+          break;
+        case "month6":
+          handleMonth6()
+          break;
+        case "month7":
+          handleMonth7()
+          break;
+        case "month8":
+          handleMonth8()
+          break;
+        case "month9":
+          handleMonth9()
+          break;
+        case "month10":
+          handleMonth10()
+          break;
+        case "month11":
+          handleMonth11()
+          break;
+        case "month12":
+          handleMonth12()
+          break;
+        default:
+          break;
+      }
+
+      switch (localStorage.getItem('weather')) {
+        case "rain":
+          handleWeatherRain()
+          break;
+        case "wind":
+          handleWeatherWind()
+          break;
+        case "lightning":
+          handleWeatherLightning()
+          break;
+        case "hail":
+          handleWeatherHail()
+          break;
+        case "rainbow":
+          handleWeatherRainbow()
+          break;
+        case "sunny":
+          handleWeatherSunny()
+          break;
+        default:
+          break;
+      }
     }
   }, [dispatch, user]);
 
