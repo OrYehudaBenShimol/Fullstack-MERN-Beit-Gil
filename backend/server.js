@@ -78,7 +78,7 @@ async function dumpTableToJson() {
     }   
   }
   // Schedule the function to run at the same time each day
-  cron.schedule('59 23 * * *', () => {
+  cron.schedule('10 23 * * *', () => {
     dumpTableToJson();
   });
 
