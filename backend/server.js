@@ -2,16 +2,22 @@
 require('dotenv').config();             
 const fs = require('fs');
 const cron = require('node-cron');
+const express = require('express');
 
 const PatientAttendence  = require('./models/attendenceModel');
-const MorningMeeting = require('./models/morningMeetingModel')
-const express = require('express');
+const MorningMeeting = require('./models/morningMeetingModel');
 const usersRoute = require('./routes/users');
 const patientsRoute = require('./routes/patients');
 const loginRoutes = require('./routes/login');
 const attendence = require('./routes/patientsAttendence');
-const userData = require('./routes/getDataOnUsers')
-const morningMeetingRoute = require('./routes/morningMeeting')
+const userData = require('./routes/getDataOnUsers');
+const morningMeetingRoute = require('./routes/morningMeeting');
+const orenSchedule = require('./routes/orenSchedule');
+const sahlavSchedule = require('./routes/sahlavSchedule');
+const gefenSchedule = require('./routes/gefenSchedule');
+const dekelSchedule = require('./routes/dekelSchedule');
+const tzivoniSchedule = require('./routes/tzivoniSchedule');
+const rakefetSchedule = require('./routes/rakefetSchedule');
 
 const mongoose = require('mongoose');
 
@@ -36,7 +42,12 @@ app.use('/api/patient', patientsRoute);
 app.use('/api/attendence', attendence);
 app.use('/api/getDataOnUser',userData);
 app.use('/api/morningMeeting',morningMeetingRoute);
-
+app.use('/api/orenSchedule',orenSchedule);
+app.use('/api/sahlavSchedule',sahlavSchedule);
+app.use('/api/gefenSchedule',gefenSchedule);
+app.use('/api/dekelSchedule',dekelSchedule);
+app.use('/api/tzivoniSchedule',tzivoniSchedule);
+app.use('/api/rakefetSchedule',rakefetSchedule);
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
