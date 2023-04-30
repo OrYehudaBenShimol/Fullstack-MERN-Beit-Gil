@@ -12,12 +12,8 @@ const loginRoutes = require('./routes/login');
 const attendence = require('./routes/patientsAttendence');
 const userData = require('./routes/getDataOnUsers');
 const morningMeetingRoute = require('./routes/morningMeeting');
-const orenSchedule = require('./routes/orenSchedule');
-const sahlavSchedule = require('./routes/sahlavSchedule');
-const gefenSchedule = require('./routes/gefenSchedule');
-const dekelSchedule = require('./routes/dekelSchedule');
-const tzivoniSchedule = require('./routes/tzivoniSchedule');
-const rakefetSchedule = require('./routes/rakefetSchedule');
+const allSchedule = require('./routes/allSchedule');
+
 
 const mongoose = require('mongoose');
 
@@ -42,12 +38,8 @@ app.use('/api/patient', patientsRoute);
 app.use('/api/attendence', attendence);
 app.use('/api/getDataOnUser',userData);
 app.use('/api/morningMeeting',morningMeetingRoute);
-app.use('/api/orenSchedule',orenSchedule);
-app.use('/api/sahlavSchedule',sahlavSchedule);
-app.use('/api/gefenSchedule',gefenSchedule);
-app.use('/api/dekelSchedule',dekelSchedule);
-app.use('/api/tzivoniSchedule',tzivoniSchedule);
-app.use('/api/rakefetSchedule',rakefetSchedule);
+app.use('/api/schedule',allSchedule);
+
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)

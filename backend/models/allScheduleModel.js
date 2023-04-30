@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const sahlavSchedule = new Schema({
+const allSchedule = new Schema({
     title:{
         type: String,
         require: true
@@ -15,7 +15,6 @@ const sahlavSchedule = new Schema({
     startTime:{
         type: String,
         required: true,
-        unique:true,
         validate: {
           validator: function(v) {
             return /^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(v);
@@ -32,10 +31,15 @@ const sahlavSchedule = new Schema({
           },
           message: props => `${props.value} is not a valid end time! Please use the format hh:mm.`
         }
+    },
+    classRoom:{
+      type:String,
+      require:true,
+      enum: ['oren', 'sahlav', 'rakefet', 'dekel', 'gefen','tzivoni'],
     }
 
 }, {timestamps:true});
 
 
-module.exports = mongoose.model('sahlavSchedule',sahlavSchedule);
+module.exports = mongoose.model('allSchedule',allSchedule);
 

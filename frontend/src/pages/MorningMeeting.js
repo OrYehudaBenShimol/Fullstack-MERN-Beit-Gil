@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Patient from '../components/Patient';
+import ScheduleDetailsForMorningMeeting from '../components/ScheduleDetailsForMorningMeeting';
 import { usePatientsContext } from '../hooks/usePatientsContext';
+import { useScheduleContext } from '../hooks/useScheduleContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const MorningMeeting = () => {
   const { patients, dispatch } = usePatientsContext();
+  const { schedules,dispatch:orenDispatch} = useScheduleContext();
   const { user } = useAuthContext();
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const currentDate = new Date();
+  const currentDayOfWeek = daysOfWeek[currentDate.getDay()];
   const [showComboBox, setShowComboBox] = useState(false);
   const [patientsToShow, setPatientToShow] = useState([]);
+  const [schedulesToShow,setSchedulesToShow] = useState([]);
   const [className,setClassName] = useState('')
   const [showLabel,setShowLabel] = useState(false)
   /* WHAT TO SHOW STATES */
@@ -432,8 +439,7 @@ const MorningMeeting = () => {
   }
   /* END OF MONTHS HANDLERS */
 
-
-   function handleUserTypeChange(event) {
+  async function handleUserTypeChange(event) {
         const patientsByClass =  patients.filter((patient) => patient.classRoom === event.target.value);
         setShowComboBox(true);
         setPatientToShow(patientsByClass);
@@ -443,21 +449,66 @@ const MorningMeeting = () => {
         }else{
           setShowLabel(false)
         }
+        let scheduleByDay = null
+        switch (event.target.value) {
+          case "oren": 
+            scheduleByDay =  schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "oren")
+            setSchedulesToShow(scheduleByDay)
+            break;
+          case "gefen":
+            scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "gefen")
+            setSchedulesToShow(scheduleByDay)
+            break;
+          case "dekel":
+            scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "dekel")
+            setSchedulesToShow(scheduleByDay)
+            break;
+          case "sahlav":
+            scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "sahlav")
+            setSchedulesToShow(scheduleByDay)
+            break;
+          case "tzivoni":
+            scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "tzivoni")
+            setSchedulesToShow(scheduleByDay)
+            break;
+          case "rakefet":
+            scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "rakefet")
+            setSchedulesToShow(scheduleByDay)
+            break;
+        
+          default:
+            setSchedulesToShow([])
+            break;
+        }
   }
 
   useEffect(() => {
     const fetchPatients = async () => {
-      const response = await fetch('/api/morningMeeting', {
+      let response = await fetch('/api/morningMeeting', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-
-      const json = await response.json();
+      let json = await response.json();
       if (response.ok) {
+
         dispatch({ type: 'SET_PATIENTS', payload: json });
       }
+
+      response = await fetch('/api/schedule', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      json = await response.json();
+      if (response.ok) {
+       await orenDispatch({ type: 'SET_SCHEDULES', payload: json });
+      }
+
+     
+
     };
 
     if(user){
@@ -478,8 +529,8 @@ const MorningMeeting = () => {
       }
   }
     if (user) {
-      fetchPatients();
-
+        fetchPatients();
+   
       switch (localStorage.getItem('day')) {
         case "day1":
           handleSunday()
@@ -569,7 +620,7 @@ const MorningMeeting = () => {
           break;
       }
     }
-  }, [dispatch, user]);
+  }, [user,dispatch,orenDispatch]);
 
  
   return (
@@ -740,8 +791,22 @@ const MorningMeeting = () => {
           )}
         </div>
     </div>
-    <div>
-      <label>hello</label>
+    <div className='schedules-container'>
+      {showComboBox && schedules && (
+        <div className="schedule-container-morning">
+        {schedules.filter(s => s.classRoom === className && s.day === currentDayOfWeek).map((schedule) => (
+          <ScheduleDetailsForMorningMeeting
+            schedule={schedule}
+            key={schedule._id}
+            title={schedule.title}
+            startTime={schedule.startTime}
+            endTime={schedule.endTime}
+          />
+          
+        ))}
+        
+      </div>
+      )}
     </div>
   
     </div>

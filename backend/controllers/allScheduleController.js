@@ -1,13 +1,14 @@
-const OrenSchedule = require('../models/orenScheduleModel');
+const AllSchedule = require('../models/allScheduleModel');
 
 // Controller function for creating a new schedule
-exports.createSchedule = async (req, res) => {
+module.exports.createSchedule = async (req, res) => {
   try {
-    const newSchedule = new OrenSchedule({
+    const newSchedule = new AllSchedule({
       title: req.body.title,
       day: req.body.day,
       startTime: req.body.startTime,
-      endTime: req.body.endTime
+      endTime: req.body.endTime,
+      classRoom:req.body.classRoom
     });
 
     const savedSchedule = await newSchedule.save();
@@ -19,9 +20,9 @@ exports.createSchedule = async (req, res) => {
 };
 
 // Controller function for getting all schedules for a day
-exports.getAllSchedules = async (req, res) => {
+module.exports.getAllSchedules = async (req, res) => {
   try {
-    const schedules = await OrenSchedule.find({day:req.body.day});
+    const schedules = await AllSchedule.find({});
     res.json(schedules);
   } catch (error) {
     console.error(error);
@@ -30,9 +31,9 @@ exports.getAllSchedules = async (req, res) => {
 };
 
 // Controller function for getting a single schedule by ID
-exports.getScheduleById = async (req, res) => {
+module.exports.getScheduleById = async (req, res) => {
   try {
-    const schedule = await OrenSchedule.findById(req.params.id);
+    const schedule = await AllSchedule.findById(req.params.id);
     if (!schedule) {
       return res.status(404).json({ error: 'Schedule not found' });
     }
@@ -44,15 +45,16 @@ exports.getScheduleById = async (req, res) => {
 };
 
 // Controller function for updating a schedule by ID
-exports.updateScheduleById = async (req, res) => {
+module.exports.updateScheduleById = async (req, res) => {
   try {
-    const updatedSchedule = await OrenSchedule.findByIdAndUpdate(
+    const updatedSchedule = await AllSchedule.findByIdAndUpdate(
       req.params.id,
       {
         title: req.body.title,
         day: req.body.day,
         startTime: req.body.startTime,
-        endTime: req.body.endTime
+        endTime: req.body.endTime,
+        classRoom:req.body.classRoom
       },
       { new: true }
     );
@@ -67,9 +69,9 @@ exports.updateScheduleById = async (req, res) => {
 };
 
 // Controller function for deleting a schedule by ID
-exports.deleteScheduleById = async (req, res) => {
+module.exports.deleteScheduleById = async (req, res) => {
   try {
-    const deletedSchedule = await OrenSchedule.findByIdAndDelete(req.params.id);
+    const deletedSchedule = await AllSchedule.findByIdAndDelete(req.params.id);
     if (!deletedSchedule) {
       return res.status(404).json({ error: 'Schedule not found' });
     }
