@@ -12,6 +12,19 @@ const AddUsers = () => {
     const {user} = useAuthContext()
     const [toRun,setToRun] = useState(true)
 
+    const refreshPatients = async () => {
+        const response = await fetch('/api/patient',{
+            headers:{
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+
+        const json = await response.json()
+        if(response.ok){
+            dispatch2({type: 'SET_PATIENTS', payload: json},)
+        }
+    }
+
     useEffect(()=>{
         const FetchUsers= async() =>{
             let response = await fetch('/api/users',{
@@ -54,11 +67,12 @@ const AddUsers = () => {
                 window.location.href = '/login';
             }
         }
-        if(user && toRun){
+        if(user){
+            
             FetchUsers()
-            setToRun(false)
+            //setToRun(false)
         }        
-    },[user,users,patients])
+    },[user,dispatch,dispatch2])
 
 
     return(
@@ -70,13 +84,13 @@ const AddUsers = () => {
                 ))}
             </div>
             {<div className="users">
-            <label> מקבלי שירות</label>
-            {patients && patients.map((patient)=>(
-                    <PatientDetails key={patient._id} patient={patient}/>
-                ))}
+                <label> מקבלי שירות</label>
+                {patients && patients.sort((a, b) => a.classRoom.localeCompare(b.classRoom)).map((patient)=>(
+                        <PatientDetails key={patient._id} patient={patient}/>
+                    ))}
             </div> 
             }
-            <UserForm/>
+            <UserForm refreshPatients={refreshPatients}/>
         </div>
     )
 }

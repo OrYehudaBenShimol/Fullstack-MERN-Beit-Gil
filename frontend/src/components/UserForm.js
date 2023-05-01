@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { useUsersContext } from '../hooks/useUsersContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
-const UserForm = () => {
+const UserForm = ({refreshPatients}) => {
     const {dispatch} = useUsersContext();
     const {user} = useAuthContext();
     // const date = new Date();
@@ -141,6 +141,7 @@ const UserForm = () => {
                     setSuccessAdding(false)
                 },"5000")
                 console.log('new patient has been added.',json);
+                await refreshPatients()
             }
         }
     }
