@@ -792,9 +792,15 @@ const MorningMeeting = () => {
         </div>
     </div>
     <div className='schedules-container'>
+    <label className='daily'>לו"ז יומי</label>
+
       {showComboBox && schedules && (
         <div className="schedule-container-morning">
-        {schedules.filter(s => s.classRoom === className && s.day === currentDayOfWeek).map((schedule) => (
+        {schedules.filter(s => s.classRoom === className && s.day === currentDayOfWeek).sort((a, b) => {
+          const timeA = new Date(`1970-01-01T${a.startTime}`);
+          const timeB = new Date(`1970-01-01T${b.startTime}`);
+          return timeA - timeB;
+        }).map((schedule) => (
           <ScheduleDetailsForMorningMeeting
             schedule={schedule}
             key={schedule._id}

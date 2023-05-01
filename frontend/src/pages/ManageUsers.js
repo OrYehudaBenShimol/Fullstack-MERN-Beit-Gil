@@ -34,6 +34,9 @@ const ManageUsers = () => {
             {user && (
                 <Link className='AddUser-Btn' to="/AddUser">Add Users</Link>
             )}
+            {user && (
+                <Link className='AddSchedules-Btn' to="/AddSchedules">Add/Delete Schedules</Link>
+            )}
         </div>
         
     )

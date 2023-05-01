@@ -3,6 +3,22 @@ const AllSchedule = require('../models/allScheduleModel');
 // Controller function for creating a new schedule
 module.exports.createSchedule = async (req, res) => {
   try {
+    const {title,startTime,endTime} = req.body
+    let emptyFields = [];
+    if(!title){
+      emptyFields.push('title')
+    }
+    if(!startTime){
+      emptyFields.push('startTime')
+    }
+    if(!endTime){
+      emptyFields.push('endTime')
+    }
+
+
+    if(emptyFields.length >0){
+      return res.status(400).json({error:'נא למלא את כל השדות באדום', emptyFields})
+    }
     const newSchedule = new AllSchedule({
       title: req.body.title,
       day: req.body.day,

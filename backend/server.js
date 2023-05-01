@@ -38,7 +38,7 @@ app.use('/api/patient', patientsRoute);
 app.use('/api/attendence', attendence);
 app.use('/api/getDataOnUser',userData);
 app.use('/api/morningMeeting',morningMeetingRoute);
-app.use('/api/schedule',allSchedule);
+app.use('/api/schedules',allSchedule);
 
 
 // connect to db

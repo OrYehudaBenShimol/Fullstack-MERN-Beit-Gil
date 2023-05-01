@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import ManageUsers from './pages/ManageUsers';
 import AttendenceCheck from './pages/AttendenceCheck';
 import MorningMeeting from './pages/MorningMeeting';
+import AddSchedules from './pages/AddSchedules';
 import { useEffect } from 'react';
 
 
@@ -26,6 +27,9 @@ function App() {
             />
             <Route
             path='/AddUser' element={user ? <AddUsers /> : <Navigate to='/login' />}
+            />
+            <Route
+            path='/AddSchedules' element={user ? <AddSchedules /> : <Navigate to='/login' />}
             />
             <Route
             path='/ManageUsers' element={user ? <ManageUsers /> : <Navigate to='/login' />}

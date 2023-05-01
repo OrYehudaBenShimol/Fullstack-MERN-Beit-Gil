@@ -134,6 +134,18 @@ header a {
   margin-right: 10px;
 }
 
+.AddSchedules-Btn{
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .logout-btn{
   background: #fff;
   color: var(--primary);
@@ -197,6 +209,13 @@ header a {
   gap: 20px;
 }
 
+.AddSchedules {
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr;
+  gap: 20px;
+}
+
+
 .Patients-Attendence{
   display: flex;
   flex-wrap: wrap;
@@ -258,6 +277,88 @@ div.users{
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.schedule-details{
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 8px;
+  padding-right: 12px;
+  position: relative;
+  text-align: right;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.schedule-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+.schedule-details p{
+  font-size: large;
+}
+
+.schedule-details h4{
+  text-align: center;
+  font-weight: bolder;
+  color: var(--primary);
+  text-shadow: 1px 1px #b1b1b185;
+}
+
+.schedules{
+  max-height: 700px;
+  overflow-y: auto;
+}
+.schedules:hover{
+  overflow-y: scroll;
+}
+
+.schedule-container{
+  max-height: 700px;
+}
+
+.schedule-container-morning{
+  overflow-y: auto;
+  flex-wrap: wrap;
+  max-height: 700px;
+}
+
+.schedule-container-morning:hover{
+  overflow-y: scroll;
+}
+.add-new-schedule-label{
+  text-align: center;
+  font-size: x-large;
+}
+.daily-schedule-label{
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.choosing-class-day{
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 25px;
+}
+
+#schedule-day{
+  text-align: right;
+  width: 100%;
+  align-self: auto;
+  direction: rtl;
+}
+
+#schedule-class{
+  text-align: right;
+  width: 100%;
+  align-self: auto;
+  direction: rtl;
 }
 
 .create h2{
