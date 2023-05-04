@@ -62,12 +62,12 @@ async function dumpTableToJson() {
       const filePath = './morning-attendence.json';
       const filePath2 = './morning-meeting.json';
 
-      fs.appendFile(filePath, "{" + JSON.stringify(data) +"},", (err) => { // Append data to file
+      fs.appendFile(filePath, JSON.stringify(data) + ",", (err) => { // Append data to file
         if (err) throw err;
         console.log(`Data written to ${filePath}`);
       });
   
-      fs.appendFile(filePath2, "{" + JSON.stringify(data2)+"},", (err) => { // Append data to file
+      fs.appendFile(filePath2, JSON.stringify(data2)+",", (err) => { // Append data to file
         if (err) throw err;
         console.log(`Data written to ${filePath2}`);
       });

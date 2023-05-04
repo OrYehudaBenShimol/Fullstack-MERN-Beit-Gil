@@ -81,7 +81,7 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
   return (
     <div>
       <div className="patient-morning-meeting">
-        <img src="images/blank.png" alt={name} onClick={(e)=>{setShowFeelings(!showFeelings)}} className="morning-picture"  />
+        <img src={`images/patients/${patient.id}.png`} alt={name} onClick={(e)=>{setShowFeelings(!showFeelings)}} className="morning-picture"  />
         <img src={`images/emojis/${typeOfFeeling}.png`} hidden={showPatientFeelings} className="patient-morning-picture"/>
         <label className="morning-meeting-name">{name}</label>
 

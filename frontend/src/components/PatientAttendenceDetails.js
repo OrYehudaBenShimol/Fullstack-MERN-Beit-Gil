@@ -46,7 +46,7 @@ const PatientAttendenceDetails = ({patientDet, handleChange}) => {
             </div>
             {/* <br/> */}
             {/* <img className="attendence-image" src={`images/${patientDet.id}.png`} width="70" height="70"/> */}
-            <img className="attendence-image" src={`images/blank.png`} width="100" height="100"/>
+            <img className="attendence-image" src={`images/patients/${patientDet.id}.png`} width="100" height="100"/>
         </div>
     )
 }
