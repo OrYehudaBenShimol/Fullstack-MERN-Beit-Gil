@@ -236,11 +236,11 @@ header a {
   display: flex;
   flex-wrap: wrap;
   max-height: inherit;
-  gap: 16px; /* Add any desired gap between patient containers */
+  gap: 8px; /* Add any desired gap between patient containers */
 }
 
 .patient-container {
-  flex-basis: calc(33.33% - 20px); /* Adjust flex-basis and gap to achieve desired width and gap between patients */
+  flex-basis: calc(25% - 20px); /* Adjust flex-basis and gap to achieve desired width and gap between patients */
   margin-bottom: 8px; /* Add any desired margin between patient containers */
 }
 
@@ -913,7 +913,7 @@ input:checked + .slider:before {
 
 
 .patient-attendence-details {
-  width: unset;
+  width: 200px;
   height: 200px;
   background: #fff;
   border-radius: 4px;
@@ -941,7 +941,7 @@ input:checked + .slider:before {
   right: 20px;
   cursor: pointer;
   background: #f1f1f1;
-  padding: 6px;
+  padding: 4px;
   border-radius: 50%;
   color: #333;
 }
@@ -952,7 +952,7 @@ input:checked + .slider:before {
 
 .patient-attendence-details input:checked{
   cursor: pointer;
-  background-color: #06bf1b;
+  background-color: #06bf1cc9;
   border: 0.5px solid #00000034;
 }
 .patient-attendence-details div {
@@ -986,13 +986,25 @@ div.patients{
 }
 
 .attendence-image{
-  border-radius: 50%;
+  border-radius: 10%;
   border:2px solid #00000013 ;
-  margin-top: 10px;
+  margin-top: 5px;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  width:110px;
+  height:110px;
 }
 
 
 
 
-
+.manage-patient-image{
+  border-radius: 10%;
+  border:2px solid #00000013 ;
+  margin-top: 5px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  width:90px;
+  height:90px;
+  position: absolute;
+  top: 55px;
+  left:10px
+}

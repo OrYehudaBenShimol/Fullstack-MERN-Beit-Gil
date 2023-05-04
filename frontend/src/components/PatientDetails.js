@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { usePatientsContext } from "../hooks/usePatientsContext"
 
@@ -6,7 +6,7 @@ import { usePatientsContext } from "../hooks/usePatientsContext"
 const PatientDetails = ({patient}) => {
     const {dispatch} = usePatientsContext();
     const {user} = useAuthContext();
-
+    const [hebrewClassName,setHebrewClassName] = useState('')
     const handleClick = async () => {
         setShowPopup(true)
 
@@ -51,11 +51,12 @@ const PatientDetails = ({patient}) => {
                 <button className="confirm-btn" onClick={handleDeleteUser}>אישור</button>
                 <button onClick={() => setShowPopup(false)}>ביטול</button>
             </div>
-      )}
+      )}    <div>
+                    <img className="manage-patient-image" src={`images/patients/${patient.id}.png`}/>
+            </div>
         </div>
     )
 }
-
 
 
 export default  PatientDetails
