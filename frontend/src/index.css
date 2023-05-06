@@ -1000,11 +1000,17 @@ div.patients{
 .manage-patient-image{
   border-radius: 10%;
   border:2px solid #00000013 ;
-  margin-top: 5px;
+  margin-top: 16px;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-  width:90px;
-  height:90px;
+  width:80px;
+  height:80px;
   position: absolute;
   top: 55px;
   left:10px
+}
+
+
+.name-of-classRoom h2{
+  text-align: center ;
+  margin-bottom: 10px;
 }

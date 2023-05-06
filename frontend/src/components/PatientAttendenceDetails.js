@@ -1,6 +1,6 @@
 import { usePatientsContext } from "../hooks/usePatientsContext"
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const PatientAttendenceDetails = ({patientDet, handleChange}) => {
@@ -37,6 +37,18 @@ const PatientAttendenceDetails = ({patientDet, handleChange}) => {
         handleChange(event,patientDet)
     }
 
+
+
+    const [imageSrc, setImageSrc] = useState(null)
+
+    useEffect(() => {
+      if (patientDet.image && patientDet.image.data) {
+        const blob = new Blob([new Uint8Array(patientDet.image.data)], { type: "image/png" })
+        setImageSrc(URL.createObjectURL(blob))
+      }
+    }, [patientDet.image])
+
+
     return(
         <div className="patient-attendence-details">
             <h4>{patientDet.hebrewName}</h4>
@@ -46,7 +58,7 @@ const PatientAttendenceDetails = ({patientDet, handleChange}) => {
             </div>
             {/* <br/> */}
             {/* <img className="attendence-image" src={`images/${patientDet.id}.png`} width="70" height="70"/> */}
-            <img className="attendence-image" src={`images/patients/${patientDet.id}.png`}/>
+            {imageSrc &&<img className="attendence-image" src={imageSrc}/>}
         </div>
     )
 }

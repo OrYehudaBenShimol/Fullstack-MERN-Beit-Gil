@@ -18,7 +18,9 @@ const attendenceSchema = new Schema({
     arrived:{
         type:Boolean,
         default:false
-    }
+    },
+    image: Buffer,
+
 
 }, {timestamps:true});
 

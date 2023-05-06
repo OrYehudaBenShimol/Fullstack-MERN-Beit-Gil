@@ -12,6 +12,33 @@ const AddUsers = () => {
     const {user} = useAuthContext()
     const [toRun,setToRun] = useState(true)
 
+
+    const handlePatientClassRoom = (patient) => {
+        let classroom =''
+        switch (patient.classRoom) {
+            case 'oren':
+                classroom = 'אורן';
+                break;
+            case 'gefen':
+                classroom = 'גפן';
+                break;
+            case 'dekel':
+                classroom = 'דקל';
+                break;
+            case 'sahlav':
+                classroom = 'סחלב';
+                break;
+            case 'tzivoni':
+                classroom = 'צבעוני';
+                break;
+            case 'rakefet':
+                classroom = 'רקפת';
+                break;
+            default:
+                break;
+        }
+        return classroom
+    }
     const refreshPatients = async () => {
         const response = await fetch('/api/patient',{
             headers:{
@@ -86,7 +113,7 @@ const AddUsers = () => {
             {<div className="users">
                 <label> מקבלי שירות</label>
                 {patients && patients.sort((a, b) => a.classRoom.localeCompare(b.classRoom)).map((patient)=>(
-                        <PatientDetails key={patient._id} patient={patient}/>
+                        <PatientDetails key={patient._id} patient={patient} patientClassRoom={handlePatientClassRoom(patient)} />
                     ))}
             </div> 
             }

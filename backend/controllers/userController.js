@@ -1,8 +1,6 @@
 const User = require('../models/userModel');
 const Patient = require('../models/patientModel');
-
 const mongoose = require('mongoose');
-
 
 // Get all users.
 const getAllUsers = async ( req,res) =>{
@@ -58,6 +56,12 @@ const getSinglelPatient = async ( req,res) =>{
 }
 
 
+
+const getPatientImage = async(req,res,next) =>{
+    const patientImage = await Patient.findById(req.params.id);
+    res.end(patientImage.image);
+}
+
 // Create new user.(Manager and employees)
 const createNewUser = async (req,res) => {
     const {name,id,email,cellphone,dateOfBirth,role,hebrewName,password} = req.body;
@@ -104,6 +108,7 @@ const createNewUser = async (req,res) => {
             dateOfBirth:user.dateOfBirth,
             role:user.role,
             hebrewName:user.hebrewName
+
         }
        
         res.status(200).json(userWithoutPassword);
@@ -117,7 +122,7 @@ const createNewPatient = async (req,res) => {
     const {name,id,cellphone,dateOfBirth,role,classRoom,hebrewName} = req.body;
     // Add new user to the database.
     try {
-        const patient = await Patient.create({name,id,cellphone,dateOfBirth,role,classRoom,hebrewName});
+        const patient = await Patient.create({name,id,cellphone,dateOfBirth,role,classRoom,hebrewName,image:req.file.buffer});
         res.status(200).json(patient);
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -195,5 +200,6 @@ module.exports = {
     getSinglelPatient,
     createNewPatient,
     deletePatient,
-    updatePatient
+    updatePatient,
+    getPatientImage
 }

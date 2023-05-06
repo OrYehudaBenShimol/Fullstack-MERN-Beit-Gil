@@ -3,10 +3,11 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { usePatientsContext } from "../hooks/usePatientsContext"
 
 
-const PatientDetails = ({patient}) => {
+const PatientDetails = ({patient,imageURL,patientClassRoom}) => {
     const {dispatch} = usePatientsContext();
     const {user} = useAuthContext();
     const [hebrewClassName,setHebrewClassName] = useState('')
+
     const handleClick = async () => {
         setShowPopup(true)
 
@@ -32,13 +33,21 @@ const PatientDetails = ({patient}) => {
         setShowPopup(false); 
   }
 
+  const [imageSrc, setImageSrc] = useState(null)
+
+  useEffect(() => {
+    if (patient.image && patient.image.data) {
+      const blob = new Blob([new Uint8Array(patient.image.data)], { type: "image/png" })
+      setImageSrc(URL.createObjectURL(blob))
+    }
+  }, [patient.image])
     return(
         <div className="patient-details">
             <h4>{patient.hebrewName}</h4>
             <p>{patient.name}<strong> :שם באנגלית </strong></p>
             <p><strong>תעודת זהות: </strong>{patient.id}</p>
             <p><strong>טלפון: </strong>{patient.cellphone}</p>
-            <p>{patient.classRoom} :כיתה</p>
+            <p><strong> כיתה:</strong> {patientClassRoom}</p>
             <div className="tooltip-container">
             <span id="delete" text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
             </div>
@@ -52,7 +61,7 @@ const PatientDetails = ({patient}) => {
                 <button onClick={() => setShowPopup(false)}>ביטול</button>
             </div>
       )}    <div>
-                    <img className="manage-patient-image" src={`images/patients/${patient.id}.png`}/>
+                    {imageSrc && <img className="manage-patient-image" src={imageSrc}/> }
             </div>
         </div>
     )

@@ -21,7 +21,7 @@ const AttendenceCheck = () => {
     const formattedDate = `${day}.${month}.${year}`;
 
     const handleChange = async (event,patientDetails) => {
-            const updated = {_id:patientDetails._id ,id: patientDetails.id, classRoom: patientDetails.classRoom, hebrewName: patientDetails.hebrewName, arrived: !patientDetails.arrived}
+            const updated = {_id:patientDetails._id ,id: patientDetails.id, classRoom: patientDetails.classRoom, hebrewName: patientDetails.hebrewName, arrived: !patientDetails.arrived, image:patientDetails.image }
             const response = await fetch('/api/attendence', {
                 method:'POST',
                 headers:{

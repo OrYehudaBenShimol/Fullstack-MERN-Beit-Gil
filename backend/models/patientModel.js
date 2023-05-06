@@ -32,6 +32,8 @@ const patientSchema = new Schema({
         type:String,
         require:true
     },
+    image: Buffer,
+
 
 }, {timestamps:true});
 

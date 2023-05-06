@@ -26,10 +26,14 @@ app.use(express.json());
 
 
 
+
 app.use((req,res,next)=>{
     console.log(req.path, req.method);
     next();
 });
+
+app.use(express.json({limit: '50mb'}));
+
 
 // routes
 app.use('/api/login',loginRoutes);

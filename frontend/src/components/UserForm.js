@@ -34,7 +34,10 @@ const UserForm = ({refreshPatients}) => {
     const [patientHebrewName, setPatientHebrewName] = useState('');
     const [successAdding,setSuccessAdding] = useState(false)
     const [successMessage,setSuccessMessage] = useState('התווסף בהצלחה')
+    const [photo, setPhoto] = useState(null);
 
+
+    
     const handleSubmit = async (e) =>{
         e.preventDefault();
         if(!user){
@@ -111,14 +114,24 @@ const UserForm = ({refreshPatients}) => {
         }
 
         if(typeOfUser.userType === 'option-3' ){
-            const patient = {name:patientName, id:patientID, cellphone:patientPhone, dateOfBirth:patientBirthday, role:"Patient" ,classRoom:classRoom, hebrewName:patientHebrewName}
+
+            const patient = {name:patientName, id:patientID, cellphone:patientPhone, dateOfBirth:patientBirthday, role:"Patient" ,classRoom:classRoom, hebrewName:patientHebrewName, image:photo}
+            const formData = new FormData();
+            formData.append("image", photo);
+            formData.append("name", patientName);
+            formData.append("id", patientID);
+            formData.append("classRoom", classRoom);
+            formData.append("cellphone", patientPhone);
+            formData.append("dateOfBirth", patientBirthday);
+            formData.append("hebrewName", patientHebrewName);
+            formData.append("role","Patient")
+            
             const response = await fetch('/api/patient', {
                 method: 'POST',
-                body: JSON.stringify(patient),
+                body: formData,
                 headers:{
-                    'Content-Type':'application/json',
+                    // 'Content-Type':'application/json',
                     'Authorization': `Bearer ${user.token}`
-
                 }
             })
             const json = await response.json();
@@ -133,10 +146,11 @@ const UserForm = ({refreshPatients}) => {
                 setPatientID('')
                 setPatientBirtday('')
                 setPatientID('')
-                setUserClassroom('oren')
+                // setUserClassroom('oren')
                 setPatientPhone('')
                 setPatientHebrewName('')
                 setSuccessAdding(true)
+                setPhoto(null)
                 setTimeout(()=>{
                     setSuccessAdding(false)
                 },"5000")
@@ -174,7 +188,7 @@ const UserForm = ({refreshPatients}) => {
 
     return(
         
-        <form className='create' onSubmit={handleSubmit}>
+        <form className='create' onSubmit={handleSubmit} encType='multipart/form-data'>
             <label htmlFor="user-type">בחר את סוג המשתמש אותו תרצה להוסיף</label>
             <select id="user-type" className="chooseType" value={userType} onChange={handleUserTypeChange}>
                 <option value="empty"></option>
@@ -267,9 +281,10 @@ const UserForm = ({refreshPatients}) => {
                     <label htmlFor="birthdate">:תאריך לידה</label>
                     <input className={emptyFields.includes('dateOfBirth') ? 'error' :''} type="text" value={patientBirthday}
                          onChange={(e)=> setPatientBirtday(e.target.value)}/>
-
                     <label htmlFor="hebrewName">:שם בעברית</label>
                     <input className={emptyFields.includes('hebrewName') ? 'error' :''} type="text" value={patientHebrewName} onChange={(e)=> setPatientHebrewName(e.target.value)} />                <br />
+                    <label htmlFor="addPicture">תמונה</label>
+                    <input type="file" name="patientImage" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} />
 
                     <button type="submit">הוסף משתמש</button>
                 </div>

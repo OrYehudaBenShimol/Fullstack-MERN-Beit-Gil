@@ -12,10 +12,11 @@ const getAllPatients = async ( req,res) =>{
         const id = patient.id;
         const classRoom = patient.classRoom;
         const hebrewName = patient.hebrewName;
+        const image = patient.image;
     try {
         const existingRecord = await PatientAttendence.findOne({ createdAt: { $gte: today }, id:patient.id });
         if(!existingRecord){
-            const attendencePatient = await PatientAttendence.create({id,classRoom,hebrewName});
+            const attendencePatient = await PatientAttendence.create({id,classRoom,hebrewName,image});
         }
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -29,8 +30,8 @@ const getAllPatients = async ( req,res) =>{
 
 // Update a patient.
 const updatePatientAttendence = async ( req,res) =>{
-    const {id,classRoom,hebrewName,arrived} = req.body
-    const patient = await PatientAttendence.findOneAndUpdate({id: id}, {classRoom,hebrewName,arrived},{ new: true });
+    const {id,classRoom,hebrewName,arrived,image} = req.body
+    const patient = await PatientAttendence.findOneAndUpdate({id: id}, {classRoom,hebrewName,arrived,image},{ new: true });
     if(!patient){
         return res.status(404).json({error:'No such patient.'});
     }

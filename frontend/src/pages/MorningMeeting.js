@@ -443,7 +443,30 @@ const MorningMeeting = () => {
         const patientsByClass =  patients.filter((patient) => patient.classRoom === event.target.value);
         setShowComboBox(true);
         setPatientToShow(patientsByClass);
-        setClassName(event.target.value)
+        // setClassName(event.target.value)
+        switch (event.target.value) {
+          case 'oren':
+            setClassName('אורן');
+              break;
+          case 'gefen':
+            setClassName('גפן');
+              break;
+          case 'dekel':
+            setClassName('דקל');
+              break;
+          case 'sahlav':
+            setClassName('סחלב');
+              break;
+          case 'tzivoni':
+            setClassName('צבעוני');
+              break;
+          case 'rakefet':
+            setClassName('רקפת');
+              break;
+          default:
+              break;
+      }
+
         if(patientsToShow.length === 0){
           setShowLabel(true)
         }else{
@@ -649,7 +672,7 @@ const MorningMeeting = () => {
         )}
         
         {showComboBox && patientsToShow.length > 0 && (
-          <div>
+          <div className="name-of-classRoom">
             <h2>{className}</h2>
             <div className="patient-container-morning">
             {patientsToShow.map((patient) => (
@@ -792,10 +815,12 @@ const MorningMeeting = () => {
         </div>
     </div>
     <div className='schedules-container'>
-    <label className='daily'>לו"ז יומי</label>
 
       {showComboBox && schedules && (
+        
         <div className="schedule-container-morning">
+              <label className='daily'>לו"ז יומי</label>
+
         {schedules.filter(s => s.classRoom === className && s.day === currentDayOfWeek).sort((a, b) => {
           const timeA = new Date(`1970-01-01T${a.startTime}`);
           const timeB = new Date(`1970-01-01T${b.startTime}`);
