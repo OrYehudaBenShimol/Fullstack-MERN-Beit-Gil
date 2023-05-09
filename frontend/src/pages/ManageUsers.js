@@ -32,10 +32,13 @@ const ManageUsers = () => {
     return(
         <div className='manager-homepage'>
             {user && (
-                <Link className='AddUser-Btn' to="/AddUser">Add Users</Link>
+                <Link className='AddUser-Btn' to="/AddUser">הוספת/הסרת משתמשים ומטופלים</Link>
             )}
             {user && (
-                <Link className='AddSchedules-Btn' to="/AddSchedules">Add/Delete Schedules</Link>
+                <Link className='AddSchedules-Btn' to="/AddSchedules"> לו"ז יומי</Link>
+            )}
+            {user && (
+                <Link className='AddSchedules-Btn' to="/Statistics">נוכחות מקבלי השירות</Link>
             )}
         </div>
         

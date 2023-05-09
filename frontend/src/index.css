@@ -995,6 +995,36 @@ div.patients{
 }
 
 
+.loader-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top :0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.247);
+  z-index: 1;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #8f716a transparent #8f716a transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;
+}
+
+@keyframes spin-anim {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
 
 
 .manage-patient-image{
@@ -1013,4 +1043,17 @@ div.patients{
 .name-of-classRoom h2{
   text-align: center ;
   margin-bottom: 10px;
+}
+
+
+.statistics-details{
+  text-align: right;
+}
+
+
+.chooseTypeStatistics{
+  text-align: right;
+  float: right;
+  position: static;
+  margin-right: 10px;
 }

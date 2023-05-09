@@ -14,6 +14,7 @@ const MorningMeeting = new Schema({
     feeling:{
         type:String,
         require:true,
+        default:''
     },
     arrived:{
         type:Boolean,

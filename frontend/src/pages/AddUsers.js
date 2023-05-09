@@ -1,16 +1,17 @@
-import { useEffect, useState} from "react"
+import { useEffect} from "react"
 import UserDetails from '../components/UserDetails'
 import PatientDetails from "../components/PatientDetails"
 import UserForm from '../components/UserForm'
 import {useUsersContext} from '../hooks/useUsersContext'
 import {usePatientsContext} from '../hooks/usePatientsContext'
 import {useAuthContext} from '../hooks/useAuthContext'
+import Loading from '../components/loading';
+
 const AddUsers = () => {
 
     const {users,dispatch} = useUsersContext()
     const {patients,dispatch: dispatch2} = usePatientsContext()
     const {user} = useAuthContext()
-    const [toRun,setToRun] = useState(true)
 
 
     const handlePatientClassRoom = (patient) => {
@@ -104,6 +105,7 @@ const AddUsers = () => {
 
     return(
         <div className="AddUsers">
+            {!users && !patients && <Loading />}
             <div className="users">
                 <label> עובדים</label>
                 {users && users.map((user)=>(

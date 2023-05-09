@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
+import Loading from '../components/loading';
+
 
 
 const Login = () => {
@@ -14,6 +16,8 @@ const Login = () => {
 }
 
   return (
+    <div className="App">
+      {isLoading && <Loading /> }
     <form className="login" onSubmit={handleSubmit}>
       <h3 className="h3-login-page">התחברות למערכת</h3>
       
@@ -34,6 +38,8 @@ const Login = () => {
       {error && <div className="error">{error}</div>}
 
     </form>
+    </div>
+
   )
 }
 

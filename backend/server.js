@@ -13,6 +13,7 @@ const attendence = require('./routes/patientsAttendence');
 const userData = require('./routes/getDataOnUsers');
 const morningMeetingRoute = require('./routes/morningMeeting');
 const allSchedule = require('./routes/allSchedule');
+const statistics = require('./routes/statistics')
 
 
 const mongoose = require('mongoose');
@@ -43,6 +44,7 @@ app.use('/api/attendence', attendence);
 app.use('/api/getDataOnUser',userData);
 app.use('/api/morningMeeting',morningMeetingRoute);
 app.use('/api/schedules',allSchedule);
+app.use('/api/statistics',statistics)
 
 
 // connect to db
@@ -60,18 +62,18 @@ mongoose.connect(process.env.MONGO_URI)
 // Function to dump table to JSON file and delete from database
 async function dumpTableToJson() {
     try {
-      const data = await PatientAttendence.find({}).lean().exec(); // Get data from MongoDB
+      const data = await PatientAttendence.find({}).select('-image').lean().exec(); // Get data from MongoDB
       const data2 = await MorningMeeting.find({}).lean().exec(); // Get data from MongoDB
 
       const filePath = './morning-attendence.json';
       const filePath2 = './morning-meeting.json';
 
-      fs.appendFile(filePath, JSON.stringify(data) + ",", (err) => { // Append data to file
+      fs.appendFile(filePath, "," +JSON.stringify(data), (err) => { // Append data to file
         if (err) throw err;
         console.log(`Data written to ${filePath}`);
       });
   
-      fs.appendFile(filePath2, JSON.stringify(data2)+",", (err) => { // Append data to file
+      fs.appendFile(filePath2, "," + JSON.stringify(data2), (err) => { // Append data to file
         if (err) throw err;
         console.log(`Data written to ${filePath2}`);
       });

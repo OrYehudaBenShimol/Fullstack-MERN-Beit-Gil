@@ -10,6 +10,7 @@ import ManageUsers from './pages/ManageUsers';
 import AttendenceCheck from './pages/AttendenceCheck';
 import MorningMeeting from './pages/MorningMeeting';
 import AddSchedules from './pages/AddSchedules';
+import Statistics from './pages/Statistics';
 import { useEffect } from 'react';
 
 
@@ -33,6 +34,9 @@ function App() {
             />
             <Route
             path='/ManageUsers' element={user ? <ManageUsers /> : <Navigate to='/login' />}
+            />
+            <Route
+            path='/Statistics' element={user ? <Statistics /> : <Navigate to='/login' />}
             />
             <Route
             path='/MorningAttendence' element={user ? <AttendenceCheck /> : <Navigate to='/login' />}

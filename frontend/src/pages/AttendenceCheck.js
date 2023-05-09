@@ -1,8 +1,8 @@
-import { useEffect, useState} from "react"
+import { useEffect} from "react"
 import PatientAttendenceDetails from '../components/PatientAttendenceDetails'
 import {usePatientsContext} from '../hooks/usePatientsContext'
 import {useAuthContext} from '../hooks/useAuthContext'
-import jwt_decode from 'jwt-decode';
+import Loading from '../components/loading';
 
 const AttendenceCheck = () => {
 
@@ -21,7 +21,7 @@ const AttendenceCheck = () => {
     const formattedDate = `${day}.${month}.${year}`;
 
     const handleChange = async (event,patientDetails) => {
-            const updated = {_id:patientDetails._id ,id: patientDetails.id, classRoom: patientDetails.classRoom, hebrewName: patientDetails.hebrewName, arrived: !patientDetails.arrived, image:patientDetails.image }
+            const updated = {_id:patientDetails._id ,id: patientDetails.id, classRoom: patientDetails.classRoom, hebrewName: patientDetails.hebrewName, arrived: !patientDetails.arrived}
             const response = await fetch('/api/attendence', {
                 method:'POST',
                 headers:{
@@ -84,6 +84,8 @@ const AttendenceCheck = () => {
 
     return(
         <div className="Patients-Attendence">
+            <div>
+                {!patients && <Loading />}
             <label className="morning-attendence-label">  נוכחות בוקר לתאריך {formattedDate} </label>
             <div className="patients">
                 {patients && patients.sort((a, b) => a.hebrewName.localeCompare(b.hebrewName)).map((patient)=>(
@@ -91,6 +93,7 @@ const AttendenceCheck = () => {
                         <PatientAttendenceDetails handleChange={handleChange} key={patient._id} patientDet={patient}/>
                     </div>
                 ))}
+            </div>
             </div>
         </div>
     )

@@ -8,19 +8,19 @@ const getAllPatients = async ( req,res) =>{
     const today = new Date(); // Get the current date
     today.setHours(0, 0, 0, 0); 
     const patients = await Patient.find({}).sort({name: -1});
-    for (const patient of patients) {
-        const id = patient.id;
-        const classRoom = patient.classRoom;
-        const hebrewName = patient.hebrewName;
-        const image = patient.image;
-    try {
-        const existingRecord = await PatientAttendence.findOne({ createdAt: { $gte: today }, id:patient.id });
-        if(!existingRecord){
-            const attendencePatient = await PatientAttendence.create({id,classRoom,hebrewName,image});
+    const attendencePatientCounter = await PatientAttendence.find({});
+    if(attendencePatientCounter.length === 0){
+        for (const patient of patients) {
+            const id = patient.id;
+            const classRoom = patient.classRoom;
+            const hebrewName = patient.hebrewName;
+            const image = patient.image;
+        try {
+                const attendencePatient = await PatientAttendence.create({id,classRoom,hebrewName,image});
+        } catch (error) {
+            res.status(400).json({error: error.message});
         }
-    } catch (error) {
-        res.status(400).json({error: error.message});
-    }
+        }
     }
 
     const retPatients = await PatientAttendence.find({}).sort({name: -1})
