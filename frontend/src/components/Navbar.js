@@ -4,6 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useEffect, useState } from 'react'
 
 
+
 const Navbar = () => {
 
     const {logout} = useLogout()
@@ -42,13 +43,18 @@ const Navbar = () => {
                     <span className='user-email'> שלום {userName}</span>
                 )}
                 <nav className='navigation-bar'>
-                    {user && (<div>
-                        <Link className='morning-meeting-btn' to="/MorningMeeting">מפגש בוקר</Link>
-                        <Link className='attendence-btn' to="/MorningAttendence">נוכחות בוקר</Link>
+                    {user && (<div> 
+                        <Link className='disconnect' onClick={handleClick}>התנתקות</Link>
                         <Link className='manage-users-nav' to="/ManageUsers">ניהול משתמשים</Link>
-                        {/* <span>{user.email}</span> */}
-                        <button className='logout-btn' onClick={handleClick}>התנתקות</button>
+                        <Link className='attendenc'>נוכחות בוקר</Link>
+                        <Link className='meeting'>מפגש בוקר</Link>
+                        <Link className='therapy'>טיפולים פרטניים</Link>
+                        <Link className='Patient follow-up'>מעקב מטופלים</Link>
+                        <Link className='nothes'>פתקים</Link>
+                        <Link className='settings'>הגדרות</Link>
+
                     </div>
+                    
                     )}
                     {!user && (<div>
                         <Link className='login-navbar' to="/login">התחברות</Link>

@@ -3,8 +3,7 @@ import {useAuthContext} from '../hooks/useAuthContext'
 import { useEffect} from "react"
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-
-
+ 
 const ManageUsers = () => {
 
     const {user} = useAuthContext()
