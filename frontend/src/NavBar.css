@@ -19,9 +19,11 @@
   }
 
   .navigation-bar a:hover{
-    background: #f95128;
+    background: #fff;    
+    color: var(--primary);
     padding-top: 15px ;
     padding-bottom:15px;
+    
   }
 
   .login-navbar{

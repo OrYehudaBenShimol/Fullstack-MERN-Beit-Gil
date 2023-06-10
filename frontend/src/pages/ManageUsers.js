@@ -3,7 +3,9 @@ import {useAuthContext} from '../hooks/useAuthContext'
 import { useEffect} from "react"
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
- 
+
+import MyImage from '../public/images/add_user.png' // Import the image
+
 const ManageUsers = () => {
 
     const {user} = useAuthContext()
@@ -30,6 +32,11 @@ const ManageUsers = () => {
 
     return(
         <div className='manager-homepage'>
+            <div className='left-section'>
+            <img src={MyImage} alt='add user image'  className='image-resize'  />
+            </div>
+            <div className='right-section'>
+
             {user && (
                 <Link className='AddUser-Btn' to="/AddUser">הוספת/הסרת משתמשים ומטופלים</Link>
             )}
@@ -39,7 +46,11 @@ const ManageUsers = () => {
             {user && (
                 <Link className='AddSchedules-Btn' to="/Statistics">נוכחות מקבלי השירות</Link>
             )}
+
+</div>
+
         </div>
+        
         
     )
 }
