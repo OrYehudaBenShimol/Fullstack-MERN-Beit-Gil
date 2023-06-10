@@ -2,11 +2,11 @@
 
 form.login {
     max-width: 400px;
-    max-height: 300px;
+    max-height: 400px;
     margin: 90px auto;
     padding: 20px;
     background: #ffffffe5;
-    border-radius: 4px;
+    border-radius: 25px;
     text-align: center;
     font-size: larger;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add your desired shadow properties */
