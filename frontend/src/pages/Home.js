@@ -34,12 +34,16 @@ const Home = () => {
     }
 
     return(
-        <div className='Calender'>
+      /*  <div className='Calender'>
 
         <div className="home">
 
         </div>
-        </div>
+        </div>*/
+        <div className='helloPage'>
+            <img src="/images/welcome.png" alt='add user image'  className='cssClass'  />
+            </div>
+        
     )
 
 
