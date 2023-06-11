@@ -477,26 +477,37 @@ const MorningMeeting = () => {
           case "oren": 
             scheduleByDay =  schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "oren")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
             break;
           case "gefen":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "gefen")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "dekel":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "dekel")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "sahlav":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "sahlav")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "tzivoni":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "tzivoni")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "rakefet":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "rakefet")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
         
           default:
@@ -519,7 +530,7 @@ const MorningMeeting = () => {
         dispatch({ type: 'SET_PATIENTS', payload: json });
       }
 
-      response = await fetch('/api/schedule', {
+      response = await fetch('/api/schedules', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -821,7 +832,7 @@ const MorningMeeting = () => {
         <div className="schedule-container-morning">
               <label className='daily'>לו"ז יומי</label>
 
-        {schedules.filter(s => s.classRoom === className && s.day === currentDayOfWeek).sort((a, b) => {
+        {schedulesToShow.sort((a, b) => {
           const timeA = new Date(`1970-01-01T${a.startTime}`);
           const timeB = new Date(`1970-01-01T${b.startTime}`);
           return timeA - timeB;
