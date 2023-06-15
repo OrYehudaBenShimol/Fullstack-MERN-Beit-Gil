@@ -479,26 +479,37 @@ const MorningMeeting = () => {
           case "oren": 
             scheduleByDay =  schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "oren")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
             break;
           case "gefen":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "gefen")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "dekel":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "dekel")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "sahlav":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "sahlav")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "tzivoni":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "tzivoni")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
           case "rakefet":
             scheduleByDay = schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "rakefet")
             setSchedulesToShow(scheduleByDay)
+            console.log(scheduleByDay)
+
             break;
         
           default:
