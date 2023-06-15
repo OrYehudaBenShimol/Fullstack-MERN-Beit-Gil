@@ -48,6 +48,7 @@ const PatientDetails = ({patient,imageURL,patientClassRoom}) => {
             <p><strong>תעודת זהות: </strong>{patient.id}</p>
             <p><strong>טלפון: </strong>{patient.cellphone}</p>
             <p><strong> כיתה:</strong> {patientClassRoom}</p>
+            <p><strong> תאריך לידה:</strong> {patient.dateOfBirth}</p>
             <div className="tooltip-container">
             <span id="delete" text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
             </div>

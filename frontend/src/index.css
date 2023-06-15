@@ -723,6 +723,13 @@ margin-bottom: 0;
 
 }
 
+.classroom-h1{
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  margin-right: 60px;
+}
+
 .choose-weather-pictures{
   max-height: 120px;
   min-width: 800px;
@@ -1033,7 +1040,17 @@ input:checked + .slider:before {
 }
 
 
+.label-add-users{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
 
+.daily{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
 
 
 div.patients:hover{

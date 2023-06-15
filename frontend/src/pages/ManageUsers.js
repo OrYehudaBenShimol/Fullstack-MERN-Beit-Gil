@@ -46,6 +46,7 @@ const ManageUsers = () => {
             {user && (
                 <Link className='AddSchedules-Btn' to="/Statistics">נוכחות מקבלי השירות</Link>
             )}
+            
 
 </div>
 

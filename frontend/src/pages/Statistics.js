@@ -4,6 +4,8 @@ import {useAuthContext} from '../hooks/useAuthContext'
 import Loading from '../components/loading';
 import StatisticsDetails from "../components/StatisticsDetails"
 import { useStatisticsContext } from "../hooks/useStatisticsContext";
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 const Statistics = () => {
 
@@ -24,6 +26,8 @@ const Statistics = () => {
     function handleUserID(event) {
         setUserID(event.target.value);
     }
+
+
 
     
     useEffect(()=>{ 
@@ -63,9 +67,30 @@ const Statistics = () => {
         }        
     },[dispatch,user]);
 
+    const handleExport = () => {
+        const sheet = XLSX.utils.json_to_sheet(statistics);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, sheet, 'דיווח נוכחות');
+    
+        // Generate the Excel file with styles
+        const excelFile = XLSX.write(workbook, {
+          bookType: 'xlsx',
+          bookSST: false,
+          type: 'array',
+          cellStyles: true,
+        });
+    
+        // Convert the array buffer to a Blob
+        const blob = new Blob([excelFile], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    
+        // Save the file using FileSaver.js
+        saveAs(blob, 'exported_data.xlsx');
+      };
+
     return(
         <div className="Patients-Statistics">
             <div>
+
                 {!statistics && <Loading />}
 
                 {showClassChoose && (
@@ -78,8 +103,10 @@ const Statistics = () => {
                         <option value="tzivoni">צבעוני</option>
                         <option value="rakefet">רקפת</option>
                     </select>
+                    
+                    
                 )}
-                                {showUserChoose && (
+                    {showUserChoose && (
                     <select id="user-type" className="chooseTypeStatistics" value={userID} onChange={handleUserID}>
                         <option value="empty">מקבל שירות</option>
                         {statistics
@@ -94,6 +121,9 @@ const Statistics = () => {
                 <br/>
                 <br/>
 
+                {statistics && (
+                    <button onClick={handleExport}> Export to Excel </button>
+                )}
 
             <div className="patients">
                 {userID && className && statistics.filter(s => s.classRoom === className && s.id == userID).map((stat) => (

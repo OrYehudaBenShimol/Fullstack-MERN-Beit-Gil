@@ -83,12 +83,13 @@ const AttendenceCheck = () => {
 
 
     return(
+        
         <div className="Patients-Attendence">
             <div>
                 {!patients && <Loading />}
             <label className="morning-attendence-label">  נוכחות בוקר לתאריך {formattedDate} </label>
             <div className="patients">
-                {patients && patients.sort((a, b) => a.hebrewName.localeCompare(b.hebrewName)).map((patient)=>(
+                {patients && patients.sort((b, a) => b.hebrewName.localeCompare(a.hebrewName)).map((patient)=>(
                     <div className="patient-container" key={patient._id}>
                         <PatientAttendenceDetails handleChange={handleChange} key={patient._id} patientDet={patient}/>
                     </div>

@@ -4,6 +4,8 @@ import ScheduleDetailsForMorningMeeting from '../components/ScheduleDetailsForMo
 import { usePatientsContext } from '../hooks/usePatientsContext';
 import { useScheduleContext } from '../hooks/useScheduleContext';
 import { useAuthContext } from '../hooks/useAuthContext';
+import Loading from '../components/loading';
+
 
 const MorningMeeting = () => {
   const { patients, dispatch } = usePatientsContext();
@@ -519,7 +521,7 @@ const MorningMeeting = () => {
         dispatch({ type: 'SET_PATIENTS', payload: json });
       }
 
-      response = await fetch('/api/schedule', {
+      response = await fetch('/api/schedules', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -648,9 +650,9 @@ const MorningMeeting = () => {
  
   return (
     <div className='main-page-morning'>
-
+    {!patients && <Loading />}
     <div className='main-container-morning-meeting'>
-  
+
       <div className="morning-meeting-page">
       <div className="morning-meeting-container">
         {patients && patientsToShow.length === 0 && (
@@ -673,7 +675,7 @@ const MorningMeeting = () => {
         
         {showComboBox && patientsToShow.length > 0 && (
           <div className="name-of-classRoom">
-            <h2>{className}</h2>
+            <h2 className="classroom-h1">{" כיתת " + className }</h2>
             <div className="patient-container-morning">
             {patientsToShow.map((patient) => (
               <Patient
@@ -690,14 +692,14 @@ const MorningMeeting = () => {
           </div>
         )}
       </div>
-      {showComboBox && patientsToShow.length > 0 && (
+      {showComboBox && patientsToShow.length > 0 &&  showComboBox &&(
                   <div className="choose-others-morning-meeting">
                     <img src="images/emojis/weather.png" className="weather-logo" onClick={handleOthersWeather}/>
                     <img src="images/emojis/day.png" className="days-logo" onClick={handleOthersDays}/>
                     <img src="images/emojis/month.png" className="months-logo" onClick={handleOthersMonths}/>
                   </div>
         )}
-      {showOthersWeather && (
+      {showOthersWeather && showComboBox &&(
           <div className='choose-weather-pictures'>
             <img src="images/emojis/rain.png" className="chosen-weather-logo"   onClick={handleWeatherRain} />
             <img src="images/emojis/sunny.png" className="chosen-weather-logo"  onClick={handleWeatherSunny} />
@@ -707,7 +709,7 @@ const MorningMeeting = () => {
             <img src="images/emojis/wind.png" className="chosen-weather-logo"  onClick={handleWeatherWind} />
           </div>
         )}
-      {showOthersDays && (
+      {showOthersDays && showComboBox &&(
           <div className='choose-days-pictures'>
             <img src="images/emojis/sunday.png" className="day-logo"   onClick={handleSunday} />
             <img src="images/emojis/monday.png" className="day-logo"  onClick={handleMonday} />
@@ -718,7 +720,7 @@ const MorningMeeting = () => {
             <img src="images/emojis/saturday.png" className="day-logo"  onClick={handleSaturday} />
           </div>
         )}
-      {showOthersMonths && (
+      {showOthersMonths && showComboBox && (
           <div className='choose-months-pictures'>
             <img src="images/emojis/month-1.png" className="month-logo"   onClick={handleMonth1} />
             <img src="images/emojis/month-2.png" className="month-logo"  onClick={handleMonth2} />
@@ -737,79 +739,79 @@ const MorningMeeting = () => {
         )}
 
       <div className="weather-pictures">
-          {showWeatherRain && (
+          {showWeatherRain && showComboBox && (
             <img src="images/emojis/rain.png" className="chosen-weather-logo"/>
           )}
-          {showWeatherSunny && (
+          {showWeatherSunny && showComboBox && (
             <img src="images/emojis/sunny.png" className="chosen-weather-logo"/>
           )}
-          {showWeatherHail && (
+          {showWeatherHail && showComboBox && (
             <img src="images/emojis/hail.png" className="chosen-weather-logo"/>
           )}
-          {showWeatherRainbow && (
+          {showWeatherRainbow && showComboBox &&(
             <img src="images/emojis/rainbow.png" className="chosen-weather-logo"/>
           )}
-          {showWeatherLightning && (
+          {showWeatherLightning && showComboBox &&(
             <img src="images/emojis/lightning.png" className="chosen-weather-logo"/>
           )}
-          {showWeatherWind && (
+          {showWeatherWind && showComboBox &&(
             <img src="images/emojis/wind.png" className="chosen-weather-logo"/>
           )}
-          {showSunday && (
+          {showSunday && showComboBox &&(
             <img src="images/emojis/sunday.png" className="day-logo"/>
           )}
-          {showMonday && (
+          {showMonday && showComboBox &&(
             <img src="images/emojis/monday.png" className="day-logo"/>
           )}
-          {showTuesday && (
+          {showTuesday && showComboBox &&(
             <img src="images/emojis/tuesday.png" className="day-logo"/>
           )}
-          {showWednesday && (
+          {showWednesday && showComboBox &&(
             <img src="images/emojis/wednesday.png" className="day-logo"/>
           )}
-          {showThursday && (
+          {showThursday && showComboBox &&(
             <img src="images/emojis/thursday.png" className="day-logo"/>
           )}
-          {showFriday && (
+          {showFriday && showComboBox &&(
             <img src="images/emojis/friday.png" className="day-logo"/>
           )}
-          {showSaturday && (
+          {showSaturday && showComboBox &&(
             <img src="images/emojis/saturday.png" className="day-logo"/>
           )}
-          {showMonth1 && (
+          {showMonth1 && showComboBox &&(
             <img src="images/emojis/month-1.png" className="month-logo"/>
           )}
-          {showMonth2 && (
+          {showMonth2 && showComboBox &&(
             <img src="images/emojis/month-2.png" className="month-logo"/>
           )}
-          {showMonth3 && (
+          {showMonth3 && showComboBox &&(
             <img src="images/emojis/month-3.png" className="month-logo"/>
           )}
-          {showMonth4 && (
+          {showMonth4 && showComboBox &&(
             <img src="images/emojis/month-4.png" className="month-logo"/>
           )}
-          {showMonth5 && (
+          {showMonth5 && showComboBox &&(
             <img src="images/emojis/month-5.png" className="month-logo"/>
           )}
-          {showMonth6 && (
+          {showMonth6 && showComboBox &&(
             <img src="images/emojis/month-6.png" className="month-logo"/>
           )}
-          {showMonth7 && (
+          {showMonth7 && showComboBox &&(
             <img src="images/emojis/month-7.png" className="month-logo"/>
           )}
-          {showMonth8 && (
+          {showMonth8 && showComboBox &&(
             <img src="images/emojis/month-8.png" className="month-logo"/>
           )}
-          {showMonth9 && (
+          {showMonth9 && showComboBox &&(
             <img src="images/emojis/month-9.png" className="month-logo"/>
           )}
-          {showMonth10 && (
+          {showMonth10 && showComboBox &&(
             <img src="images/emojis/month-10.png" className="month-logo"/>
           )}
-          {showMonth11 && (
+          {showMonth11 && showComboBox &&(
             <img src="images/emojis/month-11.png" className="month-logo"/>
           )}
-          {showMonth12 && (
+          {showMonth12 && showComboBox &&(
             <img src="images/emojis/month-12.png" className="month-logo"/>
           )}
         </div>
@@ -821,7 +823,7 @@ const MorningMeeting = () => {
         <div className="schedule-container-morning">
               <label className='daily'>לו"ז יומי</label>
 
-        {schedules.filter(s => s.classRoom === className && s.day === currentDayOfWeek).sort((a, b) => {
+        {schedulesToShow.sort((a, b) => {
           const timeA = new Date(`1970-01-01T${a.startTime}`);
           const timeB = new Date(`1970-01-01T${b.startTime}`);
           return timeA - timeB;

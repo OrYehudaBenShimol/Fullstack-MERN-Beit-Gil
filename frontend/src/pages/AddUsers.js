@@ -107,14 +107,14 @@ const AddUsers = () => {
         <div className="AddUsers">
             {!users && !patients && <Loading />}
             <div className="users">
-                <label> עובדים</label>
+                <label className="label-add-users"> עובדים</label>
                 {users && users.map((user)=>(
                     <UserDetails key={user._id} userDet={user}/>
                 ))}
             </div>
             {<div className="users">
-                <label> מקבלי שירות</label>
-                {patients && patients.sort((a, b) => a.classRoom.localeCompare(b.classRoom)).map((patient)=>(
+                <label className="label-add-users"> מקבלי שירות</label>
+                {patients && patients.sort((a, b) => a.hebrewName.localeCompare(b.hebrewName)).map((patient)=>(
                         <PatientDetails key={patient._id} patient={patient} patientClassRoom={handlePatientClassRoom(patient)} />
                     ))}
             </div> 
