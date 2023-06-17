@@ -9,11 +9,13 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
 
   useEffect(()=>{
         const setFeelingPicture= async() =>{
+          if(patient.feeling != null){
             if(patient.feeling.length > 0){
               setTypeOfFeeling(patient.feeling)
               setShowPatientFeelings(false)
             }
         }
+      }
 
         if(user){
           setFeelingPicture()

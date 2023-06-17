@@ -115,7 +115,7 @@ const AddSchedules = () => {
                         const timeB = new Date(`1970-01-01T${b.startTime}`);
                         return timeA - timeB;
                     }).map((schedule)=>(
-                        <ScheduleDetails key={schedule._id} scheduleDetails={schedule} classNameHebrew={classNameHebrew}/>
+                        <ScheduleDetails key={schedule._id} scheduleDetails={schedule} scheduleEnglish={schedule.englishTitle} classNameHebrew={classNameHebrew}/>
                     ))}
                 </div>
             </div>

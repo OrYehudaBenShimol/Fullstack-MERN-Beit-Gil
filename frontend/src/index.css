@@ -1122,6 +1122,19 @@ div.patients{
   left:10px
 }
 
+.manage-schedule-image{
+  border-radius: 10%;
+  border:2px solid #00000013 ;
+  margin-top: 16px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  width:150px;
+  height:105px;
+  position: absolute;
+  top: 55px;
+  left:15px
+}
+
+
 
 .name-of-classRoom h2{
   text-align: center ;

@@ -24,7 +24,9 @@ module.exports.createSchedule = async (req, res) => {
       day: req.body.day,
       startTime: req.body.startTime,
       endTime: req.body.endTime,
-      classRoom:req.body.classRoom
+      classRoom:req.body.classRoom,
+      englishTitle: req.body.englishTitle
+
     });
 
     const savedSchedule = await newSchedule.save();
@@ -70,7 +72,8 @@ module.exports.updateScheduleById = async (req, res) => {
         day: req.body.day,
         startTime: req.body.startTime,
         endTime: req.body.endTime,
-        classRoom:req.body.classRoom
+        classRoom:req.body.classRoom,
+        englishTitle: req.body.englishTitle
       },
       { new: true }
     );

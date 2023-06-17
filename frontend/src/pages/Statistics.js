@@ -70,7 +70,7 @@ const Statistics = () => {
     const handleExport = () => {
         const sheet = XLSX.utils.json_to_sheet(statistics);
         const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, sheet, 'דיווח נוכחות');
+        XLSX.utils.book_append_sheet(workbook, sheet, 'דיווח נוכחות כללי');
     
         // Generate the Excel file with styles
         const excelFile = XLSX.write(workbook, {
@@ -84,7 +84,7 @@ const Statistics = () => {
         const blob = new Blob([excelFile], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     
         // Save the file using FileSaver.js
-        saveAs(blob, 'exported_data.xlsx');
+        saveAs(blob, 'דוח נוכחות.xlsx');
       };
 
     return(
@@ -122,7 +122,7 @@ const Statistics = () => {
                 <br/>
 
                 {statistics && (
-                    <button onClick={handleExport}> Export to Excel </button>
+                    <button onClick={handleExport}> ייצא לקובץ אקסל </button>
                 )}
 
             <div className="patients">

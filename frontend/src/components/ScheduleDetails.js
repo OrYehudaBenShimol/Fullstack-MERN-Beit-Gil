@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useScheduleContext } from "../hooks/useScheduleContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-const ScheduleDetails = ({key,scheduleDetails, classNameHebrew}) => {
+const ScheduleDetails = ({key,scheduleDetails, scheduleEnglish, classNameHebrew}) => {
     const {dispatch} = useScheduleContext();
     const {user} = useAuthContext();
     const handleClick = async () => {
@@ -46,6 +46,9 @@ const ScheduleDetails = ({key,scheduleDetails, classNameHebrew}) => {
                 <button  onClick={() => setShowPopup(false)}>ביטול</button>
             </div>
       )}
+            <div>
+                <img className="manage-schedule-image" src={"images/schedulePictures/" + scheduleDetails.englishTitle + ".png" }/> 
+            </div>
         </div>
     )
 }

@@ -36,6 +36,10 @@ const allSchedule = new Schema({
       type:String,
       require:true,
       enum: ['oren', 'sahlav', 'rakefet', 'dekel', 'gefen','tzivoni'],
+    },
+    englishTitle:{
+      type: String,
+      require: true
     }
 
 }, {timestamps:true});
