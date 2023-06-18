@@ -665,6 +665,7 @@ const MorningMeeting = () => {
     <div className='main-container-morning-meeting'>
 
       <div className="morning-meeting-page">
+
       <div className="morning-meeting-container">
         {patients && patientsToShow.length === 0 && (
           <div className='combobox-morning'>
@@ -683,7 +684,7 @@ const MorningMeeting = () => {
         )}
           </div>
         )}
-        
+
         {showComboBox && patientsToShow.length > 0 && (
           <div className="name-of-classRoom">
             <h2 className="classroom-h1">{" כיתת " + className }</h2>
@@ -828,11 +829,11 @@ const MorningMeeting = () => {
         </div>
     </div>
     <div className='schedules-container'>
+    <label className='daily'>לו"ז יומי</label>
 
       {showComboBox && schedules && (
         
         <div className="schedule-container-morning">
-              <label className='daily'>לו"ז יומי</label>
 
         {schedulesToShow.sort((a, b) => {
           const timeA = new Date(`1970-01-01T${a.startTime}`);

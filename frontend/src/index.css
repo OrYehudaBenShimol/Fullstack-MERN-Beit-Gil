@@ -353,8 +353,11 @@ div.users{
   padding-right: 12px;
   position: relative;
   text-align: right;
+  height: 200px;
+  width: 300px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
+
 .schedule-details span {
   position: absolute;
   top: 20px;
@@ -375,6 +378,19 @@ div.users{
   color: var(--primary);
   text-shadow: 1px 1px #b1b1b185;
 }
+
+.schedule-details h5{
+  text-align: center;
+  font-weight: bolder;
+  color: #000000;
+  text-shadow: 1px 1px #b1b1b185;
+}
+.schedule-details img{
+  margin-left: -8px;
+  margin-top: 15px;
+  position: absolute;
+}
+
 
 .schedules{
   max-height: 700px;
@@ -1132,6 +1148,19 @@ div.patients{
   position: absolute;
   top: 55px;
   left:15px
+}
+
+
+.manage-schedule-image-morning-meeting{
+  border-radius: 10%;
+  border:2px solid #00000013 ;
+  margin-top: 16px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  width:200px;
+  height:115px;
+  position: absolute;
+  top: 60px;
+  left:45px
 }
 
 

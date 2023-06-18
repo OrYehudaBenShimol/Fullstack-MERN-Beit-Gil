@@ -113,7 +113,7 @@ const AddSchedules = () => {
                     {schedules && schedules.filter(s => s.classRoom === className && s.day === day).sort((a, b) => {
                         const timeA = new Date(`1970-01-01T${a.startTime}`);
                         const timeB = new Date(`1970-01-01T${b.startTime}`);
-                        return timeA - timeB;
+                        return timeB - timeA;
                     }).map((schedule)=>(
                         <ScheduleDetails key={schedule._id} scheduleDetails={schedule} scheduleEnglish={schedule.englishTitle} classNameHebrew={classNameHebrew}/>
                     ))}
