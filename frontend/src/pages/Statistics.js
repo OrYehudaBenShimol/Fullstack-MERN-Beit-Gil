@@ -7,6 +7,8 @@ import { useStatisticsContext } from "../hooks/useStatisticsContext";
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 
+
+// This component is used to show the statistics page.
 const Statistics = () => {
 
     const {statistics,dispatch} = useStatisticsContext();
@@ -67,6 +69,9 @@ const Statistics = () => {
         }        
     },[dispatch,user]);
 
+
+    // handleExport is a function which is called when the user clicks on the export button.
+    // This function exports the statistics to an excel file
     const handleExport = () => {
         const sheet = XLSX.utils.json_to_sheet(statistics);
         const workbook = XLSX.utils.book_new();

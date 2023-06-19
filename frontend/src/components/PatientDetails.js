@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { usePatientsContext } from "../hooks/usePatientsContext"
 
+// This component is used to show the patient details in the manage patients page.
 
 const PatientDetails = ({patient,imageURL,patientClassRoom}) => {
     const {dispatch} = usePatientsContext();
     const {user} = useAuthContext();
     const [hebrewClassName,setHebrewClassName] = useState('')
+    const [showPopup, setShowPopup] = useState(false);
+    const [imageSrc, setImageSrc] = useState(null)
+
 
     const handleClick = async () => {
         setShowPopup(true)
-
     }   
 
-    const [showPopup, setShowPopup] = useState(false);
-
+    // When delete is clicked, the handleDeleteUser function is called.
+    // The handleDeleteUser function is an async function which deletes the patient from the server with the user id.
    const handleDeleteUser = async() => {
 
         if(!user){
@@ -33,14 +36,15 @@ const PatientDetails = ({patient,imageURL,patientClassRoom}) => {
         setShowPopup(false); 
   }
 
-  const [imageSrc, setImageSrc] = useState(null)
-
+  // Get the use picture from the server and set it in the imageSrc state.
   useEffect(() => {
     if (patient.image && patient.image.data) {
       const blob = new Blob([new Uint8Array(patient.image.data)], { type: "image/png" })
       setImageSrc(URL.createObjectURL(blob))
     }
   }, [patient.image])
+
+  
     return(
         <div className="patient-details">
             <h4>{patient.hebrewName}</h4>

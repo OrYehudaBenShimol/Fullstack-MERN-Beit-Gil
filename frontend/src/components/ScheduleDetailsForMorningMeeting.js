@@ -1,5 +1,6 @@
 const ScheduleDetailsForMorningMeeting = ({schedule,title,startTime,endTime}) => {
     
+    // this component is used in the MorningMeeting component to show the details of the schedule.
     return(
         <div className="schedule-details">
             <h4><strong>{title}</strong></h4>

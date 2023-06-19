@@ -5,13 +5,15 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const ScheduleDetails = ({key,scheduleDetails, scheduleEnglish, classNameHebrew}) => {
     const {dispatch} = useScheduleContext();
     const {user} = useAuthContext();
+    const [showPopup, setShowPopup] = useState(false);
+
+
     const handleClick = async () => {
         setShowPopup(true)
     }   
 
-    const [showPopup, setShowPopup] = useState(false);
+    // The handleDeleteSchedule function is an async function which deletes the specific schedule from the server.
     const handleDeleteSchedule = async() => {
-
         if(!user){
             return
         }
@@ -27,6 +29,7 @@ const ScheduleDetails = ({key,scheduleDetails, scheduleEnglish, classNameHebrew}
         }    
         setShowPopup(false); // hide the popup
   }
+  
     return(
         <div className="schedule-details">
             <h4> {scheduleDetails.title} </h4>

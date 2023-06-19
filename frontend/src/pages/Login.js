@@ -2,8 +2,7 @@ import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
 import Loading from '../components/loading';
 
-
-
+// This component is used to show the login page.
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -11,7 +10,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    // wait for the login function to finish
     await login(email,password);
 }
 

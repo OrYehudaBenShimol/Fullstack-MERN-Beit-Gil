@@ -6,7 +6,7 @@ import { useScheduleContext } from '../hooks/useScheduleContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Loading from '../components/loading';
 
-
+// this component is used to show the morning meeting page.
 const MorningMeeting = () => {
   const { patients, dispatch } = usePatientsContext();
   const { schedules,dispatch:orenDispatch} = useScheduleContext();
@@ -441,6 +441,8 @@ const MorningMeeting = () => {
   }
   /* END OF MONTHS HANDLERS */
 
+
+  // This function is used to handle the class room change.
   async function handleUserTypeChange(event) {
         const patientsByClass =  patients.filter((patient) => patient.classRoom === event.target.value);
         setShowComboBox(true);
@@ -475,6 +477,7 @@ const MorningMeeting = () => {
           setShowLabel(false)
         }
         let scheduleByDay = null
+        // filter schedules by day and class room
         switch (event.target.value) {
           case "oren": 
             scheduleByDay =  schedules.filter((schedule)=> schedule.day === currentDayOfWeek && schedule.classRoom === "oren")

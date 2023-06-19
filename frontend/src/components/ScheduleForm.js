@@ -2,10 +2,11 @@ import {useState} from 'react'
 import { useScheduleContext } from '../hooks/useScheduleContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
+
+//This component is used to add a new schedule to the database for a specific class and day.
 const ScheduleForm = ({className,dayOfTheWeek,classNameHebrew,dayHebrew}) => {
     const {dispatch} = useScheduleContext();
     const {user} = useAuthContext();
-   
     const [title,setTitle] = useState('')
     const [start,setStart] = useState('')
     const [end,setEnd] = useState('')
@@ -19,7 +20,8 @@ const ScheduleForm = ({className,dayOfTheWeek,classNameHebrew,dayHebrew}) => {
 
 
 
-
+    // This function is called when the form is submitted.
+    // The function sends a post request to the server with the new schedule details.
     const handleSubmit = async (e) =>{
         e.preventDefault();
         if(!user){
@@ -61,6 +63,9 @@ const ScheduleForm = ({className,dayOfTheWeek,classNameHebrew,dayHebrew}) => {
             }   
         }
 
+
+    // This function is called when the activity is changed.
+    // The function sets the type of activity in the state depending on the activity chosen.
     const handleActivityChange = (event) => {
         setEnglishTitle(event.target.value)
         switch (event.target.value) {
@@ -123,9 +128,8 @@ const ScheduleForm = ({className,dayOfTheWeek,classNameHebrew,dayHebrew}) => {
                 break;
         }
     }
-
+    
     return(
-        
         <form className='create' onSubmit={handleSubmit}>
                 <div className="option-form">
                 <label className='add-new-schedule-label'>הוספת פעילות חדשה</label>

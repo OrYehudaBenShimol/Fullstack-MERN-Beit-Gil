@@ -2,6 +2,9 @@ import { usePatientsContext } from "../hooks/usePatientsContext"
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useState, useEffect } from "react";
 
+//patientDet is the patient object
+//handleChange is the function that is called when the patient attendence is changed
+
 
 const PatientAttendenceDetails = ({patientDet, handleChange}) => {
     const {dispatch} = usePatientsContext();
@@ -9,6 +12,7 @@ const PatientAttendenceDetails = ({patientDet, handleChange}) => {
     const [isArrived,setIsArrived] = useState(patientDet.arrived)
     let classroom = '';
 
+    
     switch (patientDet.classRoom) {
         case 'oren':
             classroom = 'אורן';

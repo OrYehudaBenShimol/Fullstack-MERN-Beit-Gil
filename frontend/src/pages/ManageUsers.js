@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import MyImage from '../public/images/add_user.png' // Import the image
 
+
+// this component is used to show landing page for the manage pages
 const ManageUsers = () => {
 
     const {user} = useAuthContext()

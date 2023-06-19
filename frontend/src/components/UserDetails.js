@@ -2,18 +2,20 @@ import { useState } from "react";
 import { useUsersContext } from "../hooks/useUsersContext"
 import { useAuthContext } from "../hooks/useAuthContext";
 
+
+// This component is used to show the user details in the manage users page.
 const UserDetails = ({userDet}) => {
     const {dispatch} = useUsersContext();
     const {user} = useAuthContext();
+    const [showPopup, setShowPopup] = useState(false);
+
     const handleClick = async () => {
         setShowPopup(true)
 
     }   
 
-    const [showPopup, setShowPopup] = useState(false);
-
+   // The handleDeleteUser function is an async function which deletes the user from the server with the user id.
    const handleDeleteUser = async() => {
-
         if(!user){
             return
         }
@@ -28,7 +30,8 @@ const UserDetails = ({userDet}) => {
             dispatch({type:'DELETE_USER', payload:json})
         }    
         setShowPopup(false); // hide the popup
-  }
+    }
+    
     return(
         <div className="user-details">
             <h4>{userDet.hebrewName}</h4>

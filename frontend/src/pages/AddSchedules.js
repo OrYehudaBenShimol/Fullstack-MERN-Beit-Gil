@@ -3,6 +3,8 @@ import ScheduleForm from '../components/ScheduleForm'
 import ScheduleDetails from "../components/ScheduleDetails"
 import {useAuthContext} from '../hooks/useAuthContext'
 import { useScheduleContext } from "../hooks/useScheduleContext"
+
+//This component is used to add schedules to the database for a specific class and day.
 const AddSchedules = () => {
 
     const {schedules,dispatch} = useScheduleContext()
@@ -12,6 +14,7 @@ const AddSchedules = () => {
     const [className,setClassName] = useState('')
     const [classNameHebrew,setClassNameHebrew] = useState('')
     const [dayHebrew,setDayHebrew] = useState('')
+
     useEffect(()=>{
         const FetchSchedules= async() =>{
             let response = await fetch('/api/schedules',{
@@ -48,6 +51,7 @@ const AddSchedules = () => {
         }        
     },[user,dispatch,schedules])
 
+    // handleClassChange is a function which is called when the user chooses a class from the drop down menu.
     function handleClassChange(event){
         setClassName(event.target.value);
         switch (event.target.value) {
@@ -76,6 +80,7 @@ const AddSchedules = () => {
         console.log(schedules)
     }
 
+    // handleDayChange is a function which is called when the user chooses a day from the drop down menu.
     function handleDayChange(event){
         setDay(event.target.value);
 

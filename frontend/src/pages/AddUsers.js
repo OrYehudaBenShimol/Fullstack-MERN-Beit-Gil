@@ -7,13 +7,14 @@ import {usePatientsContext} from '../hooks/usePatientsContext'
 import {useAuthContext} from '../hooks/useAuthContext'
 import Loading from '../components/loading';
 
-const AddUsers = () => {
 
+// This component is used to show the manage users page.
+const AddUsers = () => {
     const {users,dispatch} = useUsersContext()
     const {patients,dispatch: dispatch2} = usePatientsContext()
     const {user} = useAuthContext()
 
-
+    // This function is used to convert the patient class room from english to hebrew.
     const handlePatientClassRoom = (patient) => {
         let classroom =''
         switch (patient.classRoom) {
@@ -40,6 +41,8 @@ const AddUsers = () => {
         }
         return classroom
     }
+
+    // This function is used to refresh the patients list.
     const refreshPatients = async () => {
         const response = await fetch('/api/patient',{
             headers:{

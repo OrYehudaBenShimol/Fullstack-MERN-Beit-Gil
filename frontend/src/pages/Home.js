@@ -2,15 +2,11 @@ import {useAuthContext} from '../hooks/useAuthContext'
 import { useEffect} from "react"
 import React from 'react'
 
-
+// this component is used to show the home page.
 const Home = () => {
-
     const {user} = useAuthContext()
-   
-       useEffect(()=>{    
+    useEffect(()=>{    
         if(user){
-            
-
             const token = user.token;
             // Decode the token
             const decodedToken = JSON.parse(window.atob(token.split('.')[1]));
@@ -29,9 +25,9 @@ const Home = () => {
         }
     },[user])
 
-    const handleDateClick = (arg) => { // bind with an arrow function
-        alert(arg.dateStr)
-    }
+    // const handleDateClick = (arg) => { // bind with an arrow function
+    //     alert(arg.dateStr)
+    // }
 
     return(
       /*  <div className='Calender'>

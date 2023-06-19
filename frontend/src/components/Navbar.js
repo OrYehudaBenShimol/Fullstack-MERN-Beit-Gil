@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 
 const Navbar = () => {
 
+    
     const {logout} = useLogout()
     const {user} = useAuthContext()
     const [userName,setUserName] = useState('');
@@ -15,7 +16,12 @@ const Navbar = () => {
         logout()
     }
 
+    //the useEffect is used to get the user name from the server
+    //the useEffect is called when the user is changed
+    //the useEffect is called when the user is changed because the user is a dependency of the useEffect
     useEffect(()=>{
+
+        // the userDetails function is an async function that gets the user name from the server
         const userDetails= async() =>{
             const response = await fetch('/api/getDataOnUser/' + user.email ,{
                 method: 'GET',

@@ -2,16 +2,11 @@ import {useState} from 'react'
 import { useUsersContext } from '../hooks/useUsersContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
+// This component is used to create a new user in the manage users page.
 const UserForm = ({refreshPatients}) => {
     const {dispatch} = useUsersContext();
     const {user} = useAuthContext();
-    // const date = new Date();
-    // let day = date.getDate();
-    // let month = date.getMonth() + 1;
-    // let year = date.getFullYear();
-    // const today = `${year}-${month}-${day}`;
-
-
+   
     // For Managers and Employees
     const [name,setName] = useState('')
     const [id,setID] = useState('')
@@ -46,7 +41,7 @@ const UserForm = ({refreshPatients}) => {
         }
 
         const typeOfUser = {userType};
-        
+        // this is for managers.
         if(typeOfUser.userType === 'option-1' ){
             const manager = {name, id, email, cellphone, dateOfBirth, role:"Manager" , hebrewName, password}
             try {
@@ -85,6 +80,8 @@ const UserForm = ({refreshPatients}) => {
             
             
         }
+
+        //this is for employees.
         if(typeOfUser.userType === 'option-2' ){
             const employee = {name, id, email, cellphone, dateOfBirth, role:"Employee" , hebrewName, password}
             const response = await fetch('/api/users', {
@@ -113,6 +110,7 @@ const UserForm = ({refreshPatients}) => {
             }
         }
 
+        // this is for patients.
         if(typeOfUser.userType === 'option-3' ){
 
             const patient = {name:patientName, id:patientID, cellphone:patientPhone, dateOfBirth:patientBirthday, role:"Patient" ,classRoom:classRoom, hebrewName:patientHebrewName, image:photo}
@@ -160,7 +158,7 @@ const UserForm = ({refreshPatients}) => {
         }
     }
 
-
+    // this function is called when the user type is changed and sets the role state.
     function handleUserTypeChange(event) {
 
         setUserType(event.target.value);

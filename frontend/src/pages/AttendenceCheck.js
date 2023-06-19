@@ -4,22 +4,21 @@ import {usePatientsContext} from '../hooks/usePatientsContext'
 import {useAuthContext} from '../hooks/useAuthContext'
 import Loading from '../components/loading';
 
-const AttendenceCheck = () => {
 
+// This component is used to show the attendence check page.
+
+const AttendenceCheck = () => {
     const {patients,dispatch} = usePatientsContext()
     const {user} = useAuthContext()
-    
-
     const currentDate = new Date();
-
     // Extract day, month, and year from current date
     const day = String(currentDate.getDate()).padStart(2, '0');
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const year = currentDate.getFullYear();
-
     // Format date as "dd.mm.yyyy"
     const formattedDate = `${day}.${month}.${year}`;
 
+    // This function is used to update the patient attendence in the server.
     const handleChange = async (event,patientDetails) => {
             const updated = {_id:patientDetails._id ,id: patientDetails.id, classRoom: patientDetails.classRoom, hebrewName: patientDetails.hebrewName, arrived: !patientDetails.arrived}
             const response = await fetch('/api/attendence', {
@@ -37,12 +36,7 @@ const AttendenceCheck = () => {
             }
     }
 
- 
-
     useEffect(()=>{ 
-
-
-
         const fetchPatients= async() =>{
             const response = await fetch('/api/attendence',{
                 headers:{

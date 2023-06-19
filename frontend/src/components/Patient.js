@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {useAuthContext} from '../hooks/useAuthContext'
 
+
+
+// describe the Patient component with params
+// patient is the patient object
+// name is the patient name
+// id is the patient id
+// image is the patient image
+// onFeelingClick is the function that is called when the patient feeling is clicked
+
 const Patient = ({patient, name, id, image, onFeelingClick }) => {
   const [showFeelings, setShowFeelings] = useState(false);
   const [showPatientFeelings, setShowPatientFeelings] = useState(true)
@@ -25,6 +34,7 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
     },[user]);
 
 
+  // The updatePatient function is an async function which sets the patient feeling in the server depending on the feelingVar.
   const updatePatient= async (feelingVar) =>{
 
     let isHere = true
@@ -49,7 +59,7 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
     }
   }
 
-
+// The handleHappyFeelingClick function is called when the happy feeling is clicked
   const handleHappyFeelingClick=()=>{
     setTypeOfFeeling("happy")
     setShowFeelings(false)
@@ -57,6 +67,7 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
     updatePatient("happy")
   }
 
+// The handleSadFeelingClick function is called when the sad feeling is clicked
   const handleSadFeelingClick =() =>{
     setTypeOfFeeling("sad")
     setShowFeelings(false)
@@ -65,6 +76,7 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
 
   }
 
+// The handleConfusedFeelingClick function is called when the confused feeling is clicked
   const handleConfusedFeelingClick = () =>{
     setTypeOfFeeling("confused")
     setShowFeelings(false)
@@ -72,6 +84,7 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
     updatePatient("confused")
   }
 
+// The handleHomeFeelingClick function is called when the home feeling is clicked
   const handleHomeFeelingClick = () => {
     setTypeOfFeeling("home")
     setShowFeelings(false)

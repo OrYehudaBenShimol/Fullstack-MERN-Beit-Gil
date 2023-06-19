@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useStatisticsContext } from "../hooks/useStatisticsContext"
 import { useAuthContext } from "../hooks/useAuthContext";
 
+//This component is used to show the statistics details in the statistics page.
 const StatisticsDetails = ({stat}) => {
     const {statistics,dispatch} = useStatisticsContext();
     const {user} = useAuthContext();
     const [date,setDate] = useState('')
     const [feeling,setFeeling] = useState('')
 
+    
     useEffect(()=>{
         const { createdAt } = stat;
         const date = new Date(createdAt);
