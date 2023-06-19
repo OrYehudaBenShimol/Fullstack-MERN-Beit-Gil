@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-
+// Create a new schema for a patient object in the DB (name, id, cellphone, dateOfBirth, role, classRoom, hebrewName, image).
 const patientSchema = new Schema({
     name:{
         type: String,

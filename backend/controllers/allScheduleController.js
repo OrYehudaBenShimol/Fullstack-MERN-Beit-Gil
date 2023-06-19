@@ -1,6 +1,12 @@
 const AllSchedule = require('../models/allScheduleModel');
 
 // Controller function for creating a new schedule
+// title: { type: String, required: true },
+// day: { type: String, required: true },
+// startTime: { type: String, required: true },
+// endTime: { type: String, required: true },
+// classRoom: { type: String, required: true },
+// englishTitle: { type: String, required: true }
 module.exports.createSchedule = async (req, res) => {
   try {
     const {title,startTime,endTime} = req.body

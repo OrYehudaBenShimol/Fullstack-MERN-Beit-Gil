@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
+
+// Create a new schema for a schedule object in the DB (title, day, startTime, endTime, classRoom, englishTitle).
 const allSchedule = new Schema({
     title:{
         type: String,

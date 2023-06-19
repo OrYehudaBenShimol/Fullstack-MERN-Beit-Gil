@@ -8,7 +8,7 @@ const getAllUsers = async ( req,res) =>{
     res.status(200).json(users);
 }
 
-
+// Get user by email.
 const getUserByEmail = async (req,res)=>{
     const {email} = req.params
     console.log(email)
@@ -55,8 +55,7 @@ const getSinglelPatient = async ( req,res) =>{
     res.status(200).json(patient);
 }
 
-
-
+// Get a single Patient image.
 const getPatientImage = async(req,res,next) =>{
     const patientImage = await Patient.findById(req.params.id);
     res.end(patientImage.image);

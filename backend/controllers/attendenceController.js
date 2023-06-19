@@ -1,6 +1,5 @@
 const Patient = require('../models/patientModel');
 const  PatientAttendence = require('../models/attendenceModel');
-
 const mongoose = require('mongoose');
 
 // Get all patients.

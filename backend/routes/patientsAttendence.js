@@ -7,6 +7,7 @@ const {
     
 } = require('../controllers/attendenceController');
 
+// middleware
 const requireAuth = require('../middleware/requireAuth')
 router.use(requireAuth)
 

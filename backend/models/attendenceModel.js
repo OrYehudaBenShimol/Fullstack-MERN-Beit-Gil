@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// Create a new schema for a attendence object in the DB (id, classRoom, hebrewName, arrived, image).
 const attendenceSchema = new Schema({
     id:{
         type: Number,

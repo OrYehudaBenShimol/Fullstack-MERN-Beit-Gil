@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+
+// this is for uploading images
 const multer = require('multer');
 const postPhotoUpload = multer({
     storage: multer.memoryStorage(),
     limits: {
-        fileSize: 2 * 4096 * 4096,
+        fileSize: 2 * 4096 * 4096, // no larger than 2mb
     },
-    fileFilter: function (req, file, cb) {
+    fileFilter: function (req, file, cb) { // this is the file filter for multer to check if the file is an image or not.
         const fname = file.originalname;
         const valid = [
             '.jpg',

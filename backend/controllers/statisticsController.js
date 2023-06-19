@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-
+// Get all statistics data from json file.
 const getAllData = async (req,res) =>{
     fs.readFile('./morning-meeting.json', 'utf8', (err, data) => {
         if (err) {

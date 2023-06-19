@@ -6,6 +6,8 @@ const {
     getSinglelPatient
 } = require('../controllers/statisticsController');
 
+
+// middleware
 const requireAuth = require('../middleware/requireAuth')
 router.use(requireAuth)
 

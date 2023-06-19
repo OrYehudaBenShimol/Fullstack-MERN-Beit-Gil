@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 
-
 const Schema = mongoose.Schema;
-
+// Create a new schema for a user object in the DB (name, id, email, cellphone, dateOfBirth, role, hebrewName, password).
 const userSchema = new Schema({
     name:{
         type: String,
