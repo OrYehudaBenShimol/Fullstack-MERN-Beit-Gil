@@ -73,7 +73,26 @@ const Statistics = () => {
     // handleExport is a function which is called when the user clicks on the export button.
     // This function exports the statistics to an excel file
     const handleExport = () => {
-        const sheet = XLSX.utils.json_to_sheet(statistics);
+        const fieldMapping = {
+            id: 'מספר זיהוי',
+            hebrewName: 'שם בעברית',
+            arrived: 'הגיע',
+            classRoom: 'כיתה',
+            updatedAt: 'עודכן בתאריך',
+            feeling: 'תחושה',
+          };
+        
+          // Modify the field names in the data to Hebrew
+          const modifiedData = statistics.map((item) => {
+            const modifiedItem = {};
+            for (const key in item) {
+              if (fieldMapping[key]) {
+                modifiedItem[fieldMapping[key]] = item[key];
+              }
+            }
+            return modifiedItem;
+          });
+        const sheet = XLSX.utils.json_to_sheet(modifiedData);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, sheet, 'דיווח נוכחות כללי');
     
