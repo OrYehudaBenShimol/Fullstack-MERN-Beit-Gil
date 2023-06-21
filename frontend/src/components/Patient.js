@@ -90,8 +90,36 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
     setShowFeelings(false)
     setShowPatientFeelings(false)
     updatePatient("home")
-
   }
+// The handleSickFeelingClick function is called when the sick feeling is clicked
+  const handleSickFeelingClick = () => { 
+    setTypeOfFeeling("sick")
+    setShowFeelings(false)
+    setShowPatientFeelings(false)
+    updatePatient("sick")
+  }
+// The handleTiredFeelingClick function is called when the tired feeling is clicked
+  const handleTiredFeelingClick = () => {
+    setTypeOfFeeling("tired")
+    setShowFeelings(false)
+    setShowPatientFeelings(false)
+    updatePatient("tired")
+  }
+// The handleAngryFeelingClick function is called when the angry feeling is clicked
+  const handleAngryFeelingClick = () => {
+    setTypeOfFeeling("angry")
+    setShowFeelings(false)
+    setShowPatientFeelings(false)
+    updatePatient("angry")
+  }
+// The handleHungryFeelingClick function is called when the hungry feeling is clicked
+  const handleHungryFeelingClick = () => {
+    setTypeOfFeeling("hungry")
+    setShowFeelings(false)
+    setShowPatientFeelings(false)
+    updatePatient("hungry")
+  }
+
 
   return (
     <div>
@@ -110,6 +138,14 @@ const Patient = ({patient, name, id, image, onFeelingClick }) => {
             <img src="images/emojis/sad.png" className="sad"  onClick={handleSadFeelingClick} />
             <label>מבולבל</label>
             <img src="images/emojis/confused.png" className="confused"  onClick={handleConfusedFeelingClick} />
+            <label>חולה</label>
+            <img src="images/emojis/sick.png" className="sick"  onClick={handleSickFeelingClick} />
+            <label>עייף</label>
+            <img src="images/emojis/tired.png" className="tired"  onClick={handleTiredFeelingClick} />
+            <label>כועס</label>
+            <img src="images/emojis/angry.png" className="angry"  onClick={handleAngryFeelingClick} />
+            <label>רעב</label>
+            <img src="images/emojis/hungry.png" className="hungry"  onClick={handleHungryFeelingClick} />
             <label>בית</label>
             <img src="images/emojis/home.png" className="home"  onClick={handleHomeFeelingClick} />
           </div>

@@ -33,7 +33,7 @@ const Login = () => {
         value={password} 
       />
 
-      <button className="login-btn-login-page" disabled={isLoading}>אישור </button>
+      <button className="login-btn-login-page" disabled={isLoading}>התחבר </button>
       {error && <div className="error">{error}</div>}
 
     </form>

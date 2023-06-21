@@ -6,7 +6,6 @@ import { useScheduleContext } from "../hooks/useScheduleContext"
 
 //This component is used to add schedules to the database for a specific class and day.
 const AddSchedules = () => {
-
     const {schedules,dispatch} = useScheduleContext()
     const {user} = useAuthContext()
     const [toRun,setToRun] = useState(true)
@@ -36,7 +35,6 @@ const AddSchedules = () => {
             const tokenExpiration = decodedToken.exp;
             const currentTime = Math.floor(Date.now() / 1000); // Convert to seconds
             const isTokenValid = tokenExpiration > currentTime;
-
             if (isTokenValid) {
                 // console.log('Valid token!');
             } else {
@@ -83,7 +81,6 @@ const AddSchedules = () => {
     // handleDayChange is a function which is called when the user chooses a day from the drop down menu.
     function handleDayChange(event){
         setDay(event.target.value);
-
         switch (event.target.value) {
             case "Sunday":
                 setDayHebrew("ראשון")
@@ -108,8 +105,6 @@ const AddSchedules = () => {
 
     return(
         <div className="AddSchedules">
-
-
             <div className="Add-Schedules">
                 {dayHebrew !== '' && classNameHebrew !== '' && (
                     <label className="daily-schedule-label">לו"ז יום {dayHebrew}   בכיתת {classNameHebrew} </label>
@@ -124,9 +119,7 @@ const AddSchedules = () => {
                     ))}
                 </div>
             </div>
-
             <ScheduleForm className={className} dayOfTheWeek={day} dayHebrew={dayHebrew} classNameHebrew={classNameHebrew}/>
-
             <div>
                 <label className="choosing-class-day">בחר את הכיתה</label>
                 <select id="schedule-class" className="chooseType" value={className} onChange={handleClassChange}>
@@ -148,9 +141,7 @@ const AddSchedules = () => {
                     <option value="Thursday">חמישי</option>
                 </select>
             </div>
-
         </div>
-
     )
 }
 
