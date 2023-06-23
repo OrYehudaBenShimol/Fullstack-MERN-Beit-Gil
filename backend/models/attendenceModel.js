@@ -20,7 +20,7 @@ const attendenceSchema = new Schema({
         type:Boolean,
         default:false
     },
-    image: Buffer,
+    // image: Buffer,
 
 
 }, {timestamps:true});

@@ -46,11 +46,11 @@ const PatientAttendenceDetails = ({patientDet, handleChange}) => {
     const [imageSrc, setImageSrc] = useState(null)
 
     useEffect(() => {
-      if (patientDet.image && patientDet.image.data) {
-        const blob = new Blob([new Uint8Array(patientDet.image.data)], { type: "image/png" })
-        setImageSrc(URL.createObjectURL(blob))
-      }
-    }, [patientDet.image])
+    //   if (patientDet.image && patientDet.image.data) {
+    //     const blob = new Blob([new Uint8Array(patientDet.image.data)], { type: "image/png" })
+    //     setImageSrc(URL.createObjectURL(blob))
+    //   }
+    }, [/*patientDet.image*/])
 
 
     return(
@@ -62,7 +62,9 @@ const PatientAttendenceDetails = ({patientDet, handleChange}) => {
             </div>
             {/* <br/> */}
             {/* <img className="attendence-image" src={`images/${patientDet.id}.png`} width="70" height="70"/> */}
-            {imageSrc &&<img className="attendence-image" src={imageSrc}/>}
+            {/* {imageSrc &&<img className="attendence-image" src={imageSrc}/>} */}
+            {<img className="attendence-image" src={`images/patients/${patientDet.id}.png`} width="70" height="70"/> }
+
         </div>
     )
 }

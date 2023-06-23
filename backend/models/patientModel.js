@@ -32,7 +32,7 @@ const patientSchema = new Schema({
         type:String,
         require:true
     },
-    image: Buffer,
+    // image: Buffer,          // Works only if we want to save the image in the DB. Because its takes to much space, we decided to save the image in the server.
 
 
 }, {timestamps:true});

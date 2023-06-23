@@ -832,7 +832,9 @@ const MorningMeeting = () => {
         </div>
     </div>
     <div className='schedules-container'>
-    <label className='daily'>לו"ז יומי</label>
+    {showComboBox && patientsToShow.length > 0 &&(
+          <label className='daily'>לו"ז יומי</label>
+        )}
 
       {showComboBox && schedules && (
         

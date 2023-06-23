@@ -113,9 +113,9 @@ const UserForm = ({refreshPatients}) => {
         // this is for patients.
         if(typeOfUser.userType === 'option-3' ){
 
-            const patient = {name:patientName, id:patientID, cellphone:patientPhone, dateOfBirth:patientBirthday, role:"Patient" ,classRoom:classRoom, hebrewName:patientHebrewName, image:photo}
+            const patient = {name:patientName, id:patientID, cellphone:patientPhone, dateOfBirth:patientBirthday, role:"Patient" ,classRoom:classRoom, hebrewName:patientHebrewName,/* image:photo*/}
             const formData = new FormData();
-            formData.append("image", photo);
+            // formData.append("image", photo);
             formData.append("name", patientName);
             formData.append("id", patientID);
             formData.append("classRoom", classRoom);
@@ -280,9 +280,9 @@ const UserForm = ({refreshPatients}) => {
                     <input className={emptyFields.includes('dateOfBirth') ? 'error' :''} type="text" value={patientBirthday}
                          onChange={(e)=> setPatientBirtday(e.target.value)}/>
                     <label htmlFor="hebrewName">:שם בעברית</label>
-                    <input className={emptyFields.includes('hebrewName') ? 'error' :''} type="text" value={patientHebrewName} onChange={(e)=> setPatientHebrewName(e.target.value)} />                <br />
-                    <label htmlFor="addPicture">תמונה</label>
-                    <input type="file" name="patientImage" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} />
+                    <input className={emptyFields.includes('hebrewName') ? 'error' :''} type="text" value={patientHebrewName} onChange={(e)=> setPatientHebrewName(e.target.value)} />  
+                    {/* <label htmlFor="addPicture">תמונה</label>
+                        <input type="file" name="patientImage" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} /> */}
 
                     <button type="submit">הוסף משתמש</button>
                 </div>

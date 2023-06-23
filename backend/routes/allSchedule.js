@@ -21,3 +21,5 @@ router.put('/:id', allScheduleController.updateScheduleById);
 router.delete('/:id', allScheduleController.deleteScheduleById);
 
 module.exports = router;
+
+

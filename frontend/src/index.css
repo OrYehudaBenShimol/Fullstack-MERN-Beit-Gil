@@ -590,7 +590,7 @@ div.error {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);  
-  
+  z-index: 999;
   background-color: rgba(255, 255, 255, 0.9); /* add a semi-transparent black background */
 }
 
@@ -724,6 +724,8 @@ margin-bottom: 0;
 .morning-picture{
   max-width: 150px;
   max-height: 140px;
+  width: 123px;
+  height:140px;
   border-radius: 10%;
   position: absolute;
   

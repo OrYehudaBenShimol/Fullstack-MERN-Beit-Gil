@@ -40,19 +40,19 @@ router.use(requireAuth)
 
 
 
-// GET all users.
+// GET all patients.
 router.get('/', getAllPatients,);
 
-// GET single user.
+// GET single patients.
 router.get('/:id', getSinglelPatient);
 
-// POST a new user.
-router.post('/', postPhotoUpload , createNewPatient);
+// POST a new patients.
+router.post('/', /*postPhotoUpload,*/ createNewPatient);
 
-// DELETE a user.
+// DELETE a patients.
 router.delete('/:id', deletePatient);
 
-// UPDATE a user.
+// UPDATE a patients.
 router.patch('/:id', updatePatient);
 
 router.get('/:id/image', getPatientImage);
@@ -60,3 +60,4 @@ router.get('/:id/image', getPatientImage);
 
 
 module.exports = router;
+

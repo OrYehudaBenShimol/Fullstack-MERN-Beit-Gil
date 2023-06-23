@@ -38,11 +38,11 @@ const PatientDetails = ({patient,imageURL,patientClassRoom}) => {
 
   // Get the use picture from the server and set it in the imageSrc state.
   useEffect(() => {
-    if (patient.image && patient.image.data) {
-      const blob = new Blob([new Uint8Array(patient.image.data)], { type: "image/png" })
-      setImageSrc(URL.createObjectURL(blob))
-    }
-  }, [patient.image])
+    // if (patient.image && patient.image.data) {
+    //   const blob = new Blob([new Uint8Array(patient.image.data)], { type: "image/png" })
+    //   setImageSrc(URL.createObjectURL(blob))
+    // }
+  }, [/*patient.image*/])
 
   
     return(
@@ -56,6 +56,9 @@ const PatientDetails = ({patient,imageURL,patientClassRoom}) => {
             <div className="tooltip-container">
             <span id="delete" text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
             </div>
+            <div>
+                <img src={`images/patients/${patient.id}.png`}  className="manage-patient-image" /> 
+            </div>
             {showPopup && (
             <div className="confirmation-popup">
                 <div className="message">
@@ -65,9 +68,10 @@ const PatientDetails = ({patient,imageURL,patientClassRoom}) => {
                 <button className="confirm-btn" onClick={handleDeleteUser}>אישור</button>
                 <button onClick={() => setShowPopup(false)}>ביטול</button>
             </div>
-      )}    <div>
+      )}    
+      {/* <div>
                     {imageSrc && <img className="manage-patient-image" src={imageSrc}/> }
-            </div>
+            </div> */}
         </div>
     )
 }
