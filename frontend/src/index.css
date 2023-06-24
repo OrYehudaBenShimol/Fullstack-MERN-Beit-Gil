@@ -594,6 +594,18 @@ div.error {
   background-color: rgba(255, 255, 255, 0.9); /* add a semi-transparent black background */
 }
 
+.confirmation-popup-manage-schedule {
+  min-width: 290px;
+  min-height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);  
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.9); /* add a semi-transparent black background */
+}
+
 .confirmation-popup .message {
   font-size: 18px;
   font-weight: bold;
@@ -601,6 +613,24 @@ div.error {
   color: #000000;
   width: 315px;
   text-align: center;
+}
+
+.confirmation-popup-manage-schedule .message {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 7px;
+  color: #000000;
+  width: 315px;
+  text-align: center;
+}
+
+.confirmation-popup-manage-schedule button{
+  font-size: 16px;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .confirmation-popup button {
@@ -633,8 +663,23 @@ input.error {
   border: 1px solid var(--error);
 }
 
+.export-to-xlsx{
+  background-color: var(--primary);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  font-weight: bold;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
 
+.patients-export-div{
+  text-align: right;
+  margin-top: 10px;
+}
 
 /* navbar */
 nav {

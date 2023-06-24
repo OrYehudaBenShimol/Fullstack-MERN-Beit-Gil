@@ -40,7 +40,7 @@ const ScheduleDetails = ({key,scheduleDetails, scheduleEnglish, classNameHebrew}
             <span id="delete" text="Delete" className="material-symbols-outlined" onClick={handleClick}>delete</span>
             </div>
             {showPopup && (
-            <div className="confirmation-popup">
+            <div className="confirmation-popup-manage-schedule">
                 <div className="message">
                 האם אתה בטוח שהנך מעוניין למחוק את 
                     <br/> הפעילות ? כל המידע ייאבד 

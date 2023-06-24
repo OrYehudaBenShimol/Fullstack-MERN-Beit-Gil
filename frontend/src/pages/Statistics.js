@@ -117,7 +117,7 @@ const Statistics = () => {
 
                 {!statistics && <Loading />}
 
-                {showClassChoose && (
+                {/* {showClassChoose && (
                     <select id="user-type" className="chooseTypeStatistics" value={className} onChange={handleClassRoomChange}>
                         <option value="empty">כיתה</option>
                         <option value="oren">אורן</option>
@@ -143,19 +143,21 @@ const Statistics = () => {
                 )}
 
                 <br/>
-                <br/>
+                <br/> */}
 
                 {statistics && (
-                    <button onClick={handleExport}> ייצא לקובץ אקסל </button>
+                    <div className="patients-export-div">
+                        <button className="export-to-xlsx" onClick={handleExport}>הפקת דו"ח נוכחות</button>
+                    </div>
                 )}
 
-            <div className="patients">
+            {/* <div className="patients">
                 {userID && className && statistics.filter(s => s.classRoom === className && s.id == userID).map((stat) => (
                     <div className="patient-container" key={stat._id}>
                         <StatisticsDetails stat={stat} />
                     </div>
                 ))}
-                </div>
+                </div> */}
             </div>
         </div>
     )
