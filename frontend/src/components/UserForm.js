@@ -70,6 +70,11 @@ const UserForm = ({refreshPatients}) => {
                     SetHebrewName('')
                     setUserType('')
                     setEmptyFields([])
+                    setSuccessAdding(true)
+                    setPhoto(null)
+                    setTimeout(()=>{
+                        setSuccessAdding(false)
+                    },"5000")
                     console.log('new manager/therapist has been added.',json);
                     dispatch({type:'CREATE_USERS',payload:json})
                 }
@@ -106,6 +111,10 @@ const UserForm = ({refreshPatients}) => {
                 setPassword('')
                 SetHebrewName('')
                 setUserType('')
+                setSuccessAdding(true)
+                setTimeout(()=>{
+                    setSuccessAdding(false)
+                },"5000")
                 console.log('new employee has been added.',json);
             }
         }

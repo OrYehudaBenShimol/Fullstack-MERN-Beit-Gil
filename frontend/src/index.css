@@ -889,15 +889,16 @@ margin-bottom: 0;
 .feelings-popup{
   display: grid;
   grid-template-columns: 3.5fr 1.5fr; /* Set column sizes */
-  max-width: 185px;
-  max-height: 600px;
+  max-width: 300px;
+  min-width: 300px;
+  max-height: 700px;
   margin-left: 80%;
+  margin-left: 69.5%;
   margin-top: 5%;
   z-index: 999;
   background-color:#f1f1f1;
   border-radius: 5%;
   border: 0px solid #000000
-
 }
 .happy{
   max-width: 80px;

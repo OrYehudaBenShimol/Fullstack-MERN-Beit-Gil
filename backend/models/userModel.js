@@ -69,11 +69,11 @@ userSchema.statics.login = async function (email,password){
     }
     const user = await this.findOne({email:email})
     if(!user){
-        throw Error('אימייל לא נכון');
+        throw Error('שם משתמש או סיסמא לא נכונים');
     }
     const match = await bcrypt.compare(password,user.password)
     if(!match){
-        throw Error('סיסמא לא נכונה');
+        throw Error('שם משתמש או סיסמא לא נכונים');
     }
 
     return user

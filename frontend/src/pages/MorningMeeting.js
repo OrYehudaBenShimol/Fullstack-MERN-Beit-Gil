@@ -659,7 +659,7 @@ const MorningMeeting = () => {
           break;
       }
     }
-  }, [user,dispatch,orenDispatch]);
+  }, [user,dispatch,orenDispatch,schedules]);
 
  
   return (
