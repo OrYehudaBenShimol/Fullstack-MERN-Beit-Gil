@@ -54,10 +54,10 @@ const Navbar = () => {
                         <Link className='manage-users-nav' to="/ManageUsers">ניהול משתמשים</Link>
                         <Link className='attendenc'  to="/MorningAttendence">נוכחות בוקר</Link>
                         <Link className='meeting'  to="/MorningMeeting" >מפגש בוקר</Link>
-                        <Link className='therapy'>טיפולים פרטניים</Link>
+                        {/* <Link className='therapy'>טיפולים פרטניים</Link>
                         <Link className='Patient follow-up'>מעקב מטופלים</Link>
                         <Link className='nothes'>פתקים</Link>
-                        <Link className='settings'>הגדרות</Link>
+                        <Link className='settings'>הגדרות</Link> */}
 
                     </div>
                     
