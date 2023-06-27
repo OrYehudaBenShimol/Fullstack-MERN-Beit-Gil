@@ -1269,6 +1269,8 @@ div.patients{
 
 .helloPage {
   display: flex;
+  min-width:1024px;
+  min-height: 820px;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100vh; /* Set the height of the container to the full viewport height */
@@ -1279,5 +1281,7 @@ div.patients{
 }
 
 .cssClass {
-  /* Add any additional styles for the image */
+padding: 20%;
+padding-left: 40%;
+padding-right: 40%;
 }
